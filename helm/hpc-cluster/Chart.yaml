@@ -1,0 +1,24 @@
+apiVersion: v2
+name: hpc-cluster
+description: Cluster HPC Enterprise - Helm Chart
+type: application
+version: 2.0.0
+appVersion: "2.0.0"
+keywords:
+  - hpc
+  - high-performance-computing
+  - slurm
+  - monitoring
+home: https://github.com/mickaelangel/hpc-cluster
+sources:
+  - https://github.com/mickaelangel/hpc-cluster
+maintainers:
+  - name: HPC Team
+    email: support@example.com
+dependencies:
+  - name: prometheus
+    version: "25.0.0"
+    repository: "https://prometheus-community.github.io/helm-charts"
+  - name: grafana
+    version: "7.0.0"
+    repository: "https://grafana.github.io/helm-charts"

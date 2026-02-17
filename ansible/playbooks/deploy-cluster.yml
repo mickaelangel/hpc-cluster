@@ -1,0 +1,58 @@
+---
+# ============================================================================
+# Ansible Playbook - Déploiement Cluster HPC
+# Usage: ansible-playbook -i inventory/hosts deploy-cluster.yml
+# ============================================================================
+
+- name: Déploiement Cluster HPC Enterprise
+  hosts: all
+  become: yes
+  vars:
+    cluster_name: "hpc-cluster"
+    docker_compose_version: "2.24.0"
+    
+  pre_tasks:
+    - name: Vérifier OS
+      assert:
+        that:
+          - ansible_os_family == "Suse"
+        fail_msg: "Ce playbook nécessite SUSE Linux"
+        
+    - name: Mettre à jour le système
+      zypper:
+        update_cache: yes
+        name: "*"
+        state: latest
+      when: update_system | default(false)
+
+  roles:
+    - role: docker
+      vars:
+        docker_package: "docker"
+        docker_service_state: started
+        docker_service_enabled: true
+        
+    - role: docker_compose
+      vars:
+        docker_compose_version: "{{ docker_compose_version }}"
+        
+    - role: hpc_cluster
+      vars:
+        cluster_name: "{{ cluster_name }}"
+        frontend_nodes: 2
+        compute_nodes: 6
+
+  post_tasks:
+    - name: Vérifier le déploiement
+      uri:
+        url: "http://localhost:9090/-/healthy"
+        method: GET
+      register: prometheus_health
+      until: prometheus_health.status == 200
+      retries: 10
+      delay: 10
+      ignore_errors: yes
+      
+    - name: Afficher le statut
+      debug:
+        msg: "Cluster HPC déployé avec succès"

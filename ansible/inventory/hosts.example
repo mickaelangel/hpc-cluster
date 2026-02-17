@@ -1,0 +1,24 @@
+[frontend]
+frontal-01 ansible_host=172.20.0.101
+frontal-02 ansible_host=172.20.0.102
+
+[compute]
+compute-01 ansible_host=172.20.0.201
+compute-02 ansible_host=172.20.0.202
+compute-03 ansible_host=172.20.0.203
+compute-04 ansible_host=172.20.0.204
+compute-05 ansible_host=172.20.0.205
+compute-06 ansible_host=172.20.0.206
+
+[monitoring]
+prometheus ansible_host=172.20.0.10
+grafana ansible_host=172.20.0.20
+
+[cluster:children]
+frontend
+compute
+
+[all:vars]
+ansible_user=root
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+ansible_python_interpreter=/usr/bin/python3
