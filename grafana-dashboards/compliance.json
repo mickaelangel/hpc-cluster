@@ -1,0 +1,156 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Compliance Dashboard",
+    "tags": ["hpc", "compliance", "security"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Overall Compliance Score",
+        "type": "gauge",
+        "gridPos": {"h": 10, "w": 8, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_score_overall",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 70, "color": "yellow"},
+                {"value": 90, "color": "green"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "DISA STIG Compliance",
+        "type": "gauge",
+        "gridPos": {"h": 10, "w": 8, "x": 8, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_score{standard=\"DISA STIG\"}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "CIS Level 2 Compliance",
+        "type": "gauge",
+        "gridPos": {"h": 10, "w": 8, "x": 16, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_score{standard=\"CIS Level 2\"}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "ANSSI BP-028 Compliance",
+        "type": "gauge",
+        "gridPos": {"h": 10, "w": 8, "x": 0, "y": 10},
+        "targets": [
+          {
+            "expr": "compliance_score{standard=\"ANSSI BP-028\"}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Compliance Checks by Category",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 16, "x": 8, "y": 10},
+        "targets": [
+          {
+            "expr": "compliance_score by (category)",
+            "refId": "A",
+            "legendFormat": "{{category}}"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Failed Compliance Checks",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 20},
+        "targets": [
+          {
+            "expr": "compliance_checks{status=\"failed\"}",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Compliance Trend",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 32},
+        "targets": [
+          {
+            "expr": "compliance_score_overall",
+            "refId": "A",
+            "legendFormat": "Overall Score"
+          },
+          {
+            "expr": "compliance_score{standard=\"DISA STIG\"}",
+            "refId": "B",
+            "legendFormat": "DISA STIG"
+          },
+          {
+            "expr": "compliance_score{standard=\"CIS Level 2\"}",
+            "refId": "C",
+            "legendFormat": "CIS Level 2"
+          },
+          {
+            "expr": "compliance_score{standard=\"ANSSI BP-028\"}",
+            "refId": "D",
+            "legendFormat": "ANSSI BP-028"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent"
+          }
+        }
+      }
+    ]
+  }
+}

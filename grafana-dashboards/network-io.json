@@ -1,0 +1,96 @@
+{
+  "dashboard": {
+    "title": "Network I/O",
+    "tags": ["hpc", "network"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "15s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Network Receive (Bytes/s)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(node_network_receive_bytes_total[5m])",
+            "refId": "A",
+            "legendFormat": "{{instance}} - {{device}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "Bps"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Network Transmit (Bytes/s)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(node_network_transmit_bytes_total[5m])",
+            "refId": "A",
+            "legendFormat": "{{instance}} - {{device}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "Bps"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Network Packets Receive",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(node_network_receive_packets_total[5m])",
+            "refId": "A",
+            "legendFormat": "{{instance}} - {{device}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "pps"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Network Packets Transmit",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(node_network_transmit_packets_total[5m])",
+            "refId": "A",
+            "legendFormat": "{{instance}} - {{device}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "pps"
+          }
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    },
+    "editable": true
+  }
+}

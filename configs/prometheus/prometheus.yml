@@ -1,0 +1,211 @@
+# Configuration Prometheus pour infrastructure HPC
+# Scraping: Node Exporter (port 9100) + Telegraf (port 9273)
+# Retention: 15 jours
+
+global:
+  scrape_interval: 15s      # Intervalle de scraping par défaut
+  evaluation_interval: 15s   # Intervalle d'évaluation des règles d'alerte
+  external_labels:
+    cluster: 'hpc-demo'
+    environment: 'production'
+
+# Règles d'alerte
+rule_files:
+  - '/etc/prometheus/alerts.yml'
+
+# Configuration de scraping
+scrape_configs:
+  # ============================================
+  # NŒUDS FRONTAUX
+  # ============================================
+  
+  # Frontal 01 - Node Exporter
+  - job_name: 'frontal-01-node'
+    static_configs:
+      - targets: ['172.20.0.101:9100']
+        labels:
+          role: 'frontal'
+          node: 'frontal-01'
+          instance: 'frontal-01-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Frontal 01 - Telegraf
+  - job_name: 'frontal-01-telegraf'
+    static_configs:
+      - targets: ['172.20.0.101:9273']
+        labels:
+          role: 'frontal'
+          node: 'frontal-01'
+          instance: 'frontal-01-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Frontal 02 - Node Exporter
+  - job_name: 'frontal-02-node'
+    static_configs:
+      - targets: ['172.20.0.102:9100']
+        labels:
+          role: 'frontal'
+          node: 'frontal-02'
+          instance: 'frontal-02-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Frontal 02 - Telegraf
+  - job_name: 'frontal-02-telegraf'
+    static_configs:
+      - targets: ['172.20.0.102:9273']
+        labels:
+          role: 'frontal'
+          node: 'frontal-02'
+          instance: 'frontal-02-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # ============================================
+  # NŒUDS DE CALCUL (Slaves)
+  # ============================================
+  
+  # Slave 01 - Node Exporter
+  - job_name: 'slave-01-node'
+    static_configs:
+      - targets: ['172.20.0.201:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-01'
+          instance: 'slave-01-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 01 - Telegraf
+  - job_name: 'slave-01-telegraf'
+    static_configs:
+      - targets: ['172.20.0.201:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-01'
+          instance: 'slave-01-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 02 - Node Exporter
+  - job_name: 'slave-02-node'
+    static_configs:
+      - targets: ['172.20.0.202:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-02'
+          instance: 'slave-02-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 02 - Telegraf
+  - job_name: 'slave-02-telegraf'
+    static_configs:
+      - targets: ['172.20.0.202:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-02'
+          instance: 'slave-02-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 03 - Node Exporter
+  - job_name: 'slave-03-node'
+    static_configs:
+      - targets: ['172.20.0.203:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-03'
+          instance: 'slave-03-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 03 - Telegraf
+  - job_name: 'slave-03-telegraf'
+    static_configs:
+      - targets: ['172.20.0.203:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-03'
+          instance: 'slave-03-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 04 - Node Exporter
+  - job_name: 'slave-04-node'
+    static_configs:
+      - targets: ['172.20.0.204:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-04'
+          instance: 'slave-04-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 04 - Telegraf
+  - job_name: 'slave-04-telegraf'
+    static_configs:
+      - targets: ['172.20.0.204:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-04'
+          instance: 'slave-04-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 05 - Node Exporter
+  - job_name: 'slave-05-node'
+    static_configs:
+      - targets: ['172.20.0.205:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-05'
+          instance: 'slave-05-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 05 - Telegraf
+  - job_name: 'slave-05-telegraf'
+    static_configs:
+      - targets: ['172.20.0.205:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-05'
+          instance: 'slave-05-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 06 - Node Exporter
+  - job_name: 'slave-06-node'
+    static_configs:
+      - targets: ['172.20.0.206:9100']
+        labels:
+          role: 'compute'
+          node: 'slave-06'
+          instance: 'slave-06-node'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # Slave 06 - Telegraf
+  - job_name: 'slave-06-telegraf'
+    static_configs:
+      - targets: ['172.20.0.206:9273']
+        labels:
+          role: 'compute'
+          node: 'slave-06'
+          instance: 'slave-06-telegraf'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+
+  # ============================================
+  # PROMETHEUS SELF-MONITORING
+  # ============================================
+  
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          role: 'monitoring'
+          instance: 'prometheus'

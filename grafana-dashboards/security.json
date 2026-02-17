@@ -1,0 +1,84 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Security Dashboard",
+    "tags": ["hpc", "security"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "SSH Failed Login Attempts",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(fail2ban_ssh_failed_total[5m])",
+            "legendFormat": "Failed Logins"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Fail2ban Banned IPs",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "fail2ban_banned_ips",
+            "legendFormat": "Banned IPs"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Auditd Events",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(auditd_events_total[5m])",
+            "legendFormat": "Audit Events"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+      },
+      {
+        "id": 4,
+        "title": "AIDE Integrity Checks",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "aide_integrity_checks_total",
+            "legendFormat": "Checks"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Kerberos Failed Authentications",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(kerberos_auth_failed_total[5m])",
+            "legendFormat": "Failed Auths"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 6,
+        "title": "LDAP Failed Bind Attempts",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(ldap_bind_failed_total[5m])",
+            "legendFormat": "Failed Binds"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 1
+  }
+}

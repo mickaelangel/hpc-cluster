@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - InfluxDB Dashboard",
+    "tags": ["hpc", "influxdb", "timeseries"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Databases",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "influxdb_databases_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Points Written",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(influxdb_points_written_total[5m])",
+            "refId": "A",
+            "legendFormat": "Points/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

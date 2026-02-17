@@ -1,0 +1,68 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Nexus Repository Dashboard",
+    "tags": ["hpc", "nexus", "repository"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Total Artifacts",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "nexus_artifacts_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Repository Size",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "nexus_repository_size_bytes",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Downloads per Hour",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(nexus_downloads_total[1h])",
+            "refId": "A",
+            "legendFormat": "Downloads"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Top Repositories",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (repository) (nexus_downloads_total))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      }
+    ]
+  }
+}

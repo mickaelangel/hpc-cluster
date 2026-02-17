@@ -1,0 +1,14 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Energy Dashboard",
+    "tags": ["hpc", "energy", "power"],
+    "panels": [
+      {
+        "id": 1,
+        "title": "Power Consumption",
+        "type": "stat",
+        "targets": [{"expr": "node_power_consumption_watts"}]
+      }
+    ]
+  }
+}

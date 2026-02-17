@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Vault Dashboard",
+    "tags": ["hpc", "vault", "secrets"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Secrets Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "vault_secrets_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Active Tokens",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "vault_tokens_active",
+            "refId": "A"
+          }
+        ]
+      }
+    ]
+  }
+}

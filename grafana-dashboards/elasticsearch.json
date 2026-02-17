@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Elasticsearch Dashboard",
+    "tags": ["hpc", "elasticsearch", "search"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Cluster Health",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "elasticsearch_cluster_health_status",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Documents Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "elasticsearch_documents_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Search Queries",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(elasticsearch_search_queries_total[5m])",
+            "refId": "A",
+            "legendFormat": "Queries/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Spack Dashboard",
+    "tags": ["hpc", "spack", "packages"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "60s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Installed Packages",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "spack_installed_packages_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Package Builds Today",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "increase(spack_package_builds_total[24h])",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Top Packages by Usage",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "topk(20, sum by (package) (spack_package_usage_total))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      }
+    ]
+  }
+}

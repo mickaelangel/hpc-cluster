@@ -1,0 +1,384 @@
+version: '3.3'
+
+# ============================================================================
+# Cluster HPC - Configuration Open-Source Complète
+# SUSE 15 SP4 Compatible - 100% Open-Source
+# Architecture: 2 frontaux + 6 compute + Monitoring + Applications
+# ============================================================================
+
+services:
+  # ============================================
+  # MONITORING STACK (Open-Source)
+  # ============================================
+  
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: hpc-prometheus
+    hostname: prometheus
+    networks:
+      management:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ../configs/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: hpc-grafana
+    hostname: grafana
+    networks:
+      management:
+        ipv4_address: 172.20.0.20
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=$Password!2026
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../configs/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../grafana-dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: hpc-influxdb
+    hostname: influxdb
+    networks:
+      management:
+        ipv4_address: 172.20.0.30
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin1234
+      - DOCKER_INFLUXDB_INIT_ORG=hpc-cluster
+      - DOCKER_INFLUXDB_INIT_BUCKET=hpc-metrics
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    restart: unless-stopped
+
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: hpc-loki
+    hostname: loki
+    networks:
+      management:
+        ipv4_address: 172.20.0.40
+    ports:
+      - "3100:3100"
+    volumes:
+      - ../configs/loki/loki-config.yml:/etc/loki/local-config.yaml:ro
+      - loki_data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+
+  # ============================================
+  # NŒUDS FRONTAUX (2)
+  # ============================================
+  
+  frontal-01:
+    build:
+      context: .
+      dockerfile: frontal/Dockerfile
+    container_name: hpc-frontal-01
+    hostname: frontal-01
+    networks:
+      management:
+        ipv4_address: 172.20.0.101
+      cluster:
+        ipv4_address: 10.0.0.101
+      storage:
+        ipv4_address: 10.10.10.101
+    ports:
+      - "2222:22"      # SSH
+      - "9100:9100"    # Node Exporter
+      - "9273:9273"    # Telegraf
+    volumes:
+      - ../configs/telegraf/telegraf-frontal.conf:/etc/telegraf/telegraf.conf:ro
+      - ../configs/slurm:/etc/slurm:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=frontal
+      - NODE_ID=01
+
+  frontal-02:
+    build:
+      context: .
+      dockerfile: frontal/Dockerfile
+    container_name: hpc-frontal-02
+    hostname: frontal-02
+    networks:
+      management:
+        ipv4_address: 172.20.0.102
+      cluster:
+        ipv4_address: 10.0.0.102
+      storage:
+        ipv4_address: 10.10.10.102
+    ports:
+      - "2223:22"      # SSH
+      - "9101:9100"    # Node Exporter
+      - "9274:9273"    # Telegraf
+    volumes:
+      - ../configs/telegraf/telegraf-frontal.conf:/etc/telegraf/telegraf.conf:ro
+      - ../configs/slurm:/etc/slurm:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=frontal
+      - NODE_ID=02
+
+  # ============================================
+  # NŒUDS DE CALCUL (6)
+  # ============================================
+  
+  compute-01:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-01
+    hostname: compute-01
+    networks:
+      management:
+        ipv4_address: 172.20.0.201
+      cluster:
+        ipv4_address: 10.0.0.201
+      storage:
+        ipv4_address: 10.10.10.201
+    ports:
+      - "9102:9100"    # Node Exporter
+      - "9275:9273"    # Telegraf
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=01
+
+  compute-02:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-02
+    hostname: compute-02
+    networks:
+      management:
+        ipv4_address: 172.20.0.202
+      cluster:
+        ipv4_address: 10.0.0.202
+      storage:
+        ipv4_address: 10.10.10.202
+    ports:
+      - "9103:9100"
+      - "9276:9273"
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=02
+
+  compute-03:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-03
+    hostname: compute-03
+    networks:
+      management:
+        ipv4_address: 172.20.0.203
+      cluster:
+        ipv4_address: 10.0.0.203
+      storage:
+        ipv4_address: 10.10.10.203
+    ports:
+      - "9104:9100"
+      - "9277:9273"
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=03
+
+  compute-04:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-04
+    hostname: compute-04
+    networks:
+      management:
+        ipv4_address: 172.20.0.204
+      cluster:
+        ipv4_address: 10.0.0.204
+      storage:
+        ipv4_address: 10.10.10.204
+    ports:
+      - "9105:9100"
+      - "9278:9273"
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=04
+
+  compute-05:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-05
+    hostname: compute-05
+    networks:
+      management:
+        ipv4_address: 172.20.0.205
+      cluster:
+        ipv4_address: 10.0.0.205
+      storage:
+        ipv4_address: 10.10.10.205
+    ports:
+      - "9106:9100"
+      - "9279:9273"
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=05
+
+  compute-06:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hpc-compute-06
+    hostname: compute-06
+    networks:
+      management:
+        ipv4_address: 172.20.0.206
+      cluster:
+        ipv4_address: 10.0.0.206
+      storage:
+        ipv4_address: 10.10.10.206
+    ports:
+      - "9107:9100"
+      - "9280:9273"
+    volumes:
+      - ../configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+      - beegfs_data:/mnt/beegfs
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - NODE_ROLE=compute
+      - NODE_ID=06
+
+  # ============================================
+  # SERVICES ADDITIONNELS (Open-Source)
+  # ============================================
+
+  jupyterhub:
+    image: jupyterhub/jupyterhub:4.0
+    container_name: hpc-jupyterhub
+    hostname: jupyterhub
+    networks:
+      management:
+        ipv4_address: 172.20.0.50
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../configs/jupyterhub:/srv/jupyterhub:ro
+      - jupyterhub_data:/data
+      - beegfs_data:/mnt/beegfs:ro
+    command: ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
+    environment:
+      - JUPYTERHUB_AUTHENTICATOR=ldapauthenticator.LDAPAuthenticator
+      - LDAP_SERVER_ADDRESS=frontal-01
+    depends_on:
+      - frontal-01
+    restart: unless-stopped
+
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: hpc-promtail
+    hostname: promtail
+    networks:
+      management:
+        ipv4_address: 172.20.0.41
+    volumes:
+      - ../configs/promtail/config.yml:/etc/promtail/config.yml:ro
+      - /var/log:/var/log:ro
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+    restart: unless-stopped
+
+# ============================================
+# RÉSEAUX DOCKER
+# ============================================
+
+networks:
+  management:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+  cluster:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+  storage:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+
+# ============================================
+# VOLUMES PERSISTANTS
+# ============================================
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  influxdb_data:
+    driver: local
+  loki_data:
+    driver: local
+  jupyterhub_data:
+    driver: local
+  beegfs_data:
+    driver: local

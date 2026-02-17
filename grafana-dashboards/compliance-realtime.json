@@ -1,0 +1,90 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Compliance Real-Time",
+    "tags": ["hpc", "compliance", "realtime"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Compliance Score",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_score_overall",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "DISA STIG Compliance",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_disa_stig_score",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "CIS Level 2 Compliance",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_cis_score",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "ANSSI BP-028 Compliance",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "compliance_anssi_score",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Compliance Checks Over Time",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "compliance_checks_total",
+            "refId": "A",
+            "legendFormat": "Total Checks"
+          },
+          {
+            "expr": "compliance_checks_passed",
+            "refId": "B",
+            "legendFormat": "Passed"
+          },
+          {
+            "expr": "compliance_checks_failed",
+            "refId": "C",
+            "legendFormat": "Failed"
+          }
+        ]
+      }
+    ]
+  }
+}

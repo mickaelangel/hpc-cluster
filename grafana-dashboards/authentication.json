@@ -1,0 +1,118 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Authentication Dashboard",
+    "tags": ["hpc", "authentication", "ldap", "kerberos", "freeipa"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "LDAP Connections",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "ldap_connections_active",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Kerberos Tickets Issued",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "kerberos_tickets_issued_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Failed Authentication Attempts",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(auth_failed_total[5m]))",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Active Users",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "ldap_active_users",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Authentication Events",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(auth_success_total[5m])",
+            "refId": "A",
+            "legendFormat": "Success"
+          },
+          {
+            "expr": "rate(auth_failed_total[5m])",
+            "refId": "B",
+            "legendFormat": "Failed"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Kerberos Ticket Lifetime",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "kerberos_ticket_lifetime_seconds",
+            "refId": "A",
+            "legendFormat": "Lifetime"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Top Users by Authentication",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "topk(20, sum by (user) (rate(auth_success_total[1h])))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      }
+    ]
+  }
+}

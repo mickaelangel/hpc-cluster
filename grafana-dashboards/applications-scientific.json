@@ -1,0 +1,123 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Scientific Applications Dashboard",
+    "tags": ["hpc", "applications", "scientific"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "GROMACS Jobs Running",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(slurm_jobs_running{application=\"gromacs\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "OpenFOAM Jobs Running",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(slurm_jobs_running{application=\"openfoam\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Quantum ESPRESSO Jobs Running",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(slurm_jobs_running{application=\"quantum-espresso\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "ParaView Jobs Running",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(slurm_jobs_running{application=\"paraview\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Jobs by Application",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (application) (slurm_jobs_running)",
+            "refId": "A",
+            "legendFormat": "{{application}}"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "CPU Hours by Application (24h)",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (application) (increase(slurm_job_cpu_seconds{application=~\"gromacs|openfoam|quantum-espresso|paraview\"}[24h])) / 3600",
+            "refId": "A",
+            "legendFormat": "{{application}}"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Application Performance",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "rate(slurm_job_cpu_seconds{application=\"gromacs\"}[5m])",
+            "refId": "A",
+            "legendFormat": "GROMACS"
+          },
+          {
+            "expr": "rate(slurm_job_cpu_seconds{application=\"openfoam\"}[5m])",
+            "refId": "B",
+            "legendFormat": "OpenFOAM"
+          },
+          {
+            "expr": "rate(slurm_job_cpu_seconds{application=\"quantum-espresso\"}[5m])",
+            "refId": "C",
+            "legendFormat": "Quantum ESPRESSO"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Top Users by Application",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 28},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (user, application) (slurm_jobs_running))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrinityX - Network & InfiniBand</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a; color: #e2e8f0; min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 1rem 2rem; border-bottom: 2px solid #06b6d4;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #06b6d4; display: flex; align-items: center; gap: 0.5rem; }
+        .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        .network-map {
+            background: #1e293b; border-radius: 0.5rem; padding: 2rem;
+            border: 1px solid #334155; margin-bottom: 2rem;
+        }
+        .topology {
+            display: flex; flex-direction: column; gap: 2rem; align-items: center;
+        }
+        .switch-layer {
+            display: flex; gap: 2rem; justify-content: center;
+        }
+        .switch-box {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white; padding: 1rem 2rem; border-radius: 0.5rem;
+            text-align: center; box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.3);
+        }
+        .switch-name { font-weight: bold; font-size: 1.125rem; }
+        .switch-ports { font-size: 0.875rem; opacity: 0.9; margin-top: 0.25rem; }
+        .nodes-layer {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+            width: 100%; max-width: 1000px;
+        }
+        .node-card {
+            background: #0f172a; border: 2px solid #334155; border-radius: 0.5rem;
+            padding: 1rem; text-align: center; position: relative;
+        }
+        .node-card::before {
+            content: ''; position: absolute; top: -2rem; left: 50%;
+            width: 2px; height: 2rem; background: #06b6d4;
+            transform: translateX(-50%);
+        }
+        .node-card.ib-active {
+            border-color: #06b6d4; box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+        }
+        .node-name { font-weight: 600; color: #f8fafc; }
+        .node-ip { font-size: 0.75rem; color: #64748b; font-family: monospace; margin-top: 0.25rem; }
+        .ib-status {
+            margin-top: 0.5rem; padding: 0.25rem;
+            background: rgba(6, 182, 212, 0.1); border-radius: 0.25rem;
+            font-size: 0.75rem; color: #06b6d4;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155;
+        }
+        .stat-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;
+        }
+        .stat-title { color: #94a3b8; font-size: 0.875rem; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: #f8fafc; }
+        .stat-sub { font-size: 0.875rem; color: #64748b; }
+        .table-container {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155; overflow-x: auto;
+        }
+        table {
+            width: 100%; border-collapse: collapse; font-size: 0.875rem;
+        }
+        thead tr { border-bottom: 2px solid #334155; }
+        th { padding: 0.75rem; text-align: left; color: #94a3b8; }
+        td { padding: 0.75rem; border-bottom: 1px solid #1e293b; }
+        .badge {
+            padding: 0.25rem 0.75rem; border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 500;
+        }
+        .badge-success { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid #10b981; }
+        .badge-warning { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><span>🌐</span><span>TrinityX Network & InfiniBand</span></div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="color: #94a3b8; font-size: 0.875rem;">Cluster: hpc-prod</span>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="margin-bottom: 0.5rem; color: #f8fafc;">Topologie Réseau InfiniBand</h1>
+        <p style="color: #94a3b8; margin-bottom: 2rem;">Réseau haute performance 100 Gb/s - Monitoring temps réel</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Bande Passante Totale</span>
+                </div>
+                <div class="stat-value">23.4</div>
+                <div class="stat-sub">Gb/s utilisés / 100 Gb/s</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Latence Moyenne</span>
+                </div>
+                <div class="stat-value">1.2</div>
+                <div class="stat-sub">μs (microsecondes)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Nœuds Connectés</span>
+                </div>
+                <div class="stat-value">8/8</div>
+                <div class="stat-sub">Tous actifs</div>
+            </div>
+        </div>
+
+        <div class="network-map">
+            <div class="topology">
+                <div class="switch-layer">
+                    <div class="switch-box">
+                        <div class="switch-name">IB Switch 01</div>
+                        <div class="switch-ports">48 ports | 8 utilisés</div>
+                    </div>
+                </div>
+                <div class="nodes-layer">
+                    <div class="node-card ib-active">
+                        <div class="node-name">frontal-01</div>
+                        <div class="node-ip">10.10.10.11</div>
+                        <div class="ib-status">● Active | 4.2 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">frontal-02</div>
+                        <div class="node-ip">10.10.10.12</div>
+                        <div class="ib-status">● Active | 3.8 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-01</div>
+                        <div class="node-ip">10.10.10.101</div>
+                        <div class="ib-status">● Active | 5.1 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-02</div>
+                        <div class="node-ip">10.10.10.102</div>
+                        <div class="ib-status">● Active | 4.7 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-03</div>
+                        <div class="node-ip">10.10.10.103</div>
+                        <div class="ib-status">● Active | 2.1 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-04</div>
+                        <div class="node-ip">10.10.10.104</div>
+                        <div class="ib-status">● Active | 1.8 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-05</div>
+                        <div class="node-ip">10.10.10.105</div>
+                        <div class="ib-status">● Active | 1.2 Gb/s</div>
+                    </div>
+                    <div class="node-card ib-active">
+                        <div class="node-name">node-06</div>
+                        <div class="node-ip">10.10.10.106</div>
+                        <div class="ib-status">● Active | 0.5 Gb/s</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container" style="margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">Détails des Interfaces InfiniBand</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nœud</th>
+                        <th>Interface</th>
+                        <th>IP IB</th>
+                        <th>État</th>
+                        <th>Débit</th>
+                        <th>Latence</th>
+                        <th>Erreurs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>frontal-01</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.11</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>4.2 Gb/s</td>
+                        <td>1.1 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>frontal-02</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.12</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>3.8 Gb/s</td>
+                        <td>1.2 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-01</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.101</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>5.1 Gb/s</td>
+                        <td>1.0 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-02</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.102</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>4.7 Gb/s</td>
+                        <td>1.1 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-03</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.103</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>2.1 Gb/s</td>
+                        <td>1.3 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-04</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.104</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>1.8 Gb/s</td>
+                        <td>1.2 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-05</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.105</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>1.2 Gb/s</td>
+                        <td>1.4 μs</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-06</strong></td>
+                        <td>ib0</td>
+                        <td style="font-family: monospace;">10.10.10.106</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>0.5 Gb/s</td>
+                        <td>1.2 μs</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

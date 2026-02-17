@@ -1,0 +1,25 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Traefik Dashboard",
+    "tags": ["hpc", "traefik", "reverse-proxy"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Requests per Second",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(traefik_entrypoint_requests_total[5m])",
+            "refId": "A",
+            "legendFormat": "Requests/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

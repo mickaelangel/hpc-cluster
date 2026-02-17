@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - TensorFlow",
+    "tags": ["hpc", "tensorflow", "ml"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Training Jobs",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "tensorflow_training_jobs_running",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "GPU Utilization",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "avg(gpu_utilization_percent)",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Training Loss",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "tensorflow_training_loss",
+            "refId": "A",
+            "legendFormat": "Loss"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Apptainer Dashboard",
+    "tags": ["hpc", "apptainer", "containers"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Running Containers",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "apptainer_containers_running",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Container Builds Today",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "increase(apptainer_builds_total[24h])",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Container Images by User",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (user) (apptainer_containers_running)",
+            "refId": "A",
+            "legendFormat": "{{user}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Container Resource Usage",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (container) (apptainer_container_cpu_usage)",
+            "refId": "A",
+            "legendFormat": "{{container}} CPU"
+          },
+          {
+            "expr": "sum by (container) (apptainer_container_memory_usage_bytes)",
+            "refId": "B",
+            "legendFormat": "{{container}} Memory"
+          }
+        ]
+      }
+    ]
+  }
+}

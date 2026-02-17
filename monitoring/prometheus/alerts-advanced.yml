@@ -1,0 +1,107 @@
+groups:
+  - name: hpc_cluster_advanced
+    interval: 30s
+    rules:
+      # Sécurité
+      - alert: HighSSHFailedLogins
+        expr: rate(fail2ban_ssh_failed_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High SSH failed login attempts"
+          description: "SSH failed login attempts exceed 10/min on {{ $labels.instance }}"
+
+      - alert: Fail2banBannedIPs
+        expr: fail2ban_banned_ips > 5
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Multiple IPs banned by Fail2ban"
+          description: "{{ $value }} IPs are currently banned on {{ $labels.instance }}"
+
+      # Performance
+      - alert: HighCPUUsage
+        expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is above 90% on {{ $labels.instance }}"
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 90% on {{ $labels.instance }}"
+
+      - alert: LowDiskSpace
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low disk space"
+          description: "Disk space is below 10% on {{ $labels.instance }}"
+
+      # Slurm
+      - alert: SlurmControllerDown
+        expr: up{job="slurm"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Slurm controller down"
+          description: "Slurm controller is down on {{ $labels.instance }}"
+
+      - alert: HighJobFailureRate
+        expr: rate(slurm_jobs_failed_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High job failure rate"
+          description: "Job failure rate is above 0.1/sec on {{ $labels.instance }}"
+
+      # GPFS
+      - alert: GPFSDown
+        expr: up{job="gpfs"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "GPFS down"
+          description: "GPFS is down on {{ $labels.instance }}"
+
+      - alert: GPFSLowSpace
+        expr: (gpfs_available_bytes / gpfs_total_bytes) * 100 < 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "GPFS low space"
+          description: "GPFS available space is below 10%"
+
+      # LDAP/Kerberos
+      - alert: LDAPDown
+        expr: up{job="ldap"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "LDAP down"
+          description: "LDAP is down on {{ $labels.instance }}"
+
+      - alert: KerberosDown
+        expr: up{job="kerberos"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Kerberos down"
+          description: "Kerberos is down on {{ $labels.instance }}"

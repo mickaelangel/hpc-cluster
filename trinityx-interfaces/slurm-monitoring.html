@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrinityX - Slurm Monitoring</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a; color: #e2e8f0; min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 1rem 2rem; border-bottom: 2px solid #8b5cf6;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #8b5cf6; display: flex; align-items: center; gap: 0.5rem; }
+        .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155;
+        }
+        .stat-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;
+        }
+        .stat-title { color: #94a3b8; font-size: 0.875rem; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: #f8fafc; }
+        .stat-sub { font-size: 0.875rem; color: #64748b; }
+        .table-container {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155; margin-bottom: 2rem;
+        }
+        table {
+            width: 100%; border-collapse: collapse; font-size: 0.875rem;
+        }
+        thead tr { border-bottom: 2px solid #334155; }
+        th { padding: 0.75rem; text-align: left; color: #94a3b8; }
+        td { padding: 0.75rem; border-bottom: 1px solid #1e293b; }
+        .badge {
+            padding: 0.25rem 0.75rem; border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 500;
+        }
+        .badge-running { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid #10b981; }
+        .badge-pending { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid #f59e0b; }
+        .badge-completed { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid #3b82f6; }
+        .badge-failed { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid #ef4444; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><span>⚡</span><span>TrinityX Slurm Workload Manager</span></div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="color: #94a3b8; font-size: 0.875rem;">Controller: frontal-01</span>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="margin-bottom: 0.5rem; color: #f8fafc;">Monitoring Slurm</h1>
+        <p style="color: #94a3b8; margin-bottom: 2rem;">Slurm 23.11 - Gestion des jobs et ressources</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Jobs Actifs</span>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-sub">Running</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Jobs en Attente</span>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-sub">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">CPU Utilisés</span>
+                </div>
+                <div class="stat-value">276</div>
+                <div class="stat-sub">/ 384 cœurs (72%)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Nœuds Actifs</span>
+                </div>
+                <div class="stat-value">6/6</div>
+                <div class="stat-sub">Compute nodes</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">Jobs Actifs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>User</th>
+                        <th>Partition</th>
+                        <th>Nœuds</th>
+                        <th>CPU</th>
+                        <th>Mémoire</th>
+                        <th>Temps</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1842</strong></td>
+                        <td>jdoe</td>
+                        <td>normal</td>
+                        <td>node-01,node-05</td>
+                        <td>64/64</td>
+                        <td>128 GB</td>
+                        <td>02:34:12</td>
+                        <td><span class="badge badge-running">RUNNING</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1843</strong></td>
+                        <td>asmith</td>
+                        <td>gpu</td>
+                        <td>node-02,node-06</td>
+                        <td>128/128</td>
+                        <td>256 GB</td>
+                        <td>05:12:45</td>
+                        <td><span class="badge badge-running">RUNNING</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1844</strong></td>
+                        <td>mgarcia</td>
+                        <td>normal</td>
+                        <td>node-01</td>
+                        <td>16/32</td>
+                        <td>64 GB</td>
+                        <td>00:45:22</td>
+                        <td><span class="badge badge-running">RUNNING</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1845</strong></td>
+                        <td>rjohnson</td>
+                        <td>normal</td>
+                        <td>node-05</td>
+                        <td>8/32</td>
+                        <td>32 GB</td>
+                        <td>00:12:08</td>
+                        <td><span class="badge badge-running">RUNNING</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">File d'Attente (Pending)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>User</th>
+                        <th>Partition</th>
+                        <th>Nœuds Demandés</th>
+                        <th>CPU Demandé</th>
+                        <th>Raison Attente</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1846</strong></td>
+                        <td>pchen</td>
+                        <td>gpu-large</td>
+                        <td>4 nœuds</td>
+                        <td>128 CPU</td>
+                        <td>Ressources insuffisantes</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;"><strong>1847</strong></td>
+                        <td>jdoe</td>
+                        <td>normal</td>
+                        <td>2 nœuds</td>
+                        <td>64 CPU</td>
+                        <td>Priorité utilisateur</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">État des Nœuds</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nœud</th>
+                        <th>État</th>
+                        <th>CPU</th>
+                        <th>Mémoire</th>
+                        <th>Jobs</th>
+                        <th>Load</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>node-01</strong></td>
+                        <td><span class="badge badge-running">ALLOCATED</span></td>
+                        <td>64/64 (100%)</td>
+                        <td>192/256 GB (75%)</td>
+                        <td>2 jobs</td>
+                        <td>94.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-02</strong></td>
+                        <td><span class="badge badge-running">ALLOCATED</span></td>
+                        <td>128/128 (100%)</td>
+                        <td>240/256 GB (94%)</td>
+                        <td>1 job</td>
+                        <td>87.5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-03</strong></td>
+                        <td><span class="badge badge-completed">IDLE</span></td>
+                        <td>0/64 (0%)</td>
+                        <td>8/256 GB (3%)</td>
+                        <td>0 jobs</td>
+                        <td>0.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-04</strong></td>
+                        <td><span class="badge badge-completed">IDLE</span></td>
+                        <td>0/64 (0%)</td>
+                        <td>8/256 GB (3%)</td>
+                        <td>0 jobs</td>
+                        <td>0.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-05</strong></td>
+                        <td><span class="badge badge-running">MIXED</span></td>
+                        <td>72/64 (112%)</td>
+                        <td>160/256 GB (63%)</td>
+                        <td>2 jobs</td>
+                        <td>76.3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-06</strong></td>
+                        <td><span class="badge badge-running">ALLOCATED</span></td>
+                        <td>64/64 (100%)</td>
+                        <td>128/256 GB (50%)</td>
+                        <td>1 job</td>
+                        <td>34.2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

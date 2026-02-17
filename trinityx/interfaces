@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrinityX - GPFS Quotas & Storage</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a; color: #e2e3b0; min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 1rem 2rem; border-bottom: 2px solid #10b981;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #10b981; display: flex; align-items: center; gap: 0.5rem; }
+        .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155;
+        }
+        .stat-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;
+        }
+        .stat-title { color: #94a3b8; font-size: 0.875rem; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: #f8fafc; }
+        .stat-sub { font-size: 0.875rem; color: #64748b; }
+        .progress-bar {
+            width: 100%; height: 12px; background: #334155; border-radius: 6px;
+            overflow: hidden; margin-top: 0.5rem;
+        }
+        .progress-fill {
+            height: 100%; background: linear-gradient(90deg, #10b981, #34d399);
+            transition: width 0.3s; border-radius: 6px;
+        }
+        .progress-fill.warning { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .progress-fill.critical { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .table-container {
+            background: #1e293b; border-radius: 0.5rem; padding: 1.5rem;
+            border: 1px solid #334155; margin-bottom: 2rem;
+        }
+        table {
+            width: 100%; border-collapse: collapse; font-size: 0.875rem;
+        }
+        thead tr { border-bottom: 2px solid #334155; }
+        th { padding: 0.75rem; text-align: left; color: #94a3b8; }
+        td { padding: 0.75rem; border-bottom: 1px solid #1e293b; }
+        .badge {
+            padding: 0.25rem 0.75rem; border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 500;
+        }
+        .badge-success { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid #10b981; }
+        .badge-warning { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid #f59e0b; }
+        .badge-critical { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid #ef4444; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><span>💾</span><span>TrinityX GPFS Storage & Quotas</span></div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="color: #94a3b8; font-size: 0.875rem;">Filesystem: gpfsfs1</span>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="margin-bottom: 0.5rem; color: #f8fafc;">Gestion des Quotas GPFS</h1>
+        <p style="color: #94a3b8; margin-bottom: 2rem;">IBM Spectrum Scale 5.1.9 - Monitoring et quotas utilisateurs</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Capacité Totale</span>
+                </div>
+                <div class="stat-value">50.0</div>
+                <div class="stat-sub">TB</div>
+                <div class="progress-bar">
+                    <div class="progress-fill warning" style="width: 84%;"></div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #94a3b8;">
+                    42.0 TB utilisés / 8.0 TB libres
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Inodes</span>
+                </div>
+                <div class="stat-value">2.1B</div>
+                <div class="stat-sub">Total</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 62%;"></div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #94a3b8;">
+                    1.3B utilisés / 800M libres
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Quotas Actifs</span>
+                </div>
+                <div class="stat-value">127</div>
+                <div class="stat-sub">Utilisateurs / Groupes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Dépassements</span>
+                </div>
+                <div class="stat-value">3</div>
+                <div class="stat-sub" style="color: #f87171;">Quotas dépassés</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">Quotas Utilisateurs - Top 20</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Utilisateur</th>
+                        <th>UID</th>
+                        <th>Utilisé</th>
+                        <th>Quota</th>
+                        <th>% Utilisé</th>
+                        <th>Inodes</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>jdoe</strong></td>
+                        <td style="font-family: monospace;">1001</td>
+                        <td>8.4 TB</td>
+                        <td>10.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill warning" style="width: 84%;"></div>
+                            </div>
+                        </td>
+                        <td>450M / 500M</td>
+                        <td><span class="badge badge-warning">Warning</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>asmith</strong></td>
+                        <td style="font-family: monospace;">1002</td>
+                        <td>12.2 TB</td>
+                        <td>12.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill critical" style="width: 102%;"></div>
+                            </div>
+                        </td>
+                        <td>680M / 600M</td>
+                        <td><span class="badge badge-critical">Dépassé</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>mgarcia</strong></td>
+                        <td style="font-family: monospace;">1003</td>
+                        <td>6.8 TB</td>
+                        <td>8.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </td>
+                        <td>320M / 400M</td>
+                        <td><span class="badge badge-success">OK</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>rjohnson</strong></td>
+                        <td style="font-family: monospace;">1004</td>
+                        <td>4.2 TB</td>
+                        <td>5.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill" style="width: 84%;"></div>
+                            </div>
+                        </td>
+                        <td>210M / 250M</td>
+                        <td><span class="badge badge-success">OK</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>pchen</strong></td>
+                        <td style="font-family: monospace;">1005</td>
+                        <td>3.1 TB</td>
+                        <td>3.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill critical" style="width: 103%;"></div>
+                            </div>
+                        </td>
+                        <td>155M / 150M</td>
+                        <td><span class="badge badge-critical">Dépassé</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">Filesystems GPFS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filesystem</th>
+                        <th>Mount Point</th>
+                        <th>Capacité</th>
+                        <th>Utilisé</th>
+                        <th>Libre</th>
+                        <th>% Utilisé</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>gpfsfs1</strong></td>
+                        <td style="font-family: monospace;">/gpfs/gpfsfs1</td>
+                        <td>50.0 TB</td>
+                        <td>42.0 TB</td>
+                        <td>8.0 TB</td>
+                        <td>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill warning" style="width: 84%;"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-warning">84%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 1rem; color: #f8fafc; font-size: 1.125rem;">NSD (Network Shared Disks)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NSD Name</th>
+                        <th>Servers</th>
+                        <th>Taille</th>
+                        <th>Usage</th>
+                        <th>Pool</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>nsd1</strong></td>
+                        <td>frontal-01, frontal-02</td>
+                        <td>12.5 TB</td>
+                        <td>dataOnly</td>
+                        <td>system</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>nsd2</strong></td>
+                        <td>frontal-01, frontal-02</td>
+                        <td>12.5 TB</td>
+                        <td>dataOnly</td>
+                        <td>system</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>nsd3</strong></td>
+                        <td>frontal-01, frontal-02</td>
+                        <td>12.5 TB</td>
+                        <td>dataOnly</td>
+                        <td>system</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>nsd4</strong></td>
+                        <td>frontal-01, frontal-02</td>
+                        <td>12.5 TB</td>
+                        <td>dataOnly</td>
+                        <td>system</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

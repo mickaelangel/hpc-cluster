@@ -1,0 +1,169 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Container Security Dashboard",
+    "tags": ["hpc", "containers", "security"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Falco Alerts",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(falco_alerts_total[5m])",
+            "refId": "A",
+            "legendFormat": "Falco Alerts/sec"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Container Vulnerabilities",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(trivy_vulnerabilities{severity=\"CRITICAL\"})",
+            "refId": "A",
+            "legendFormat": "Critical"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Falco Alerts by Priority",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (priority) (rate(falco_alerts_total[5m]))",
+            "refId": "A",
+            "legendFormat": "{{priority}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Falco Alerts by Rule",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (rule) (rate(falco_alerts_total[1h])))",
+            "refId": "A",
+            "legendFormat": "{{rule}}"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Top Vulnerable Containers",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (container) (trivy_vulnerabilities))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Container Security Events",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 30},
+        "targets": [
+          {
+            "expr": "rate(falco_alerts_total[5m])",
+            "refId": "A",
+            "legendFormat": "Falco Alerts"
+          },
+          {
+            "expr": "rate(container_security_events_total[5m])",
+            "refId": "B",
+            "legendFormat": "Security Events"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Running Containers",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 8, "x": 0, "y": 40},
+        "targets": [
+          {
+            "expr": "count(docker_containers_running)",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Containers with Root Access",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 8, "x": 8, "y": 40},
+        "targets": [
+          {
+            "expr": "count(docker_containers_running{user=\"root\"})",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 9,
+        "title": "Containers with Privileged Mode",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 8, "x": 16, "y": 40},
+        "targets": [
+          {
+            "expr": "count(docker_containers_running{privileged=\"true\"})",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

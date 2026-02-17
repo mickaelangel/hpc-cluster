@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - GlusterFS Dashboard",
+    "tags": ["hpc", "glusterfs", "storage"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Volumes Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "glusterfs_volumes_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Bricks Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "glusterfs_bricks_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "I/O Performance",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(glusterfs_io_bytes_total[5m])",
+            "refId": "A",
+            "legendFormat": "I/O Bytes/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

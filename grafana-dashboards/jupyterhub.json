@@ -1,0 +1,62 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - JupyterHub Dashboard",
+    "tags": ["hpc", "jupyterhub", "notebooks"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active JupyterHub Users",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "jupyterhub_active_users",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Running Notebooks",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "jupyterhub_running_servers",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Notebook CPU Usage",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (user) (jupyterhub_notebook_cpu_usage)",
+            "refId": "A",
+            "legendFormat": "{{user}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Notebook Memory Usage",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (user) (jupyterhub_notebook_memory_usage_bytes)",
+            "refId": "A",
+            "legendFormat": "{{user}}"
+          }
+        ]
+      }
+    ]
+  }
+}

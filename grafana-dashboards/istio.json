@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Istio Service Mesh",
+    "tags": ["hpc", "istio", "service-mesh"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Service Requests",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total[5m]))",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Request Duration",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket[5m])) by (le))",
+            "refId": "A",
+            "legendFormat": "P99 Latency"
+          }
+        ]
+      }
+    ]
+  }
+}

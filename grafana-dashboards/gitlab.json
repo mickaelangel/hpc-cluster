@@ -1,0 +1,61 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - GitLab Dashboard",
+    "tags": ["hpc", "gitlab", "cicd"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active Projects",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "gitlab_projects_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "CI/CD Pipelines",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "gitlab_pipelines_running",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Pipeline Success Rate",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "(gitlab_pipelines_success_total / gitlab_pipelines_total) * 100",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Pipeline Duration",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "gitlab_pipeline_duration_seconds",
+            "refId": "A",
+            "legendFormat": "Duration"
+          }
+        ]
+      }
+    ]
+  }
+}

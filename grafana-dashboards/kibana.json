@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Kibana Dashboard",
+    "tags": ["hpc", "kibana", "visualization"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active Dashboards",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "kibana_dashboards_active",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Searches per Second",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(kibana_searches_total[5m])",
+            "refId": "A",
+            "legendFormat": "Searches/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

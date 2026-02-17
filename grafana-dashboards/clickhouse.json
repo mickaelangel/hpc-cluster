@@ -1,0 +1,25 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - ClickHouse Dashboard",
+    "tags": ["hpc", "clickhouse", "analytics"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Queries per Second",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(clickhouse_queries_total[5m])",
+            "refId": "A",
+            "legendFormat": "Queries/sec"
+          }
+        ]
+      }
+    ]
+  }
+}

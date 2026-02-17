@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Consul Dashboard",
+    "tags": ["hpc", "consul", "service-discovery"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Services Registered",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "consul_services_registered",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Nodes Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "consul_nodes_total",
+            "refId": "A"
+          }
+        ]
+      }
+    ]
+  }
+}

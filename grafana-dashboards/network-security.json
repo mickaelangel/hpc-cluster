@@ -1,0 +1,171 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Network Security Dashboard",
+    "tags": ["hpc", "network", "security"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Firewall Drops",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(firewall_drops_total[5m])",
+            "refId": "A",
+            "legendFormat": "Dropped Packets/sec"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Firewall Accepts",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(firewall_accepts_total[5m])",
+            "refId": "A",
+            "legendFormat": "Accepted Packets/sec"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Top Blocked IPs",
+        "type": "table",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (src_ip) (rate(firewall_drops_total[1h])))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Top Blocked Ports",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (dst_port) (rate(firewall_drops_total[1h]))",
+            "refId": "A",
+            "legendFormat": "Port {{dst_port}}"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Network Traffic by Protocol",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "sum by (protocol) (rate(network_bytes_total[5m]))",
+            "refId": "A",
+            "legendFormat": "{{protocol}}"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Suspicious Network Activity",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 18},
+        "targets": [
+          {
+            "expr": "rate(suricata_alerts_total[5m])",
+            "refId": "A",
+            "legendFormat": "Suricata Alerts"
+          },
+          {
+            "expr": "rate(network_anomalies_total[5m])",
+            "refId": "B",
+            "legendFormat": "Network Anomalies"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Connection States",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(connections{state=\"ESTABLISHED\"})",
+            "refId": "A",
+            "legendFormat": "Established"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Connection States",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(connections{state=\"TIME_WAIT\"})",
+            "refId": "A",
+            "legendFormat": "Time Wait"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Connection States",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(connections{state=\"SYN_SENT\"})",
+            "refId": "A",
+            "legendFormat": "SYN Sent"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Connection States",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(connections{state=\"LISTEN\"})",
+            "refId": "A",
+            "legendFormat": "Listen"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Network Security Events Timeline",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 36},
+        "targets": [
+          {
+            "expr": "rate(firewall_drops_total[5m])",
+            "refId": "A",
+            "legendFormat": "Firewall Drops"
+          },
+          {
+            "expr": "rate(suricata_alerts_total[5m])",
+            "refId": "B",
+            "legendFormat": "Suricata Alerts"
+          },
+          {
+            "expr": "rate(fail2ban_bans_total[5m])",
+            "refId": "C",
+            "legendFormat": "Fail2ban Bans"
+          }
+        ]
+      }
+    ]
+  }
+}

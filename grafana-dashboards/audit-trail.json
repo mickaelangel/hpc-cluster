@@ -1,0 +1,163 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Audit Trail Dashboard",
+    "tags": ["hpc", "audit", "security"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Audit Events Rate",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(auditd_events_total[5m])",
+            "refId": "A",
+            "legendFormat": "Events/sec"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Audit Events by Type",
+        "type": "piechart",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum by (type) (rate(auditd_events_total[5m]))",
+            "refId": "A",
+            "legendFormat": "{{type}}"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Failed Authentication Attempts",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(auditd_events_total{type=\"failed_auth\"}[5m])",
+            "refId": "A",
+            "legendFormat": "Failed Auth"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "File Access Events",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(auditd_events_total{type=\"file_access\"}[5m])",
+            "refId": "A",
+            "legendFormat": "File Access"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Recent Audit Events",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "auditd_events",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Top Users by Audit Events",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 30},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (user) (rate(auditd_events_total[1h])))",
+            "refId": "A",
+            "legendFormat": "{{user}}"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Top Commands Executed",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 30},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (command) (rate(auditd_events_total{type=\"command\"}[1h])))",
+            "refId": "A",
+            "legendFormat": "{{command}}"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "AIDE Integrity Checks",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 8, "x": 0, "y": 40},
+        "targets": [
+          {
+            "expr": "aide_integrity_checks_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "AIDE Integrity Violations",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 8, "x": 8, "y": 40},
+        "targets": [
+          {
+            "expr": "aide_integrity_violations_total",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 10,
+        "title": "Audit Trail Timeline",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 16, "x": 0, "y": 48},
+        "targets": [
+          {
+            "expr": "rate(auditd_events_total[5m])",
+            "refId": "A",
+            "legendFormat": "All Events"
+          },
+          {
+            "expr": "rate(auditd_events_total{type=\"failed_auth\"}[5m])",
+            "refId": "B",
+            "legendFormat": "Failed Auth"
+          },
+          {
+            "expr": "rate(auditd_events_total{type=\"file_access\"}[5m])",
+            "refId": "C",
+            "legendFormat": "File Access"
+          }
+        ]
+      }
+    ]
+  }
+}

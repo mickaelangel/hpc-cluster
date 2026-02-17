@@ -1,0 +1,40 @@
+================================================================================
+INSTALLATION SERVEUR SUSE 15 - HORS LIGNE
+================================================================================
+
+MOT DE PASSE ROOT (pour sudo sur le serveur)
+--------------------------------------------
+$Password!2026
+
+(Supprimez ce fichier après installation si le serveur est partagé.)
+
+
+ÉTAPES SUR LE SERVEUR SUSE 15 (sans Internet)
+----------------------------------------------
+
+1. Copier l'archive depuis la clé USB vers /opt (ou autre)
+   cp /chemin/clé/hpc-cluster-demo-*.tar.gz /opt/
+   cd /opt && tar -xzf hpc-cluster-demo-*.tar.gz
+   cd hpc-cluster-demo-*
+
+2. Installer Docker (hors ligne)
+   Si le dossier docker-offline-rpms/ contient des .rpm :
+     sudo ./install-docker-offline.sh
+   Sinon : sur une machine SUSE 15 avec Internet, exécuter une fois
+     sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
+   puis copier le dossier docker-offline-rpms/ dans cet export.
+
+3. Installer et démarrer le cluster
+   sudo ./install-demo.sh
+
+4. Vérification
+   sudo bash scripts/tests/test-cluster-health.sh
+
+
+SERVICES APRÈS INSTALLATION
+---------------------------
+- Grafana:    http://localhost:3000  (admin / admin)
+- Prometheus: http://localhost:9090
+- JupyterHub: http://localhost:8000
+
+Voir DEMO.md pour la démo complète.

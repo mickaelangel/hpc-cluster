@@ -1,0 +1,16 @@
+# Configuration auto-provisioning datasource Prometheus pour Grafana
+# Ce fichier configure automatiquement la connexion à Prometheus au démarrage
+
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://172.20.0.10:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      httpMethod: POST
+      timeInterval: "15s"
+    version: 1

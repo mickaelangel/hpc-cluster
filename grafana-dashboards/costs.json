@@ -1,0 +1,67 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Costs Dashboard",
+    "tags": ["hpc", "costs"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "60s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Total Cost (30 days)",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(cluster_cost_total{period=\"30d\"})",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyEUR"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Cost per User",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "avg(cluster_cost_per_user)",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Cost by Resource Type",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (resource_type) (cluster_cost_total)",
+            "refId": "A",
+            "legendFormat": "{{resource_type}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Cost Trend",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "cluster_cost_total",
+            "refId": "A",
+            "legendFormat": "Cost"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+# Règles d'alerte Prometheus pour infrastructure HPC
+# Alertes basiques: CPU, Memory, Disk
+
+groups:
+  - name: hpc_cluster_alerts
+    interval: 30s
+    rules:
+      # ============================================
+      # ALERTES CPU
+      # ============================================
+      
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+          component: cpu
+        annotations:
+          summary: "Utilisation CPU élevée sur {{ $labels.instance }}"
+          description: "L'utilisation CPU est de {{ $value }}% sur {{ $labels.instance }} (seuil: 80%)"
+
+      - alert: CriticalCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 95
+        for: 2m
+        labels:
+          severity: critical
+          component: cpu
+        annotations:
+          summary: "Utilisation CPU critique sur {{ $labels.instance }}"
+          description: "L'utilisation CPU est de {{ $value }}% sur {{ $labels.instance }} (seuil: 95%)"
+
+      # ============================================
+      # ALERTES MÉMOIRE
+      # ============================================
+      
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          component: memory
+        annotations:
+          summary: "Utilisation mémoire élevée sur {{ $labels.instance }}"
+          description: "L'utilisation mémoire est de {{ $value }}% sur {{ $labels.instance }} (seuil: 85%)"
+
+      - alert: CriticalMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 95
+        for: 2m
+        labels:
+          severity: critical
+          component: memory
+        annotations:
+          summary: "Utilisation mémoire critique sur {{ $labels.instance }}"
+          description: "L'utilisation mémoire est de {{ $value }}% sur {{ $labels.instance }} (seuil: 95%)"
+
+      # ============================================
+      # ALERTES DISQUE
+      # ============================================
+      
+      - alert: HighDiskUsage
+        expr: (1 - (node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"})) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          component: disk
+        annotations:
+          summary: "Utilisation disque élevée sur {{ $labels.instance }}"
+          description: "L'utilisation disque est de {{ $value }}% sur {{ $labels.instance }} (seuil: 80%)"
+
+      - alert: CriticalDiskUsage
+        expr: (1 - (node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"})) * 100 > 90
+        for: 2m
+        labels:
+          severity: critical
+          component: disk
+        annotations:
+          summary: "Utilisation disque critique sur {{ $labels.instance }}"
+          description: "L'utilisation disque est de {{ $value }}% sur {{ $labels.instance }} (seuil: 90%)"
+
+      # ============================================
+      # ALERTES RÉSEAU
+      # ============================================
+      
+      - alert: HighNetworkTraffic
+        expr: rate(node_network_receive_bytes_total[5m]) + rate(node_network_transmit_bytes_total[5m]) > 1000000000
+        for: 5m
+        labels:
+          severity: warning
+          component: network
+        annotations:
+          summary: "Trafic réseau élevé sur {{ $labels.instance }}"
+          description: "Le trafic réseau est de {{ $value }} bytes/s sur {{ $labels.instance }}"
+
+      # ============================================
+      # ALERTES SERVICE DOWN
+      # ============================================
+      
+      - alert: NodeExporterDown
+        expr: up{job=~".*-node"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: monitoring
+        annotations:
+          summary: "Node Exporter down sur {{ $labels.instance }}"
+          description: "Le Node Exporter n'est pas accessible sur {{ $labels.instance }} depuis plus d'1 minute"
+
+      - alert: TelegrafDown
+        expr: up{job=~".*-telegraf"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: monitoring
+        annotations:
+          summary: "Telegraf down sur {{ $labels.instance }}"
+          description: "Telegraf n'est pas accessible sur {{ $labels.instance }} depuis plus d'1 minute"
+
+      # ============================================
+      # ALERTES PROMETHEUS
+      # ============================================
+      
+      - alert: PrometheusTargetScrapingFailed
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: warning
+          component: monitoring
+        annotations:
+          summary: "Échec de scraping Prometheus"
+          description: "Le target {{ $labels.job }} sur {{ $labels.instance }} n'est plus accessible"

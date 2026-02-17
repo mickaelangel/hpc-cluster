@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - MongoDB Dashboard",
+    "tags": ["hpc", "mongodb", "database"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active Connections",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "mongodb_connections_active",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Databases Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "mongodb_databases_total",
+            "refId": "A"
+          }
+        ]
+      }
+    ]
+  }
+}

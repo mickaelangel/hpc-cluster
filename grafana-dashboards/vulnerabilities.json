@@ -1,0 +1,172 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Vulnerabilities Dashboard",
+    "tags": ["hpc", "vulnerabilities", "security"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "1m",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Critical Vulnerabilities",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(vulnerabilities{severity=\"CRITICAL\"})",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "High Vulnerabilities",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(vulnerabilities{severity=\"HIGH\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Medium Vulnerabilities",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(vulnerabilities{severity=\"MEDIUM\"})",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Total Vulnerabilities",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(vulnerabilities)",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Vulnerabilities by Severity",
+        "type": "piechart",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (severity) (vulnerabilities)",
+            "refId": "A",
+            "legendFormat": "{{severity}}"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Vulnerabilities by Component",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (component) (vulnerabilities)",
+            "refId": "A",
+            "legendFormat": "{{component}}"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Top Vulnerable Images",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "topk(10, sum by (image) (vulnerabilities))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Vulnerability Trend",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 30},
+        "targets": [
+          {
+            "expr": "sum(vulnerabilities{severity=\"CRITICAL\"})",
+            "refId": "A",
+            "legendFormat": "Critical"
+          },
+          {
+            "expr": "sum(vulnerabilities{severity=\"HIGH\"})",
+            "refId": "B",
+            "legendFormat": "High"
+          },
+          {
+            "expr": "sum(vulnerabilities{severity=\"MEDIUM\"})",
+            "refId": "C",
+            "legendFormat": "Medium"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Package Updates Available",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 40},
+        "targets": [
+          {
+            "expr": "package_updates_available",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Security Updates Available",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 40},
+        "targets": [
+          {
+            "expr": "security_updates_available",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

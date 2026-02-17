@@ -1,0 +1,160 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Storage Advanced Dashboard",
+    "tags": ["hpc", "storage", "beegfs", "lustre"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "BeeGFS Total Capacity",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "beegfs_total_capacity_bytes",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "BeeGFS Used Space",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "beegfs_used_bytes",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "BeeGFS Utilization",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "(beegfs_used_bytes / beegfs_total_capacity_bytes) * 100",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Lustre Total Capacity",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "lustre_total_capacity_bytes",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Storage I/O Performance",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(beegfs_read_bytes[5m])",
+            "refId": "A",
+            "legendFormat": "BeeGFS Read"
+          },
+          {
+            "expr": "rate(beegfs_write_bytes[5m])",
+            "refId": "B",
+            "legendFormat": "BeeGFS Write"
+          },
+          {
+            "expr": "rate(lustre_read_bytes[5m])",
+            "refId": "C",
+            "legendFormat": "Lustre Read"
+          },
+          {
+            "expr": "rate(lustre_write_bytes[5m])",
+            "refId": "D",
+            "legendFormat": "Lustre Write"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "Bps"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Storage I/OPS",
+        "type": "timeseries",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(beegfs_read_ops[5m])",
+            "refId": "A",
+            "legendFormat": "BeeGFS Read Ops"
+          },
+          {
+            "expr": "rate(beegfs_write_ops[5m])",
+            "refId": "B",
+            "legendFormat": "BeeGFS Write Ops"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Top Users by Storage Usage",
+        "type": "table",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 18},
+        "targets": [
+          {
+            "expr": "topk(20, sum by (user) (beegfs_user_quota_bytes))",
+            "refId": "A",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Storage Health by Node",
+        "type": "bargauge",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 30},
+        "targets": [
+          {
+            "expr": "beegfs_storage_health by (node)",
+            "refId": "A",
+            "legendFormat": "{{node}}"
+          }
+        ]
+      }
+    ]
+  }
+}

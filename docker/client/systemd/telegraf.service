@@ -1,0 +1,13 @@
+[Unit]
+Description=Telegraf Agent
+After=network.target
+
+[Service]
+Type=simple
+User=telegraf
+ExecStart=/usr/local/bin/telegraf --config /etc/telegraf/telegraf.conf
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,42 @@
+# Fichiers à exclure des builds Docker
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+
+# Export directories
+hpc-export/
+*.tar.gz
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Scripts d'export (pas besoin dans l'image)
+scripts/build-and-export.sh
+scripts/import-images.sh
+
+# Makefile (pas besoin dans l'image)
+Makefile
+
+# Script d'installation (pas besoin dans l'image)
+INSTALL.sh

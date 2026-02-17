@@ -1,0 +1,184 @@
+groups:
+  - name: security_alerts
+    interval: 30s
+    rules:
+      # Alertes Fail2ban
+      - alert: HighFailedLoginAttempts
+        expr: rate(fail2ban_ssh_failed_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tentatives de connexion SSH échouées élevées"
+          description: "{{ $labels.instance }} a {{ $value }} tentatives de connexion SSH échouées/sec"
+
+      - alert: Fail2banBannedIPs
+        expr: fail2ban_banned_ips > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Nombre élevé d'IPs bannies"
+          description: "{{ $labels.instance }} a {{ $value }} IPs bannies par Fail2ban"
+
+      # Alertes Firewall
+      - alert: HighFirewallDrops
+        expr: rate(firewall_drops_total[5m]) > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Taux élevé de paquets bloqués par le firewall"
+          description: "{{ $labels.instance }} bloque {{ $value }} paquets/sec"
+
+      - alert: SuspiciousFirewallActivity
+        expr: rate(firewall_drops_total[5m]) > 500
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Activité suspecte détectée par le firewall"
+          description: "{{ $labels.instance }} bloque {{ $value }} paquets/sec - Possible attaque"
+
+      # Alertes IDS
+      - alert: SuricataAlerts
+        expr: rate(suricata_alerts_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertes Suricata détectées"
+          description: "{{ $labels.instance }} a {{ $value }} alertes Suricata/sec"
+
+      - alert: WazuhAlerts
+        expr: rate(wazuh_alerts_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertes Wazuh détectées"
+          description: "{{ $labels.instance }} a {{ $value }} alertes Wazuh/sec"
+
+      - alert: OSSECAlerts
+        expr: rate(ossec_alerts_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertes OSSEC détectées"
+          description: "{{ $labels.instance }} a {{ $value }} alertes OSSEC/sec"
+
+      # Alertes Falco
+      - alert: FalcoCriticalAlerts
+        expr: rate(falco_alerts_total{priority="CRITICAL"}[5m]) > 1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Alertes Falco critiques détectées"
+          description: "{{ $labels.instance }} a {{ $value }} alertes Falco critiques/sec"
+
+      - alert: FalcoHighAlerts
+        expr: rate(falco_alerts_total{priority="HIGH"}[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertes Falco élevées détectées"
+          description: "{{ $labels.instance }} a {{ $value }} alertes Falco élevées/sec"
+
+      # Alertes Vulnérabilités
+      - alert: CriticalVulnerabilities
+        expr: sum(vulnerabilities{severity="CRITICAL"}) > 0
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "Vulnérabilités critiques détectées"
+          description: "{{ $value }} vulnérabilités critiques détectées"
+
+      - alert: HighVulnerabilities
+        expr: sum(vulnerabilities{severity="HIGH"}) > 10
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Nombre élevé de vulnérabilités HIGH"
+          description: "{{ $value }} vulnérabilités HIGH détectées"
+
+      # Alertes Compliance
+      - alert: LowComplianceScore
+        expr: compliance_score_overall < 80
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Score de compliance faible"
+          description: "Score de compliance: {{ $value }}% (seuil: 80%)"
+
+      - alert: CriticalComplianceScore
+        expr: compliance_score_overall < 70
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "Score de compliance critique"
+          description: "Score de compliance: {{ $value }}% (seuil: 70%)"
+
+      # Alertes AIDE
+      - alert: AIDEIntegrityViolations
+        expr: aide_integrity_violations_total > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Violations d'intégrité AIDE détectées"
+          description: "{{ $value }} violations d'intégrité détectées par AIDE"
+
+      # Alertes Auditd
+      - alert: HighAuditEvents
+        expr: rate(auditd_events_total[5m]) > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Taux élevé d'événements audit"
+          description: "{{ $labels.instance }} génère {{ $value }} événements audit/sec"
+
+      - alert: FailedAuthenticationAttempts
+        expr: rate(auditd_events_total{type="failed_auth"}[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tentatives d'authentification échouées élevées"
+          description: "{{ $labels.instance }} a {{ $value }} tentatives d'auth échouées/sec"
+
+      # Alertes Containers
+      - alert: ContainersWithRootAccess
+        expr: count(docker_containers_running{user="root"}) > 5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Nombre élevé de containers avec accès root"
+          description: "{{ $value }} containers s'exécutent avec accès root"
+
+      - alert: PrivilegedContainers
+        expr: count(docker_containers_running{privileged="true"}) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Containers en mode privilégié détectés"
+          description: "{{ $value }} containers s'exécutent en mode privilégié"
+
+      # Alertes Network
+      - alert: SuspiciousNetworkActivity
+        expr: rate(network_security_events_total[5m]) > 50
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Activité réseau suspecte détectée"
+          description: "{{ $labels.instance }} a {{ $value }} événements réseau suspects/sec"

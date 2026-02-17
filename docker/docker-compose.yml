@@ -1,0 +1,335 @@
+version: '3.8'
+
+# Infrastructure HPC Monitoring - Stack complète
+# Architecture: 2 frontaux + 6 slaves + Prometheus + Grafana
+# Réseaux: VLAN Management (172.20.0.0/24) et VLAN Cluster (10.0.0.0/24)
+
+services:
+  # ============================================
+  # MONITORING STACK
+  # ============================================
+  
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: hpc-prometheus
+    hostname: prometheus
+    networks:
+      management:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./configs/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=monitoring"
+      - "version=2.48.0"
+      - "maintainer=hpc-team"
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: hpc-grafana
+    hostname: grafana
+    networks:
+      management:
+        ipv4_address: 172.20.0.20
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=demo-hpc-2024
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_INSTALL_PLUGINS=
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./configs/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana-dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=monitoring"
+      - "version=10.2.0"
+      - "maintainer=hpc-team"
+
+  # ============================================
+  # NŒUDS FRONTAUX (Master/Backup)
+  # ============================================
+  
+  frontal-01:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontal
+    container_name: hpc-frontal-01
+    hostname: frontal-01
+    networks:
+      management:
+        ipv4_address: 172.20.0.101
+      cluster:
+        ipv4_address: 10.0.0.101
+    ports:
+      - "2222:22"      # SSH
+      - "9100:9100"    # Node Exporter
+      - "9273:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-frontal.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=frontal"
+      - "node=primary"
+      - "maintainer=hpc-team"
+
+  frontal-02:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontal
+    container_name: hpc-frontal-02
+    hostname: frontal-02
+    networks:
+      management:
+        ipv4_address: 172.20.0.102
+      cluster:
+        ipv4_address: 10.0.0.102
+    ports:
+      - "2223:22"      # SSH
+      - "9101:9100"    # Node Exporter
+      - "9274:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-frontal.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=frontal"
+      - "node=secondary"
+      - "maintainer=hpc-team"
+
+  # ============================================
+  # NŒUDS DE CALCUL (Slaves)
+  # ============================================
+  
+  slave-01:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-01
+    hostname: slave-01
+    networks:
+      management:
+        ipv4_address: 172.20.0.201
+      cluster:
+        ipv4_address: 10.0.0.201
+    ports:
+      - "9102:9100"    # Node Exporter
+      - "9275:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-01"
+      - "maintainer=hpc-team"
+
+  slave-02:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-02
+    hostname: slave-02
+    networks:
+      management:
+        ipv4_address: 172.20.0.202
+      cluster:
+        ipv4_address: 10.0.0.202
+    ports:
+      - "9103:9100"    # Node Exporter
+      - "9276:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-02"
+      - "maintainer=hpc-team"
+
+  slave-03:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-03
+    hostname: slave-03
+    networks:
+      management:
+        ipv4_address: 172.20.0.203
+      cluster:
+        ipv4_address: 10.0.0.203
+    ports:
+      - "9104:9100"    # Node Exporter
+      - "9277:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-03"
+      - "maintainer=hpc-team"
+
+  slave-04:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-04
+    hostname: slave-04
+    networks:
+      management:
+        ipv4_address: 172.20.0.204
+      cluster:
+        ipv4_address: 10.0.0.204
+    ports:
+      - "9105:9100"    # Node Exporter
+      - "9278:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-04"
+      - "maintainer=hpc-team"
+
+  slave-05:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-05
+    hostname: slave-05
+    networks:
+      management:
+        ipv4_address: 172.20.0.205
+      cluster:
+        ipv4_address: 10.0.0.205
+    ports:
+      - "9106:9100"    # Node Exporter
+      - "9279:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-05"
+      - "maintainer=hpc-team"
+
+  slave-06:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: hpc-slave-06
+    hostname: slave-06
+    networks:
+      management:
+        ipv4_address: 172.20.0.206
+      cluster:
+        ipv4_address: 10.0.0.206
+    ports:
+      - "9107:9100"    # Node Exporter
+      - "9280:9273"    # Telegraf
+    volumes:
+      - ./configs/telegraf/telegraf-slave.conf:/etc/telegraf/telegraf.conf:ro
+    privileged: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "systemctl", "is-active", "sshd"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "role=compute"
+      - "node=slave-06"
+      - "maintainer=hpc-team"
+
+# ============================================
+# RÉSEAUX DOCKER
+# ============================================
+
+networks:
+  management:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
+  cluster:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+          gateway: 10.0.0.1
+
+# ============================================
+# VOLUMES PERSISTANTS
+# ============================================
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local

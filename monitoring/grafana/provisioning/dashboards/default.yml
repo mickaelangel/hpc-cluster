@@ -1,0 +1,16 @@
+# Configuration auto-provisioning dashboards pour Grafana
+# Charge automatiquement tous les dashboards JSON du répertoire spécifié
+
+apiVersion: 1
+
+providers:
+  - name: 'HPC Dashboards'
+    orgId: 1
+    folder: 'HPC Monitoring'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: true

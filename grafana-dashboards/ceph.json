@@ -1,0 +1,66 @@
+{
+  "dashboard": {
+    "title": "HPC Cluster - Ceph Dashboard",
+    "tags": ["hpc", "ceph", "storage"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Cluster Health",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "ceph_cluster_health",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "OSDs Total",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "ceph_osds_total",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Storage Used",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "ceph_storage_used_bytes",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "I/O Performance",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "rate(ceph_io_operations_total[5m])",
+            "refId": "A",
+            "legendFormat": "IOPS"
+          }
+        ]
+      }
+    ]
+  }
+}

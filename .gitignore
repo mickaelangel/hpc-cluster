@@ -1,0 +1,72 @@
+# Répertoires d'export
+hpc-export/
+export-demo/
+*.tar.gz
+
+# Images Docker (trop volumineuses pour GitHub)
+docker-images/*.tar.gz
+docker-images/*.tar
+*.tar.gz
+*.tar
+
+# RPM Docker (trop volumineux)
+docker-offline-rpms/*.rpm
+
+# Logs
+*.log
+*.log.*
+
+# Volumes Docker (si montés localement)
+data/
+volumes/
+prometheus_data/
+grafana_data/
+influxdb_data/
+loki_data/
+jupyterhub_data/
+beegfs_data/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker override
+docker-compose.override.yml
+
+# Secrets et mots de passe (NE JAMAIS COMMITER)
+*.key
+*.pem
+*.crt
+*.secret
+.env
+secrets/
+credentials/
+
+# Fichiers de build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Node modules (si présents)
+node_modules/
+npm-debug.log
+
+# Fichiers de sauvegarde
+*.sql
+*.dump
