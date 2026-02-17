@@ -50,29 +50,29 @@ Ce projet fournit une **infrastructure HPC complète et professionnelle** pour l
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Cluster HPC Enterprise                     │
+│                    Cluster HPC Enterprise                   │
 ├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌──────────────┐  ┌──────────────┐                        │
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐                         │
 │  │  Frontal-01  │  │  Frontal-02  │  (HA Master/Backup)     │
 │  │  172.20.0.101│  │  172.20.0.102│                         │
 │  └──────────────┘  └──────────────┘                         │
-│                                                               │
+│                                                             │
 │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐      │
-│  │Comp-01│ │Comp-02│ │Comp-03│ │Comp-04│ │Comp-05│ │Comp-06│ │
+│  │Comp-01│ │Comp-02│ │Comp-03│ │Comp-04│ │Comp-05│ │Comp-06││
 │  │.201  │ │.202  │ │.203  │ │.204  │ │.205  │ │.206  │      │
 │  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘      │
-│                                                               │
+│                                                             │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │         Stack Monitoring & Observability              │   │
+│  │         Stack Monitoring & Observability             │   │
 │  │  Prometheus │ Grafana │ InfluxDB │ Loki │ Promtail   │   │
 │  └──────────────────────────────────────────────────────┘   │
-│                                                               │
+│                                                             │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │         Services Enterprise                            │   │
-│  │  Slurm │ FreeIPA │ JupyterHub │ GitLab │ Kubernetes   │   │
+│  │         Services Enterprise                          │   │
+│  │  Slurm │ FreeIPA │ JupyterHub │ GitLab │ Kubernetes  │   │
 │  └──────────────────────────────────────────────────────┘   │
-│                                                               │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
