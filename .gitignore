@@ -70,3 +70,132 @@ npm-debug.log
 # Fichiers de sauvegarde
 *.sql
 *.dump
+
+# Environnements virtuels
+venv/
+env/
+ENV/
+.venv
+
+# Certificats et clés (sécurité critique)
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+id_rsa*
+*.pub
+authorized_keys
+known_hosts
+
+# Fichiers de configuration locale
+*.local
+*.local.yml
+*.local.yaml
+local_settings.py
+.env.local
+.env.*.local
+
+# Fichiers de cache
+.cache/
+*.cache
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Fichiers de build et distribution
+dist/
+build/
+*.egg-info/
+*.whl
+*.tar.bz2
+
+# Fichiers système
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Fichiers de logs système
+*.log.*
+*.log.gz
+*.log.bz2
+syslog
+messages
+secure
+
+# Fichiers de test
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+test-results/
+junit.xml
+
+# Fichiers Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+terraform.tfvars
+*.tfvars
+
+# Fichiers Ansible
+*.retry
+.vault_pass
+
+# Fichiers Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Fichiers de monitoring temporaires
+prometheus_data/
+grafana_data/
+influxdb_data/
+loki_data/
+*.db
+*.wal
+
+# Fichiers de développement
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de documentation générés
+site/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Fichiers de backup automatiques
+*.bak
+*.backup
+*.old
+*.orig
+*~
+
+# Fichiers de lock
+package-lock.json
+yarn.lock
+Pipfile.lock
+poetry.lock
+composer.lock
+
+# Fichiers de métadonnées
+.metadata/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/

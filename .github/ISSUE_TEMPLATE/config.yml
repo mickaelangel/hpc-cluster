@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/mickaelangel/hpc-cluster/tree/main/docs
+    about: Consulter la documentation complète
+  - name: Discussions
+    url: https://github.com/mickaelangel/hpc-cluster/discussions
+    about: Poser une question ou discuter du projet
