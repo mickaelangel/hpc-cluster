@@ -21,7 +21,19 @@ echo "📥 Clonage du Wiki GitHub..."
 if [ -d "$TEMP_DIR" ]; then
     rm -rf "$TEMP_DIR"
 fi
-git clone "$WIKI_REPO" "$TEMP_DIR"
+
+if ! git clone "$WIKI_REPO" "$TEMP_DIR" 2>&1; then
+    echo "❌ Le Wiki GitHub n'est pas encore activé !"
+    echo ""
+    echo "📋 Pour activer le Wiki :"
+    echo "   1. Aller sur: https://github.com/mickaelangel/hpc-cluster/settings"
+    echo "   2. Dans le menu de gauche, cliquer sur 'Features'"
+    echo "   3. Cocher 'Wikis' pour activer"
+    echo "   4. Sauvegarder"
+    echo ""
+    echo "   Ensuite, réexécutez ce script."
+    exit 1
+fi
 
 # Copier les fichiers
 echo "📋 Copie des fichiers..."
