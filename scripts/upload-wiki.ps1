@@ -20,7 +20,26 @@ Write-Host "📥 Clonage du Wiki GitHub..." -ForegroundColor Yellow
 if (Test-Path $TempDir) {
     Remove-Item -Recurse -Force $TempDir
 }
-git clone $WikiRepo $TempDir
+
+try {
+    git clone $WikiRepo $TempDir 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Le Wiki GitHub n'est pas encore activé !" -ForegroundColor Red
+        Write-Host "" -ForegroundColor Yellow
+        Write-Host "📋 Pour activer le Wiki :" -ForegroundColor Yellow
+        Write-Host "   1. Aller sur: https://github.com/mickaelangel/hpc-cluster/settings" -ForegroundColor White
+        Write-Host "   2. Dans le menu de gauche, cliquer sur 'Features'" -ForegroundColor White
+        Write-Host "   3. Cocher 'Wikis' pour activer" -ForegroundColor White
+        Write-Host "   4. Sauvegarder" -ForegroundColor White
+        Write-Host "" -ForegroundColor Yellow
+        Write-Host "   Ensuite, réexécutez ce script." -ForegroundColor Yellow
+        exit 1
+    }
+} catch {
+    Write-Host "❌ Erreur lors du clonage : $_" -ForegroundColor Red
+    Write-Host "   Vérifiez que le Wiki est activé sur GitHub." -ForegroundColor Yellow
+    exit 1
+}
 
 # Copier les fichiers
 Write-Host "📋 Copie des fichiers..." -ForegroundColor Yellow
