@@ -1,4 +1,4 @@
-# 🚀 Cluster HPC Enterprise - Infrastructure Complète
+oo# 🚀 Cluster HPC Enterprise - Infrastructure Complète
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![openSUSE](https://img.shields.io/badge/openSUSE-15-green.svg)](https://www.opensuse.org/)
@@ -310,7 +310,7 @@ Ce projet est sous licence [Apache 2.0](LICENSE).
 
 ## 🙏 Remerciements
 
-- **openSUSE** : Pour openSUSE 15
+- **openSUSE** : Pour openSUSE
 - **Communauté Open Source** : Pour tous les outils utilisés
 - **Contributeurs** : Pour leurs contributions
 
