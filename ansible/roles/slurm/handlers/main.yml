@@ -1,0 +1,13 @@
+---
+# ============================================================================
+# Ansible Role - Slurm Handlers
+# ============================================================================
+
+- name: restart slurm
+  systemd:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - slurmctld
+    - slurmd
+  when: item in ansible_facts.services

@@ -1,0 +1,68 @@
+---
+# ============================================================================
+# Ansible Role - Docker Installation and Configuration
+# ============================================================================
+
+- name: Install Docker prerequisites
+  zypper:
+    name:
+      - curl
+      - wget
+      - ca-certificates
+      - git
+    state: present
+    update_cache: yes
+
+- name: Add Docker repository
+  zypper_repository:
+    name: docker
+    repo: "https://download.docker.com/linux/sles/{{ ansible_distribution_version }}/x86_64/stable"
+    state: present
+    gpgcheck: yes
+    gpgkey: "https://download.docker.com/linux/sles/gpg"
+
+- name: Install Docker
+  zypper:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: Install Docker Compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+
+- name: Start and enable Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+- name: Configure Docker daemon
+  copy:
+    content: |
+      {
+        "log-driver": "json-file",
+        "log-opts": {
+          "max-size": "10m",
+          "max-file": "3"
+        },
+        "storage-driver": "overlay2",
+        "default-ulimits": {
+          "nofile": {
+            "Hard": 64000,
+            "Name": "nofile",
+            "Soft": 64000
+          }
+        }
+      }
+    dest: /etc/docker/daemon.json
+    mode: '0644'
+  notify: restart docker

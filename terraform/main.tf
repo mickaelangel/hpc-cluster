@@ -17,12 +17,8 @@ terraform {
     }
   }
   
-  # Backend configuration (optionnel)
-  # backend "s3" {
-  #   bucket = "hpc-cluster-terraform-state"
-  #   key    = "cluster/terraform.tfstate"
-  #   region = "us-east-1"
-  # }
+  # Backend configuration - Voir backend.tf.example
+  # Pour production, utiliser un backend distant (S3, Azure, GCS, etc.)
 }
 
 # ============================================================================
@@ -79,33 +75,24 @@ provider "docker" {
 }
 
 # ============================================================================
-# Docker Networks
+# Modules
 # ============================================================================
 
-resource "docker_network" "management" {
-  name = "${var.cluster_name}-management"
+module "network" {
+  source = "./modules/network"
   
-  ipam_config {
-    subnet = var.docker_network_management
-  }
-  
-  labels {
-    label = "com.hpc.network"
-    value = "management"
-  }
+  cluster_name      = var.cluster_name
+  management_subnet = var.docker_network_management
+  cluster_subnet    = var.docker_network_cluster
 }
 
-resource "docker_network" "cluster" {
-  name = "${var.cluster_name}-cluster"
+module "monitoring" {
+  source = "./modules/monitoring"
   
-  ipam_config {
-    subnet = var.docker_network_cluster
-  }
-  
-  labels {
-    label = "com.hpc.network"
-    value = "cluster"
-  }
+  cluster_name      = var.cluster_name
+  prometheus_version = var.prometheus_version
+  grafana_version   = var.grafana_version
+  network_id        = module.network.management_network_id
 }
 
 # ============================================================================

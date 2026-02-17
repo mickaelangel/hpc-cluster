@@ -1,0 +1,34 @@
+# ============================================================================
+# Jaeger - Distributed Tracing
+# ============================================================================
+
+version: '3.8'
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:1.50
+    container_name: hpc-jaeger
+    hostname: jaeger
+    ports:
+      - "16686:16686"  # UI
+      - "14268:14268"  # HTTP
+      - "6831:6831/udp"  # Agent
+      - "6832:6832/udp"  # Agent
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+    networks:
+      - management
+    restart: unless-stopped
+    labels:
+      - "com.hpc.service=jaeger"
+      - "com.hpc.monitoring=tracing"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:16686"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  management:
+    external: true
+    name: hpc-cluster-management

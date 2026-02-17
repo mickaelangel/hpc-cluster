@@ -1,0 +1,52 @@
+# ============================================================================
+# Terraform Backend Configuration (Example)
+# ============================================================================
+# 
+# Copier ce fichier vers backend.tf et configurer selon votre environnement
+#
+# Options de backend:
+# - S3 (AWS)
+# - Azure Storage
+# - GCS (Google Cloud)
+# - Terraform Cloud
+# - Local (développement uniquement)
+# ============================================================================
+
+# Exemple avec S3
+terraform {
+  backend "s3" {
+    bucket         = "hpc-cluster-terraform-state"
+    key            = "cluster/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "terraform-state-lock"
+  }
+}
+
+# Exemple avec Azure Storage
+# terraform {
+#   backend "azurerm" {
+#     resource_group_name  = "terraform-state"
+#     storage_account_name = "hpcclusterstate"
+#     container_name       = "tfstate"
+#     key                  = "cluster.terraform.tfstate"
+#   }
+# }
+
+# Exemple avec GCS
+# terraform {
+#   backend "gcs" {
+#     bucket = "hpc-cluster-terraform-state"
+#     prefix = "cluster/terraform.tfstate"
+#   }
+# }
+
+# Exemple avec Terraform Cloud
+# terraform {
+#   cloud {
+#     organization = "hpc-cluster"
+#     workspaces {
+#       name = "production"
+#     }
+#   }
+# }

@@ -1,0 +1,64 @@
+---
+# ============================================================================
+# Ansible Role - Slurm Installation and Configuration
+# ============================================================================
+
+- name: Install Slurm dependencies
+  zypper:
+    name:
+      - munge
+      - munge-devel
+      - perl-Switch
+      - readline-devel
+      - pam-devel
+    state: present
+
+- name: Create Slurm user
+  user:
+    name: slurm
+    system: yes
+    shell: /bin/bash
+    home: /var/lib/slurm
+    create_home: yes
+
+- name: Create Slurm directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: slurm
+    group: slurm
+    mode: '0755'
+  loop:
+    - /etc/slurm
+    - /var/spool/slurm
+    - /var/log/slurm
+    - /var/run/slurm
+
+- name: Copy Slurm configuration
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/slurm/{{ item }}"
+    owner: slurm
+    group: slurm
+    mode: '0644'
+  loop:
+    - slurm.conf
+    - cgroup.conf
+  notify: restart slurm
+
+- name: Start and enable Slurm services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - munge
+    - slurmd
+  when: inventory_hostname in groups['compute']
+
+- name: Start and enable Slurm controller
+  systemd:
+    name: slurmctld
+    state: started
+    enabled: yes
+  when: inventory_hostname in groups['frontend']
