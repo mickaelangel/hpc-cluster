@@ -183,4 +183,4 @@ cluster hpc/
 ---
 
 **Version**: 1.0  
-**Dernière mise à jour**: 2024
+**Dernière mise à jour**: 2026

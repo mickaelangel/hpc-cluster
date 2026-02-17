@@ -1,4 +1,4 @@
-# Installation Cluster HPC sur SUSE 15 SP4
+# Installation Cluster HPC sur opensuse 15.6
 ## Guide Complet d'Installation Offline avec Docker
 
 **Classification**: Documentation Installation  
@@ -10,7 +10,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-Ce guide décrit l'installation complète du cluster HPC sur **SUSE 15 SP4** en mode **offline (air-gapped)**.
+Ce guide décrit l'installation complète du cluster HPC sur **opensuse 15.6**
 
 ---
 
@@ -18,7 +18,7 @@ Ce guide décrit l'installation complète du cluster HPC sur **SUSE 15 SP4** en 
 
 ### Système Cible
 
-- **OS** : SUSE Linux Enterprise Server 15 SP4
+- **OS** : OPENUSE Linux Enterprise opensuse 15.6
 - **Docker** : Version 20.10+ (à installer)
 - **Docker Compose** : Version 2.0+ (à installer)
 - **Espace disque** : 50GB+ minimum
@@ -44,10 +44,10 @@ docker-compose -f docker-compose-opensource.yml save -o hpc-cluster-images.tar
 
 # 3. Créer archive complète
 cd ../..
-tar -czf hpc-cluster-suse15sp4.tar.gz "cluster hpc/"
+tar -czf hpc-cluster-opensuse 15.6.tar.gz "cluster hpc/"
 ```
 
-### Étape 2 : Transfert vers Serveur SUSE 15 SP4
+### Étape 2 : Transfert vers Serveur opensuse 15.6
 
 **Options** :
 - USB/DVD
@@ -56,13 +56,13 @@ tar -czf hpc-cluster-suse15sp4.tar.gz "cluster hpc/"
 
 ```bash
 # Copier sur serveur
-scp hpc-cluster-suse15sp4.tar.gz user@server:/opt/
+scp hpc-cluster-opensuse 15.6.tar.gz user@server:/opt/
 scp hpc-cluster-images.tar user@server:/opt/
 ```
 
-### Étape 3 : Installation Docker sur SUSE 15 SP4
+### Étape 3 : Installation Docker sur opensuse 15.6
 
-**Sur le serveur SUSE 15 SP4** :
+**Sur le serveur opensuse 15.6** :
 
 ```bash
 # Installation Docker depuis médias SUSE
@@ -85,7 +85,7 @@ docker-compose --version
 ```bash
 # 1. Extraire le projet
 cd /opt
-tar -xzf hpc-cluster-suse15sp4.tar.gz
+tar -xzf hpc-cluster-opensuse 15.6.tar.gz
 cd "cluster hpc"
 
 # 2. Charger les images Docker
@@ -179,11 +179,11 @@ Toute la documentation est dans `docs/` :
 
 ## 🎉 Résultat
 
-**Le cluster HPC est installé et fonctionnel sur SUSE 15 SP4 !**
+**Le cluster HPC est installé et fonctionnel sur opensuse 15.6 !**
 
 **Tout est 100% open-source et prêt pour la production !** 🚀
 
 ---
 
 **Version**: 1.0  
-**Dernière mise à jour**: 2024
+**Dernière mise à jour**: 2026
