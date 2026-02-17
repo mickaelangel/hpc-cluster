@@ -13,7 +13,7 @@
 
 ### Processus de Signalement
 
-1. **Email de sécurité** : Envoyer un email à [security@example.com] (à configurer)
+1. **Email de sécurité** : Envoyer un email à [mickaelangelcv@gmail.com] 
 2. **Détails requis** :
    - Description de la vulnérabilité
    - Étapes pour reproduire
@@ -128,8 +128,8 @@ sudo bash scripts/security/penetration-test.sh
 ## 📞 Contact
 
 Pour les questions de sécurité :
-- **Email** : security@example.com (à configurer)
-- **PGP Key** : [À ajouter]
+- **Email** : mickaelangelcv@gmail.com
+- **PGP Key** : XXXXXXXXXXXXX
 
 ---
 
