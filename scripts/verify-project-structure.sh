@@ -1,152 +1,125 @@
 #!/bin/bash
 # ============================================================================
 # Script de Vérification de la Structure du Projet
-# Vérifie que tous les fichiers nécessaires existent
+# Usage: bash scripts/verify-project-structure.sh
 # ============================================================================
 
 set -euo pipefail
-
-# Couleurs
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$PROJECT_ROOT"
 
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}VÉRIFICATION STRUCTURE PROJET${NC}"
-echo -e "${BLUE}========================================${NC}"
-echo ""
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
 ERRORS=0
 WARNINGS=0
 
-# Fonction de vérification
-check_file() {
-    local file=$1
-    local required=${2:-true}
+echo -e "${YELLOW}Vérification de la structure du projet...${NC}"
+echo ""
+
+# Fonction pour vérifier l'existence d'un fichier/dossier
+check_exists() {
+    local path=$1
+    local type=$2  # "file" ou "dir"
+    local required=${3:-true}  # true par défaut
     
-    if [ -f "$file" ]; then
-        echo -e "${GREEN}  ✅ $file${NC}"
-        return 0
-    else
-        if [ "$required" = "true" ]; then
-            echo -e "${RED}  ❌ $file (MANQUANT)${NC}"
-            ((ERRORS++))
-            return 1
+    if [ "$type" == "file" ]; then
+        if [ -f "$path" ]; then
+            echo -e "${GREEN}  ✅ $path${NC}"
+            return 0
         else
-            echo -e "${YELLOW}  ⚠️  $file (optionnel)${NC}"
-            ((WARNINGS++))
-            return 1
+            if [ "$required" == "true" ]; then
+                echo -e "${RED}  ❌ $path (manquant)${NC}"
+                ((ERRORS++))
+                return 1
+            else
+                echo -e "${YELLOW}  ⚠️  $path (optionnel, manquant)${NC}"
+                ((WARNINGS++))
+                return 0
+            fi
+        fi
+    else
+        if [ -d "$path" ]; then
+            echo -e "${GREEN}  ✅ $path/${NC}"
+            return 0
+        else
+            if [ "$required" == "true" ]; then
+                echo -e "${RED}  ❌ $path/ (manquant)${NC}"
+                ((ERRORS++))
+                return 1
+            else
+                echo -e "${YELLOW}  ⚠️  $path/ (optionnel, manquant)${NC}"
+                ((WARNINGS++))
+                return 0
+            fi
         fi
     fi
 }
 
-# ============================================================================
-# VÉRIFICATION FICHIERS DOCKER
-# ============================================================================
-echo -e "${BLUE}[1/6] Fichiers Docker...${NC}"
+# Fichiers essentiels
+echo -e "${YELLOW}[1/6] Fichiers essentiels...${NC}"
+check_exists "README.md" "file"
+check_exists "LICENSE" "file"
+check_exists "SECURITY.md" "file"
+check_exists "CONTRIBUTING.md" "file"
+check_exists "CHANGELOG.md" "file"
+check_exists ".gitignore" "file"
 
-check_file "docker/docker-compose-opensource.yml"
-check_file "docker/docker-compose.yml" false
-check_file "docker/frontal/Dockerfile"
-check_file "docker/client/Dockerfile"
-check_file "docker/scripts/entrypoint-frontal.sh"
-check_file "docker/scripts/entrypoint-slave.sh"
-check_file "docker/scripts/entrypoint-client.sh" false
+# Structure des dossiers
+echo -e "\n${YELLOW}[2/6] Structure des dossiers...${NC}"
+check_exists "docs" "dir"
+check_exists "scripts" "dir"
+check_exists "docker" "dir"
+check_exists "configs" "dir"
+check_exists "tests" "dir"
+check_exists "terraform" "dir"
+check_exists "ansible" "dir"
+check_exists "helm" "dir"
 
-# ============================================================================
-# VÉRIFICATION FICHIERS CONFIGURATION
-# ============================================================================
-echo -e "\n${BLUE}[2/6] Fichiers Configuration...${NC}"
+# Docker
+echo -e "\n${YELLOW}[3/6] Configuration Docker...${NC}"
+check_exists "docker/docker-compose-opensource.yml" "file"
+check_exists "docker/docker-compose.prod.yml" "file"
+check_exists "docker/frontal/Dockerfile" "file"
+check_exists "docker/client/Dockerfile" "file"
 
-check_file "configs/prometheus/prometheus.yml"
-check_file "configs/prometheus/alerts.yml"
-check_file "configs/grafana/provisioning/datasources/prometheus.yml"
-check_file "configs/grafana/provisioning/dashboards/default.yml"
-check_file "configs/telegraf/telegraf-frontal.conf"
-check_file "configs/telegraf/telegraf-slave.conf"
-check_file "configs/slurm/slurm.conf"
-check_file "configs/slurm/cgroup.conf"
-check_file "configs/loki/loki-config.yml"
-check_file "configs/promtail/config.yml"
-check_file "configs/jupyterhub/jupyterhub_config.py"
+# Tests
+echo -e "\n${YELLOW}[4/6] Tests...${NC}"
+check_exists "tests/unit" "dir"
+check_exists "tests/integration" "dir"
+check_exists "tests/unit/test_scripts.sh" "file"
+check_exists "tests/integration/test_cluster_integration.sh" "file"
 
-# ============================================================================
-# VÉRIFICATION SCRIPTS PRINCIPAUX
-# ============================================================================
-echo -e "\n${BLUE}[3/6] Scripts Principaux...${NC}"
+# CI/CD
+echo -e "\n${YELLOW}[5/6] CI/CD...${NC}"
+check_exists ".github/workflows" "dir"
+check_exists ".github/workflows/ci.yml" "file"
+check_exists ".github/workflows/docker-publish.yml" "file"
+check_exists ".github/dependabot.yml" "file"
 
-check_file "scripts/INSTALL.sh"
-check_file "install-all.sh"
-check_file "scripts/security/install-all-security.sh"
+# Documentation
+echo -e "\n${YELLOW}[6/6] Documentation...${NC}"
+check_exists "docs/API.md" "file" "false"
+check_exists "docs/RUNBOOK.md" "file" "false"
+check_exists "docs/ARCHITECTURE_DIAGRAMS.md" "file" "false"
+check_exists "docs/SLA_SLO.md" "file" "false"
 
-# ============================================================================
-# VÉRIFICATION DOCUMENTATION
-# ============================================================================
-echo -e "\n${BLUE}[4/6] Documentation Principale...${NC}"
-
-check_file "README.md"
-check_file "docs/GUIDE_SECURITE_AVANCEE.md" false
-check_file "AUDIT_PROJET_SENIOR.md" false
-
-# ============================================================================
-# VÉRIFICATION DASHBOARDS
-# ============================================================================
-echo -e "\n${BLUE}[5/6] Dashboards Grafana...${NC}"
-
-if [ -d "grafana-dashboards" ] && [ "$(ls -A grafana-dashboards/*.json 2>/dev/null | wc -l)" -gt 0 ]; then
-    DASHBOARD_COUNT=$(ls -1 grafana-dashboards/*.json 2>/dev/null | wc -l)
-    echo -e "${GREEN}  ✅ $DASHBOARD_COUNT dashboards trouvés${NC}"
-else
-    echo -e "${YELLOW}  ⚠️  Aucun dashboard trouvé${NC}"
-    ((WARNINGS++))
-fi
-
-# ============================================================================
-# VÉRIFICATION COHÉRENCE DES CHEMINS
-# ============================================================================
-echo -e "\n${BLUE}[6/6] Vérification Cohérence Chemins...${NC}"
-
-# Vérifier que les Dockerfiles référencent les bons fichiers
-if grep -q "scripts/entrypoint-frontal.sh" docker/frontal/Dockerfile 2>/dev/null; then
-    echo -e "${GREEN}  ✅ Dockerfile frontal référence entrypoint-frontal.sh${NC}"
-else
-    echo -e "${RED}  ❌ Dockerfile frontal ne référence pas entrypoint-frontal.sh${NC}"
-    ((ERRORS++))
-fi
-
-if grep -q "scripts/entrypoint-slave.sh\|scripts/entrypoint-client.sh" docker/client/Dockerfile 2>/dev/null; then
-    echo -e "${GREEN}  ✅ Dockerfile client référence entrypoint${NC}"
-else
-    echo -e "${RED}  ❌ Dockerfile client ne référence pas entrypoint${NC}"
-    ((ERRORS++))
-fi
-
-# ============================================================================
-# RÉSUMÉ
-# ============================================================================
 echo ""
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}RÉSUMÉ${NC}"
-echo -e "${BLUE}========================================${NC}"
-
+echo -e "${YELLOW}Résultats:${NC}"
 if [ $ERRORS -eq 0 ]; then
-    echo -e "${GREEN}✅ Aucune erreur critique${NC}"
+    echo -e "${GREEN}  ✅ Structure du projet valide${NC}"
     if [ $WARNINGS -gt 0 ]; then
-        echo -e "${YELLOW}⚠️  $WARNINGS avertissement(s)${NC}"
+        echo -e "${YELLOW}  ⚠️  $WARNINGS avertissement(s)${NC}"
     fi
     exit 0
 else
-    echo -e "${RED}❌ $ERRORS erreur(s) critique(s)${NC}"
+    echo -e "${RED}  ❌ $ERRORS erreur(s) détectée(s)${NC}"
     if [ $WARNINGS -gt 0 ]; then
-        echo -e "${YELLOW}⚠️  $WARNINGS avertissement(s)${NC}"
+        echo -e "${YELLOW}  ⚠️  $WARNINGS avertissement(s)${NC}"
     fi
-    echo ""
-    echo -e "${YELLOW}Corrigez les erreurs avant de continuer.${NC}"
     exit 1
 fi
