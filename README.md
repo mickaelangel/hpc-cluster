@@ -128,7 +128,7 @@ Ce projet fournit une **infrastructure HPC complète et professionnelle** pour l
 
 ### Système
 
-- **OS** : SUSE Linux Enterprise Server 15 SP4 ou openSUSE Leap 15.4
+- **OS** :  openSUSE Leap 15.6
 - **RAM** : Minimum 16GB (32GB+ recommandé)
 - **Disque** : Minimum 50GB (100GB+ recommandé)
 - **CPU** : 4+ cores (8+ recommandé)
