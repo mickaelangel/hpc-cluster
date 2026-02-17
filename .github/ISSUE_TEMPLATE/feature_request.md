@@ -32,6 +32,7 @@ Ajoutez tout autre contexte ou captures d'écran concernant la demande de foncti
 - [ ] Nécessite des changements dans la documentation
 - [ ] Nécessite des tests supplémentaires
 - [ ] Impact sur les performances
+- [ ] Impact sur la sécurité
 
 ## Priorité
 
@@ -39,3 +40,9 @@ Ajoutez tout autre contexte ou captures d'écran concernant la demande de foncti
 - [ ] Haute
 - [ ] Moyenne
 - [ ] Basse
+
+## Vérifications Préalables
+
+- [ ] J'ai vérifié les issues existantes pour voir si la fonctionnalité a déjà été proposée
+- [ ] J'ai consulté la section Roadmap du README
+- [ ] J'ai vérifié la documentation pour voir si une solution existe déjà

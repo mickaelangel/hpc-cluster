@@ -1,89 +1,86 @@
 #!/bin/bash
 # ============================================================================
-# Vérification des Liens entre Documents
-# Vérifie que tous les liens dans les fichiers Markdown sont valides
+# Script de Vérification des Liens dans la Documentation
+# Usage: bash scripts/verify-links.sh
 # ============================================================================
 
 set -euo pipefail
 
-# Couleurs
-RED='\033[0;31m'
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$PROJECT_ROOT"
+
 GREEN='\033[0;32m'
+RED='\033[0;31m'
 YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
 NC='\033[0m'
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/../.."
-
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}VÉRIFICATION DES LIENS${NC}"
-echo -e "${BLUE}========================================${NC}"
-echo ""
-
-# Compteurs
+BROKEN_LINKS=0
 TOTAL_LINKS=0
-VALID_LINKS=0
-INVALID_LINKS=0
-INVALID_FILES=()
+
+echo -e "${YELLOW}Vérification des liens dans la documentation...${NC}"
+echo ""
 
 # Fonction pour vérifier un lien
 check_link() {
-    local file=$1
-    local link=$2
-    
+    local link=$1
+    local file=$2
     ((TOTAL_LINKS++))
     
-    # Nettoyer le lien (enlever #anchor, etc.)
-    local clean_link=$(echo "$link" | sed 's/#.*$//')
-    
-    # Vérifier si le fichier existe
-    if [ -f "$clean_link" ] || [ -d "$clean_link" ]; then
-        ((VALID_LINKS++))
+    # Ignorer les liens locaux (commençant par #)
+    if [[ "$link" =~ ^# ]]; then
         return 0
-    else
-        ((INVALID_LINKS++))
-        INVALID_FILES+=("$file -> $link")
-        echo -e "${RED}  ❌ Lien invalide dans $file: $link${NC}"
-        return 1
     fi
+    
+    # Ignorer les liens mailto
+    if [[ "$link" =~ ^mailto: ]]; then
+        return 0
+    fi
+    
+    # Vérifier les liens HTTP/HTTPS
+    if [[ "$link" =~ ^https?:// ]]; then
+        if curl -sf --head "$link" > /dev/null 2>&1; then
+            return 0
+        else
+            echo -e "${RED}  ❌ Lien cassé: $link (dans $file)${NC}"
+            ((BROKEN_LINKS++))
+            return 1
+        fi
+    fi
+    
+    # Vérifier les liens relatifs
+    if [[ "$link" =~ ^\./ ]] || [[ ! "$link" =~ ^/ ]] && [[ ! "$link" =~ ^https?:// ]]; then
+        local target_file="$PROJECT_ROOT/$(dirname "$file")/$link"
+        if [ -f "$target_file" ] || [ -d "$target_file" ]; then
+            return 0
+        else
+            echo -e "${RED}  ❌ Fichier introuvable: $link (dans $file)${NC}"
+            ((BROKEN_LINKS++))
+            return 1
+        fi
+    fi
+    
+    return 0
 }
 
 # Parcourir tous les fichiers Markdown
-echo -e "${YELLOW}Analyse des fichiers Markdown...${NC}"
-
-while IFS= read -r -d '' file; do
-    # Extraire tous les liens Markdown [text](link)
-    while IFS= read -r line; do
-        # Pattern pour [text](link)
-        if [[ $line =~ \[.*\]\(([^)]+)\) ]]; then
-            link="${BASH_REMATCH[1]}"
-            # Ignorer les liens HTTP/HTTPS
-            if [[ ! $link =~ ^https?:// ]]; then
-                check_link "$file" "$link"
-            fi
+find docs -name "*.md" -type f | while read -r file; do
+    # Extraire les liens Markdown [text](link)
+    grep -oP '\[([^\]]+)\]\(([^)]+)\)' "$file" | while IFS= read -r match; do
+        link=$(echo "$match" | sed -n 's/.*(\(.*\))/\1/p')
+        if [ -n "$link" ]; then
+            check_link "$link" "$file" || true
         fi
-    done < <(grep -o '\[.*\]([^)]*)' "$file" 2>/dev/null || true)
-done < <(find . -name "*.md" -type f -print0 2>/dev/null)
-
-# Résumé
-echo ""
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}RÉSUMÉ VÉRIFICATION${NC}"
-echo -e "${BLUE}========================================${NC}"
-echo -e "${GREEN}  ✅ Liens valides: $VALID_LINKS${NC}"
-echo -e "${RED}  ❌ Liens invalides: $INVALID_LINKS${NC}"
-echo -e "${CYAN}  📊 Total liens: $TOTAL_LINKS${NC}"
-echo ""
-
-if [ $INVALID_LINKS -gt 0 ]; then
-    echo -e "${YELLOW}Liens invalides détectés:${NC}"
-    for invalid in "${INVALID_FILES[@]}"; do
-        echo -e "${YELLOW}  - $invalid${NC}"
     done
-    echo ""
-    exit 1
-else
-    echo -e "${GREEN}🎉 Tous les liens sont valides !${NC}"
+done
+
+echo ""
+echo -e "${YELLOW}Résultats:${NC}"
+echo -e "  Total de liens vérifiés: $TOTAL_LINKS"
+if [ $BROKEN_LINKS -eq 0 ]; then
+    echo -e "${GREEN}  ✅ Aucun lien cassé${NC}"
     exit 0
+else
+    echo -e "${RED}  ❌ $BROKEN_LINKS lien(s) cassé(s)${NC}"
+    exit 1
 fi

@@ -35,6 +35,7 @@ beegfs_data/
 # IDE
 .vscode/
 .idea/
+.cursorrules
 *.swp
 *.swo
 *~

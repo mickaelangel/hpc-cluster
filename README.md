@@ -1,12 +1,12 @@
 # 🚀 Cluster HPC Enterprise - Infrastructure Complète
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![SUSE](https://img.shields.io/badge/SUSE-15%20SP4-green.svg)](https://www.suse.com/)
+[![openSUSE](https://img.shields.io/badge/openSUSE-15-green.svg)](https://www.opensuse.org/)
 [![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)](https://www.docker.com/)
 [![Open Source](https://img.shields.io/badge/Open%20Source-100%25-brightgreen.svg)](https://opensource.org/)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)](https://github.com/mickaelangel/hpc-cluster)
 
-> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur OPENSUSE 15.6**
+> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur openSUSE 15**
 
 ## 📋 Table des Matières
 
@@ -128,7 +128,11 @@ Ce projet fournit une **infrastructure HPC complète et professionnelle** pour l
 
 ### Système
 
+<<<<<<< Updated upstream
 - **OS** :  openSUSE Leap 15.6
+=======
+- **OS** : openSUSE 15 (équivalent à SUSE 15 SP7)
+>>>>>>> Stashed changes
 - **RAM** : Minimum 16GB (32GB+ recommandé)
 - **Disque** : Minimum 50GB (100GB+ recommandé)
 - **CPU** : 4+ cores (8+ recommandé)
@@ -265,12 +269,31 @@ Voir [SECURITY.md](SECURITY.md) pour les instructions de signalement.
 
 - **📚 [Documentation Complète](docs/)** : 93 guides disponibles
 - **🔍 [Troubleshooting](docs/GUIDE_TROUBLESHOOTING.md)** : Solutions aux problèmes courants
-- **💬 [Issues GitHub](https://github.com/mickaelangel/hpc-cluster/issues)** : Signaler un bug ou demander une fonctionnalité
+- **📖 [Index Documentation](docs/INDEX_DOCUMENTATION.md)** : Navigation dans tous les guides
 
-### Communauté
+### Signaler un Problème ou Demander une Fonctionnalité
 
-- **Discussions** : Utiliser les [GitHub Discussions](https://github.com/mickaelangel/hpc-cluster/discussions)
-- **Wiki** : Consulter le [Wiki du projet](https://github.com/mickaelangel/hpc-cluster/wiki)
+- **🐛 [Signaler un Bug](https://github.com/mickaelangel/hpc-cluster/issues/new?template=bug_report.md)** : Créer une issue pour un bug
+- **✨ [Demander une Fonctionnalité](https://github.com/mickaelangel/hpc-cluster/issues/new?template=feature_request.md)** : Proposer une nouvelle fonctionnalité
+- **💬 [Voir toutes les Issues](https://github.com/mickaelangel/hpc-cluster/issues)** : Liste complète des issues
+
+### Communauté et Aide
+
+- **💬 [GitHub Discussions](https://github.com/mickaelangel/hpc-cluster/discussions)** : 
+  - Poser des questions techniques
+  - Partager des expériences d'utilisation
+  - Demander de l'aide pour l'installation
+  - Discuter des meilleures pratiques
+  - [Créer une nouvelle discussion](https://github.com/mickaelangel/hpc-cluster/discussions/new)
+  - [Guide Communauté](docs/GUIDE_COMMUNAUTE.md) : Comment utiliser les Discussions
+
+- **📝 [Wiki du Projet](https://github.com/mickaelangel/hpc-cluster/wiki)** :
+  - Documentation collaborative
+  - Guides rapides (FAQ, Installation, Dépannage)
+  - Astuces et trucs
+  - Cas d'usage partagés
+  - [Voir le Wiki](https://github.com/mickaelangel/hpc-cluster/wiki) ou [Créer une page](https://github.com/mickaelangel/hpc-cluster/wiki/_new)
+  - [Guide Communauté](docs/GUIDE_COMMUNAUTE.md) : Comment contribuer au Wiki
 
 ## 📊 Roadmap
 
@@ -287,7 +310,7 @@ Ce projet est sous licence [Apache 2.0](LICENSE).
 
 ## 🙏 Remerciements
 
-- **SUSE** : Pour SUSE Linux Enterprise Server
+- **openSUSE** : Pour openSUSE 15
 - **Communauté Open Source** : Pour tous les outils utilisés
 - **Contributeurs** : Pour leurs contributions
 
