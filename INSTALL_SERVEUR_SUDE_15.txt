@@ -1,5 +1,5 @@
 ================================================================================
-INSTALLATION SERVEUR SUSE 15 - HORS LIGNE
+INSTALLATION SERVEUR opensuse 15.6 - HORS LIGNE
 ================================================================================
 
 MOT DE PASSE ROOT (pour sudo sur le serveur)
@@ -9,7 +9,7 @@ $Password!2026
 (Supprimez ce fichier après installation si le serveur est partagé.)
 
 
-ÉTAPES SUR LE SERVEUR SUSE 15 (sans Internet)
+ÉTAPES SUR LE SERVEUR opensuse 15.6
 ----------------------------------------------
 
 1. Copier l'archive depuis la clé USB vers /opt (ou autre)
@@ -20,7 +20,7 @@ $Password!2026
 2. Installer Docker (hors ligne)
    Si le dossier docker-offline-rpms/ contient des .rpm :
      sudo ./install-docker-offline.sh
-   Sinon : sur une machine SUSE 15 avec Internet, exécuter une fois
+   Sinon : sur une machine opensuse 15.6 avec Internet, exécuter une fois
      sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
    puis copier le dossier docker-offline-rpms/ dans cet export.
 
