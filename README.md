@@ -302,4 +302,4 @@ Ce projet est sous licence [Apache 2.0](LICENSE).
 
 **⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile !**
 
-**Made with ❤️ by the HPC Team**
+**Made with ❤️ by Mickael ANGEL - the HPC Team**
