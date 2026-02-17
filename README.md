@@ -6,7 +6,7 @@
 [![Open Source](https://img.shields.io/badge/Open%20Source-100%25-brightgreen.svg)](https://opensource.org/)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)](https://github.com/mickaelangel/hpc-cluster)
 
-> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur SUSE 15 SP4**
+> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur OPENSUSE 15.6**
 
 ## 📋 Table des Matières
 
