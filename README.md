@@ -310,7 +310,7 @@ Ce projet est sous licence [Apache 2.0](LICENSE).
 
 ## 🙏 Remerciements
 
-- **openSUSE** : Pour openSUSE 15
+- **openSUSE** : Pour openSUSE
 - **Communauté Open Source** : Pour tous les outils utilisés
 - **Contributeurs** : Pour leurs contributions
 
