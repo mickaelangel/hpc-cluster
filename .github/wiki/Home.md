@@ -9,7 +9,17 @@
 Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise**, une infrastructure HPC complète, 100% open-source, prête pour la production.
 
 **Niveau** : DevOps Senior / Architecte  
-**Public** : Administrateurs système, DevOps, Architectes HPC
+**Public** : Administrateurs système, DevOps, Architectes HPC, **étudiants Master Data Science / Doctorat**
+
+---
+
+## 📚 Formation HPC — Cours complet & Glossaire
+
+### 🎓 Parcours formation (niveau Master / Doctorat)
+
+- **[Cours HPC Complet](Cours-HPC-Complet)** — Formation exhaustive : concepts HPC, architecture des clusters, parallélisme (MPI, OpenMP), stockage (Lustre, BeeGFS, Ceph), GPU, conteneurs, sécurité et monitoring. Idéal pour tout savoir sur les technologies et le fonctionnement des clusters.
+- **[Guide SLURM Complet](Guide-SLURM-Complet)** — Scheduler en détail : partitions, QoS, soumission (sbatch, srun), file d’attente, bonnes pratiques, intégration MPI/GPU.
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** — Dictionnaire des acronymes (HPC, MPI, SLURM, PBS, Lustre, etc.) et définitions des termes (cluster, allocation, fair-share, walltime, etc.). Référence pour étudiants et professionnels.
 
 ---
 
@@ -40,6 +50,7 @@ Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise
 
 ### 🔍 Référence
 
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : Dictionnaire HPC et acronymes (SLURM, MPI, Lustre, etc.)
 - **[FAQ](FAQ)** : Questions fréquentes
 - **[Dépannage](Depannage)** : Solutions aux problèmes courants
 - **[Astuces](Astuces)** : Trucs et optimisations
@@ -160,11 +171,12 @@ sudo ./install-all.sh
 ## 🎯 Objectifs du Wiki
 
 Ce Wiki est maintenu par la communauté pour :
+- ✅ **Formation** : cours HPC complet (Master/Doctorat), guide SLURM, glossaire et acronymes
 - ✅ Partager des guides rapides
 - ✅ Documenter des cas d'usage spécifiques
 - ✅ Maintenir une FAQ à jour
 - ✅ Partager des astuces et optimisations
-- ✅ Faciliter l'onboarding
+- ✅ Faciliter l'onboarding (étudiants, chercheurs, DevOps)
 
 ---
 
