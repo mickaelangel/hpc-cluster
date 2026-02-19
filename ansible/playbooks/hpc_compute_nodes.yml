@@ -1,0 +1,115 @@
+---
+# ============================================================================
+# Provisioning et Hardening des Compute Nodes HPC
+# Transforme un serveur Linux vierge en nœud de calcul optimisé pour Slurm.
+# Usage: ansible-playbook -i inventory/hosts hpc_compute_nodes.yml
+# Prérequis: fichier playbooks/files/munge.key (clé identique sur tout le cluster)
+# ============================================================================
+
+- name: Provisioning et Hardening des Compute Nodes HPC
+  hosts: compute_nodes
+  become: yes
+  vars:
+    slurm_version: "23.11.0"
+    nfs_master_ip: "10.0.0.10"
+    lustre_mgs_ip: "10.0.0.10@tcp0"
+
+  tasks:
+    # ==========================================
+    # PHASE 1 : OS TUNING & JITTER REDUCTION
+    # ==========================================
+    - name: Désactiver le Swap (Prévention des ralentissements MPI et gestion OOM stricte)
+      ansible.builtin.command: swapoff -a
+      changed_when: false
+
+    - name: Supprimer le Swap du /etc/fstab de façon persistante
+      ansible.posix.mount:
+        name: swap
+        fstype: swap
+        state: absent
+
+    - name: Désactiver Firewalld (Le filtrage se fait au niveau des switchs/routeurs en HPC)
+      ansible.builtin.systemd:
+        name: firewalld
+        state: stopped
+        enabled: no
+
+    - name: Régler le CPU Governor sur 'performance' (Évite la latence de réveil des cœurs)
+      ansible.builtin.command: cpupower frequency-set -g performance
+      changed_when: false
+      ignore_errors: yes  # Au cas où cpupower n'est pas installé dans l'image de base
+
+    # ==========================================
+    # PHASE 2 : IDENTITÉ & SÉCURITÉ (MUNGE)
+    # ==========================================
+    - name: Installer le paquet Munge
+      ansible.builtin.dnf:
+        name: munge
+        state: present
+
+    - name: Déployer la clé Munge (Doit être identique sur TOUT le cluster)
+      ansible.builtin.copy:
+        src: files/munge.key  # Le fichier local sur la machine Ansible (playbooks/files/munge.key)
+        dest: /etc/munge/munge.key
+        owner: munge
+        group: munge
+        mode: '0400'
+      notify: Restart Munge
+
+    # ==========================================
+    # PHASE 3 : MONTAGE DU STOCKAGE PARALLÈLE
+    # ==========================================
+    - name: S'assurer que le point de montage Lustre existe
+      ansible.builtin.file:
+        path: /scratch
+        state: directory
+        mode: '0777'
+
+    - name: Monter le système de fichiers Lustre (Tier 1)
+      ansible.posix.mount:
+        path: /scratch
+        src: "{{ lustre_mgs_ip }}:/lustre"
+        fstype: lustre
+        opts: defaults,flock,_netdev
+        state: mounted
+
+    - name: Monter le /home en NFS (Tier 2 - Projet/Binaire)
+      ansible.posix.mount:
+        path: /home
+        src: "{{ nfs_master_ip }}:/home"
+        fstype: nfs4
+        opts: rw,soft,intr,rsize=8192,wsize=8192
+        state: mounted
+
+    # ==========================================
+    # PHASE 4 : SLURM & CGROUPS V2
+    # ==========================================
+    - name: Installer Slurmd
+      ansible.builtin.dnf:
+        name: slurm-slurmd
+        state: present
+
+    - name: Configurer Cgroups v2 pour l'isolation stricte des jobs
+      ansible.builtin.copy:
+        dest: /etc/slurm/cgroup.conf
+        content: |
+          CgroupAutomount=yes
+          ConstrainCores=yes
+          ConstrainRAMSpace=yes
+          ConstrainDevices=yes
+          AllowedRAMSpace=98
+        owner: slurm
+        group: slurm
+        mode: '0644'
+
+    - name: Activer et démarrer Slurmd
+      ansible.builtin.systemd:
+        name: slurmd
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: Restart Munge
+      ansible.builtin.systemd:
+        name: munge
+        state: restarted
