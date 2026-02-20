@@ -211,13 +211,15 @@ docker-compose -f docker/docker-compose.prod.yml up -d
 
 ### Wiki, formation et référence (niveau Master / Doctorat)
 
-- **📘 [Wiki — Accueil](.github/wiki/Home.md)** : Documentation collaborative du cluster (vue d’ensemble, navigation)
-- **📑 [Sommaire du Manuel HPC](.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : Index des 8 volumes (~550–650 pages), chapitres, labs et études de cas
-- **📖 [Cours HPC Complet](.github/wiki/Cours-HPC-Complet.md)** : Formation exhaustive (concepts, architecture, parallélisme, stockage, GPU, conteneurs, sécurité, monitoring)
-- **📕 [Dictionnaire encyclopédique HPC](.github/wiki/Dictionnaire-Encyclopedique-HPC.md)** : Définitions rigoureuses, internals, bonnes pratiques (niveau Doctorat/Architecte)
-- **🔤 [Glossaire et acronymes](.github/wiki/Glossaire-et-Acronymes.md)** : SLURM, MPI, Lustre, cluster, allocation, fair-share, etc.
+Liens directs vers les fichiers du wiki (dossier `.github/wiki/` dans le dépôt) :
 
-*Sur GitHub : [Onglet Wiki](https://github.com/mickaelangel/hpc-cluster/wiki) (si activé).*
+- **📘 [Wiki — Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : Documentation collaborative du cluster (vue d’ensemble, navigation)
+- **📑 [Sommaire du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : Index des 8 volumes (~550–650 pages), chapitres, labs et études de cas
+- **📖 [Cours HPC Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md)** : Formation exhaustive (concepts, architecture, parallélisme, stockage, GPU, conteneurs, sécurité, monitoring)
+- **📕 [Dictionnaire encyclopédique HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Dictionnaire-Encyclopedique-HPC.md)** : Définitions rigoureuses, internals, bonnes pratiques (niveau Doctorat/Architecte)
+- **🔤 [Glossaire et acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : SLURM, MPI, Lustre, cluster, allocation, fair-share, etc.
+
+*Tous les fichiers du wiki : [.github/wiki/](https://github.com/mickaelangel/hpc-cluster/tree/main/.github/wiki) · [Onglet Wiki du projet](https://github.com/mickaelangel/hpc-cluster/wiki) (si activé).*
 
 ### Documentation technique complète
 
