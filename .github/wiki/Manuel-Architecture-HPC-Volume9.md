@@ -18,7 +18,7 @@ Ce volume apporte une méthode "senior" pour :
 - industrialiser : **reproductibilité**, **traçabilité**, **profiling**, **scaling study**, **MLOps on-prem**.
 
 **Prérequis recommandés :**
-- Slurm : allocations, partitions, job arrays (voir [Guide SLURM Complet](Guide-SLURM-Complet)).
+- Slurm : allocations, partitions, job arrays (voir [Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)).
 - Connaissances GPU (CUDA) et bases de PyTorch (ou équivalent).
 - Notions de performance : latence, bande passante, saturation I/O (voir Vol. 6).
 - Vol. 5 : NCCL, GPU, Apptainer (labs 6 & 7).
@@ -509,4 +509,4 @@ Expliquez aussi comment vous déboguez un **freeze NCCL** au démarrage.
 
 ---
 
-[← Sommaire Manuel](Manuel-HPC-Sommaire-Complet) · [← Accueil](Home)
+[← Sommaire Manuel](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md) · [← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)
