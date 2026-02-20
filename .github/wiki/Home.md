@@ -17,20 +17,20 @@ Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise
 
 ### 🎓 Parcours formation (niveau Master / Doctorat)
 
-- **[Cours HPC Complet](Cours-HPC-Complet)** — Formation exhaustive : concepts HPC, architecture des clusters, parallélisme (MPI, OpenMP), stockage (Lustre, BeeGFS, Ceph), GPU, conteneurs, sécurité et monitoring. Idéal pour tout savoir sur les technologies et le fonctionnement des clusters.
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** — Plan des 8 volumes (~550–650 p.), tous les chapitres, labs, études de cas, annexes.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 1](Manuel-Architecture-HPC-Volume1)** — Fondations, co-design, 3 architectures types (CPU-only, GPU, Data-Intensive), OOB (BMC, IPMI, Redfish), provisioning bare-metal (PXE, Warewulf v4), Ansible, lab et examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 2](Manuel-Architecture-HPC-Volume2)** — Réseaux datacenter (Spine-Leaf, MLAG, Jumbo Frames), InfiniBand & RoCE v2 (RDMA, OpenSM), sécurité (IAM/FreeIPA, Bastion, hardening), lab SSSD/NFS et examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 3](Manuel-Architecture-HPC-Volume3)** — Stockage parallèle : POSIX, tiering (scratch/project/archive), Lustre (MGS, MDS/MDT, OSS/OST, LNet, DNE), striping, BeeGFS/GPFS/CephFS, lab mini-Lustre et examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 4](Manuel-Architecture-HPC-Volume4)** — Ordonnancement : Backfill, Fairshare, architecture Slurm (slurmctld, slurmd, slurmdbd), MUNGE, cgroups, GRES GPU, troubleshooting, labs Slurm/Fairshare/cgroups et examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 5](Manuel-Architecture-HPC-Volume5)** — Toolchains : Lmod, Spack, Apptainer ; MPI (Eager/Rendezvous, binding NUMA, UCX) ; GPU et IA (NCCL, GPUDirect RDMA, Slurm) ; labs Spack/OMB et Apptainer/PyTorch, examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 6](Manuel-Architecture-HPC-Volume6)** — Performances : NUMA, numactl, Hugepages/TLB, modèle Roofline, perf, HPL/HPCG, IOR/mdtest, labs STREAM et profiling cache, examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 7](Manuel-Architecture-HPC-Volume7)** — Observabilité & SRE : Pull vs Push, exporters (Slurm/Lustre/GPU), capacity planning, SLO/SLA, runbooks, post-mortems blameless, MTTR, lab Prometheus+Slurm, examen.
-- **[Manuel Architecture & Ingénierie HPC — Vol. 8](Manuel-Architecture-HPC-Volume8)** — Fil rouge : 5 phases (design → bare-metal → stockage → Slurm → observabilité), Go-Live, Exascale/DLC, convergence IA-HPC, Cloud Bursting, Data Gravity, lab architecture WRF, examen final.
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** — Scheduler en détail : partitions, QoS, soumission (sbatch, srun), file d’attente, bonnes pratiques, intégration MPI/GPU.
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** — Dictionnaire des acronymes (HPC, MPI, SLURM, PBS, Lustre, etc.) et définitions des termes (cluster, allocation, fair-share, walltime, etc.). Référence pour étudiants et professionnels.
-- **[Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC)** — Entrées encyclopédiques (Backfill, GPUDirect RDMA, NUMA, Fairshare, RDMA, Striping, DLM, Hugepages, OOM-Killer) : définition rigoureuse, internals, bonnes pratiques, tuning, troubleshooting, références. Niveau Doctorat/Architecte.
-- **[Annexes SRE & Cheatsheets HPC](hpc_annexes)** — Annexe A : Slurm (scontrol, sacct, sdiag) ; B : Lustre (lfs, lctl, OST) ; C : perf, numactl, htop, iostat ; D : Post-Mortem Blameless (RCA).
+- **[Cours HPC Complet](Cours-HPC-Complet.md)** — Formation exhaustive : concepts HPC, architecture des clusters, parallélisme (MPI, OpenMP), stockage (Lustre, BeeGFS, Ceph), GPU, conteneurs, sécurité et monitoring. Idéal pour tout savoir sur les technologies et le fonctionnement des clusters.
+- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet.md)** — Plan des 8 volumes (~550–650 p.), tous les chapitres, labs, études de cas, annexes.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 1](Manuel-Architecture-HPC-Volume1.md)** — Fondations, co-design, 3 architectures types (CPU-only, GPU, Data-Intensive), OOB (BMC, IPMI, Redfish), provisioning bare-metal (PXE, Warewulf v4), Ansible, lab et examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 2](Manuel-Architecture-HPC-Volume2.md)** — Réseaux datacenter (Spine-Leaf, MLAG, Jumbo Frames), InfiniBand & RoCE v2 (RDMA, OpenSM), sécurité (IAM/FreeIPA, Bastion, hardening), lab SSSD/NFS et examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 3](Manuel-Architecture-HPC-Volume3.md)** — Stockage parallèle : POSIX, tiering (scratch/project/archive), Lustre (MGS, MDS/MDT, OSS/OST, LNet, DNE), striping, BeeGFS/GPFS/CephFS, lab mini-Lustre et examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 4](Manuel-Architecture-HPC-Volume4.md)** — Ordonnancement : Backfill, Fairshare, architecture Slurm (slurmctld, slurmd, slurmdbd), MUNGE, cgroups, GRES GPU, troubleshooting, labs Slurm/Fairshare/cgroups et examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 5](Manuel-Architecture-HPC-Volume5.md)** — Toolchains : Lmod, Spack, Apptainer ; MPI (Eager/Rendezvous, binding NUMA, UCX) ; GPU et IA (NCCL, GPUDirect RDMA, Slurm) ; labs Spack/OMB et Apptainer/PyTorch, examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 6](Manuel-Architecture-HPC-Volume6.md)** — Performances : NUMA, numactl, Hugepages/TLB, modèle Roofline, perf, HPL/HPCG, IOR/mdtest, labs STREAM et profiling cache, examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 7](Manuel-Architecture-HPC-Volume7.md)** — Observabilité & SRE : Pull vs Push, exporters (Slurm/Lustre/GPU), capacity planning, SLO/SLA, runbooks, post-mortems blameless, MTTR, lab Prometheus+Slurm, examen.
+- **[Manuel Architecture & Ingénierie HPC — Vol. 8](Manuel-Architecture-HPC-Volume8.md)** — Fil rouge : 5 phases (design → bare-metal → stockage → Slurm → observabilité), Go-Live, Exascale/DLC, convergence IA-HPC, Cloud Bursting, Data Gravity, lab architecture WRF, examen final.
+- **[Guide SLURM Complet](Guide-SLURM-Complet.md)** — Scheduler en détail : partitions, QoS, soumission (sbatch, srun), file d’attente, bonnes pratiques, intégration MPI/GPU.
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** — Dictionnaire des acronymes (HPC, MPI, SLURM, PBS, Lustre, etc.) et définitions des termes (cluster, allocation, fair-share, walltime, etc.). Référence pour étudiants et professionnels.
+- **[Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC.md)** — Entrées encyclopédiques (Backfill, GPUDirect RDMA, NUMA, Fairshare, RDMA, Striping, DLM, Hugepages, OOM-Killer) : définition rigoureuse, internals, bonnes pratiques, tuning, troubleshooting, références. Niveau Doctorat/Architecte.
+- **[Annexes SRE & Cheatsheets HPC](hpc_annexes.md)** — Annexe A : Slurm (scontrol, sacct, sdiag) ; B : Lustre (lfs, lctl, OST) ; C : perf, numactl, htop, iostat ; D : Post-Mortem Blameless (RCA).
 
 ---
 
@@ -38,40 +38,40 @@ Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise
 
 ### 🚀 Pour Démarrer
 
-- **[Installation Rapide](Installation-Rapide)** : Installation en 5 minutes
-- **[Configuration de Base](Configuration-de-Base)** : Configuration minimale fonctionnelle
-- **[Premiers Pas](Premiers-Pas)** : Guide pour commencer
+- **[Installation Rapide](Installation-Rapide.md)** : Installation en 5 minutes
+- **[Configuration de Base](Configuration-de-Base.md)** : Configuration minimale fonctionnelle
+- **[Premiers Pas](Premiers-Pas.md)** : Guide pour commencer
 
 ### 📚 Documentation par Rôle
 
 #### 👨‍💼 Administrateur Système
-- **[Guide Administrateur](Guide-Administrateur)** : Administration complète
-- **[Maintenance](Maintenance)** : Maintenance et opérations
-- **[Sécurité](Securite)** : Sécurité avancée
+- **[Guide Administrateur](Guide-Administrateur.md)** : Administration complète
+- **[Maintenance](Maintenance.md)** : Maintenance et opérations
+- **[Sécurité](Securite.md)** : Sécurité avancée
 
 #### 🔧 DevOps
-- **[CI/CD](CI-CD)** : Pipelines et automatisation
-- **[Infrastructure as Code](Infrastructure-as-Code)** : Terraform, Ansible
-- **[Monitoring](Monitoring)** : Observabilité complète
+- **[CI/CD](CI-CD.md)** : Pipelines et automatisation
+- **[Infrastructure as Code](Infrastructure-as-Code.md)** : Terraform, Ansible
+- **[Monitoring](Monitoring.md)** : Observabilité complète
 
 #### 👥 Utilisateur
-- **[Guide Utilisateur](Guide-Utilisateur)** : Utilisation du cluster
-- **[Lancement de Jobs](Lancement-de-Jobs)** : Comment lancer des jobs
-- **[Applications Scientifiques](Applications-Scientifiques)** : Utilisation des applications
+- **[Guide Utilisateur](Guide-Utilisateur.md)** : Utilisation du cluster
+- **[Lancement de Jobs](Lancement-de-Jobs.md)** : Comment lancer des jobs
+- **[Applications Scientifiques](Applications-Scientifiques.md)** : Utilisation des applications
 
 ### 🔍 Référence
 
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : Dictionnaire HPC et acronymes (SLURM, MPI, Lustre, etc.)
-- **[FAQ](FAQ)** : Questions fréquentes
-- **[Dépannage](Depannage)** : Solutions aux problèmes courants
-- **[Astuces](Astuces)** : Trucs et optimisations
-- **[Commandes Utiles](Commandes-Utiles)** : Référence rapide
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** : Dictionnaire HPC et acronymes (SLURM, MPI, Lustre, etc.)
+- **[FAQ](FAQ.md)** : Questions fréquentes
+- **[Dépannage](Depannage.md)** : Solutions aux problèmes courants
+- **[Astuces](Astuces.md)** : Trucs et optimisations
+- **[Commandes Utiles](Commandes-Utiles.md)** : Référence rapide
 
 ### 📊 Cas d'Usage
 
-- **[Cas d'Usage](Cas-d-Usage)** : Exemples d'utilisation
-- **[Configurations Recommandées](Configurations-Recommandees)** : Configurations par scénario
-- **[Retours d'Expérience](Retours-d-Experience)** : Partage d'expériences
+- **[Cas d'Usage](Cas-d-Usage.md)** : Exemples d'utilisation
+- **[Configurations Recommandées](Configurations-Recommandees.md)** : Configurations par scénario
+- **[Retours d'Expérience](Retours-d-Experience.md)** : Partage d'expériences
 
 ---
 

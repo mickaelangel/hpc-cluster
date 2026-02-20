@@ -486,9 +486,9 @@ tar czf - /path | gzip > archive.tar.gz
 
 ## 📚 Ressources
 
-- **📖 [Installation Rapide](Installation-Rapide)**
-- **💡 [Astuces](Astuces)**
-- **🐛 [Dépannage](Depannage)**
+- **📖 [Installation Rapide](Installation-Rapide.md)**
+- **💡 [Astuces](Astuces.md)**
+- **🐛 [Dépannage](Depannage.md)**
 
 ---
 

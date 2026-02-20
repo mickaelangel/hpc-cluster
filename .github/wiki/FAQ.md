@@ -443,9 +443,9 @@ sudo zypper update                  # openSUSE
 
 ## 📚 Ressources
 
-- **📖 [Guide Installation](Installation-Rapide)**
-- **🐛 [Dépannage](Depannage)** : Solutions détaillées
-- **💡 [Astuces](Astuces)** : Optimisations
+- **📖 [Guide Installation](Installation-Rapide.md)**
+- **🐛 [Dépannage](Depannage.md)** : Solutions détaillées
+- **💡 [Astuces](Astuces.md)** : Optimisations
 
 ---
 

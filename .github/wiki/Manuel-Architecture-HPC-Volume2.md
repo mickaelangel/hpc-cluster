@@ -196,7 +196,7 @@ En HPC, **SELinux** est parfois en *Permissive* (incompatibilités avec certains
 | Mesure | Rôle |
 |--------|------|
 | **Root Squash** | Sur NFS/Lustre : root client est mappé à `nobody` pour ne pas lire les fichiers des autres |
-| **Cgroups** | Limite RAM/PIDs par utilisateur, protège le démon [Slurm](Guide-SLURM-Complet) (slurmd) |
+| **Cgroups** | Limite RAM/PIDs par utilisateur, protège le démon [Slurm](Guide-SLURM-Complet.md) (slurmd) |
 
 **Snippet : Sécurité SSH sur les nœuds de calcul** (`/etc/ssh/sshd_config`)
 
@@ -309,12 +309,12 @@ Un utilisateur malveillant a obtenu les **droits root** sur le nœud de calcul `
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1)** : fondations, provisioning, Ansible
-- **[Cours HPC Complet](Cours-HPC-Complet)** : concepts, parallélisme, stockage
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : ordonnancement et jobs
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : RDMA, RoCE, LACP, MTU, FreeIPA, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1.md)** : fondations, provisioning, Ansible
+- **[Cours HPC Complet](Cours-HPC-Complet.md)** : concepts, parallélisme, stockage
+- **[Guide SLURM Complet](Guide-SLURM-Complet.md)** : ordonnancement et jobs
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** : RDMA, RoCE, LACP, MTU, FreeIPA, etc.
+- **[Home](Home.md)** : page d'accueil du wiki
 
 ---
 

@@ -736,16 +736,16 @@ Braam, P. J. (2019). *Lustre File System: Architecture and Internals.* — Lustr
 | S | Striping (Lustre) | Stockage parallèle |
 
 **Extension du dictionnaire**  
-Chaque nouvelle entrée doit respecter la structure en 9 sections ci-dessus. Entrées déjà présentes (B à S) : Backfill, BeeGFS, Burst Buffers, Cgroups v2, DLM, Fairshare, Slurm Fairshare, GPUDirect RDMA, GPU Tensor Cores, Hugepages, MPI Collectives (AllReduce), NUMA, NVLink, OOM-Killer, RDMA, RoCE v2, Striping. Entrées prévues (à rédiger au même format) : Affinity, Apptainer, Co-design, DNE, Eager Protocol, Fat-Tree, HPL, InfiniBand, LNet, Lustre, MPI, MUNGE, NCCL, Root Squash, Slurm, Spine-Leaf, Walltime, Warewulf, etc. Voir aussi le [Glossaire et Acronymes](Glossaire-et-Acronymes) pour les définitions courtes et le [Sommaire du Manuel HPC](Manuel-HPC-Sommaire-Complet) pour les chapitres détaillés.
+Chaque nouvelle entrée doit respecter la structure en 9 sections ci-dessus. Entrées déjà présentes (B à S) : Backfill, BeeGFS, Burst Buffers, Cgroups v2, DLM, Fairshare, Slurm Fairshare, GPUDirect RDMA, GPU Tensor Cores, Hugepages, MPI Collectives (AllReduce), NUMA, NVLink, OOM-Killer, RDMA, RoCE v2, Striping. Entrées prévues (à rédiger au même format) : Affinity, Apptainer, Co-design, DNE, Eager Protocol, Fat-Tree, HPL, InfiniBand, LNet, Lustre, MPI, MUNGE, NCCL, Root Squash, Slurm, Spine-Leaf, Walltime, Warewulf, etc. Voir aussi le [Glossaire et Acronymes](Glossaire-et-Acronymes.md) pour les définitions courtes et le [Sommaire du Manuel HPC](Manuel-HPC-Sommaire-Complet.md) pour les chapitres détaillés.
 
 ---
 
 ## Liens utiles
 
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : définitions courtes et liste d’acronymes
-- **[Sommaire du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : 8 volumes, chapitres et labs
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : commandes et configuration Slurm
-- **[Home](Home)** : page d’accueil du wiki
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** : définitions courtes et liste d’acronymes
+- **[Sommaire du Manuel HPC](Manuel-HPC-Sommaire-Complet.md)** : 8 volumes, chapitres et labs
+- **[Guide SLURM Complet](Guide-SLURM-Complet.md)** : commandes et configuration Slurm
+- **[Home](Home.md)** : page d’accueil du wiki
 
 ---
 

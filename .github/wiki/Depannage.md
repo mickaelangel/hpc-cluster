@@ -467,9 +467,9 @@ sudo journalctl -u grafana -n 10 --no-pager
 
 ## 📚 Ressources
 
-- **📖 [Installation Rapide](Installation-Rapide)**
-- **❓ [FAQ](FAQ)**
-- **💡 [Astuces](Astuces)**
+- **📖 [Installation Rapide](Installation-Rapide.md)**
+- **❓ [FAQ](FAQ.md)**
+- **💡 [Astuces](Astuces.md)**
 
 ---
 

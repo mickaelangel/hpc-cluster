@@ -467,9 +467,9 @@ curl http://localhost:3000/debug/pprof/profile?seconds=30 > grafana-profile.out
 
 ## 📚 Ressources
 
-- **📖 [Configuration de Base](Configuration-de-Base)**
-- **🐛 [Dépannage](Depannage)**
-- **❓ [FAQ](FAQ)**
+- **📖 [Configuration de Base](Configuration-de-Base.md)**
+- **🐛 [Dépannage](Depannage.md)**
+- **❓ [FAQ](FAQ.md)**
 
 ---
 

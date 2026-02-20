@@ -118,7 +118,7 @@ Le **calcul haute performance** (High Performance Computing) regroupe :
 | **SGE / Univa Grid Engine** | Historique, certains clusters | Compatibilité legacy |
 | **LSF** | Enterprise (IBM) | Intégration écosystème IBM |
 
-Dans ce projet, le scheduler utilisé est **Slurm**. Voir [Guide-SLURM-Complet](Guide-SLURM-Complet).
+Dans ce projet, le scheduler utilisé est **Slurm**. Voir [Guide-SLURM-Complet](Guide-SLURM-Complet.md).
 
 ### 3.3 Cycle de vie d’un job
 
@@ -237,7 +237,7 @@ Sur un cluster Slurm, les jobs GPU ou MPI utilisent en général **Singularity/A
 - **Outils** : Prometheus (métriques), Grafana (tableaux de bord), éventuellement InfluxDB, Loki pour les logs
 - **Alertes** : nœuds down, files d’attente anormalement longues, panne de stockage
 
-Voir [Monitoring](Monitoring) et [Commandes-Utiles](Commandes-Utiles).
+Voir [Monitoring](Monitoring.md) et [Commandes-Utiles](Commandes-Utiles.md).
 
 ---
 
@@ -245,10 +245,10 @@ Voir [Monitoring](Monitoring) et [Commandes-Utiles](Commandes-Utiles).
 
 Ce cours pose les bases **conceptuelles** et **architecturales** du HPC. Pour aller plus loin dans ce projet :
 
-- **[Guide-SLURM-Complet](Guide-SLURM-Complet)** : utilisation avancée de Slurm (partitions, QoS, script sbatch, bonnes pratiques)
-- **[Glossaire-et-Acronymes](Glossaire-et-Acronymes)** : définitions et acronymes (HPC, MPI, Slurm, Lustre, etc.)
-- **[Configuration-de-Base](Configuration-de-Base)** : déploiement concret du cluster
-- **[Commandes-Utiles](Commandes-Utiles)** : commandes de référence (Slurm, monitoring, dépannage)
+- **[Guide-SLURM-Complet](Guide-SLURM-Complet.md)** : utilisation avancée de Slurm (partitions, QoS, script sbatch, bonnes pratiques)
+- **[Glossaire-et-Acronymes](Glossaire-et-Acronymes.md)** : définitions et acronymes (HPC, MPI, Slurm, Lustre, etc.)
+- **[Configuration-de-Base](Configuration-de-Base.md)** : déploiement concret du cluster
+- **[Commandes-Utiles](Commandes-Utiles.md)** : commandes de référence (Slurm, monitoring, dépannage)
 
 ---
 

@@ -21,7 +21,7 @@
 | **Ch. 3** | Provisioning bare-metal | Cycle de vie d'un nœud, PXE, DHCP, TFTP, solutions type Warewulf / xCAT / MAAS. |
 | **Ch. 4** | Configuration Management & GitOps | Ansible en environnement HPC, gestion d'état, infrastructure as code. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1.md)
 
 ---
 
@@ -34,7 +34,7 @@
 | **Ch. 6** | Interconnexions à faible latence | InfiniBand, RoCE v2, topologies Fat-Tree / Dragonfly, subnet manager. |
 | **Ch. 7** | Fondations de sécurité HPC | IAM, LDAP / FreeIPA, bastion, durcissement OS, segmentation réseau, gestion des secrets. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2.md)
 
 ---
 
@@ -48,7 +48,7 @@
 | **Ch. 10** | Déploiement, tuning et opérations Lustre | Configuration optimale, gestion des stripes, quotas, failover / HA, recovery. |
 | **Ch. 11** | Panorama des alternatives | BeeGFS, GPFS / Spectrum Scale, CephFS, S3 en HPC. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 3](Manuel-Architecture-HPC-Volume3)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 3](Manuel-Architecture-HPC-Volume3.md)
 
 ---
 
@@ -62,7 +62,7 @@
 | **Ch. 14** | Configuration avancée de Slurm | Partitions, QOS, cgroups, GRES pour GPU, topology-aware placement, job arrays. |
 | **Ch. 15** | Exploitation et troubleshooting Slurm | Accounting, upgrades, résolution d'incidents courants. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 4](Manuel-Architecture-HPC-Volume4) — **Référence** : [Guide SLURM Complet](Guide-SLURM-Complet)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 4](Manuel-Architecture-HPC-Volume4.md) — **Référence** : [Guide SLURM Complet](Guide-SLURM-Complet.md)
 
 ---
 
@@ -75,7 +75,7 @@
 | **Ch. 17** | Parallélisme et MPI (Deep Dive) | Sémantique, collectives, rank mapping, RDMA, OpenMPI / MPICH, UCX. |
 | **Ch. 18** | Accélération GPU et IA | CUDA / ROCm, architecture multi-GPU, NCCL, GPUDirect, binding CPU / GPU. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 5](Manuel-Architecture-HPC-Volume5)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 5](Manuel-Architecture-HPC-Volume5.md)
 
 ---
 
@@ -88,7 +88,7 @@
 | **Ch. 20** | Méthodologie de profiling | Instrumentation, goulots d'étranglement, perf, NSight, Score-P / TAU. |
 | **Ch. 21** | Benchmarking en production | HPL, HPCG, IOR, mdtest, OSU micro-benchmarks — méthodologie et interprétation critique. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 6](Manuel-Architecture-HPC-Volume6)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 6](Manuel-Architecture-HPC-Volume6.md)
 
 ---
 
@@ -101,7 +101,7 @@
 | **Ch. 23** | Capacity planning et SLA | Suivi des métriques clés, prévision de charge, refacturation / showback. |
 | **Ch. 24** | Runbooks, on-call et post-mortems | Gestion de crise, RCA, procédures opérationnelles standard (SOP). |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 7](Manuel-Architecture-HPC-Volume7) — **Référence** : [Monitoring](Monitoring)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 7](Manuel-Architecture-HPC-Volume7.md) — **Référence** : [Monitoring](Monitoring.md)
 
 ---
 
@@ -113,7 +113,7 @@
 | **Ch. 25** | Projet complet guidé | Reprise des jalons : design → install → intégration → tests → mise en prod. |
 | **Ch. 26** | Hybridation cloud et avenir du HPC | Cloud bursting, convergence IA / HPC, défis exascale. |
 
-➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 8](Manuel-Architecture-HPC-Volume8)
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 8](Manuel-Architecture-HPC-Volume8.md)
 
 ---
 
@@ -164,9 +164,9 @@
 | **Annexe D** | Templates de production (SOP de mise à jour de cluster, modèle RCA / Post-mortem). |
 | **Annexe E** | Index thématique et glossaire des acronymes (de l'A/B testing au ZFS). |
 
-➡️ **Annexes SRE & Cheatsheets (A–D)** : [Annexes SRE & Cheatsheets HPC](hpc_annexes) — Slurm, Lustre, perf/numactl, Post-Mortem Blameless.  
-➡️ **Glossaire wiki** : [Glossaire et Acronymes](Glossaire-et-Acronymes)  
-➡️ **Commandes** : [Commandes Utiles](Commandes-Utiles)
+➡️ **Annexes SRE & Cheatsheets (A–D)** : [Annexes SRE & Cheatsheets HPC](hpc_annexes.md) — Slurm, Lustre, perf/numactl, Post-Mortem Blameless.  
+➡️ **Glossaire wiki** : [Glossaire et Acronymes](Glossaire-et-Acronymes.md)  
+➡️ **Commandes** : [Commandes Utiles](Commandes-Utiles.md)
 
 ---
 
@@ -174,21 +174,21 @@
 
 | Ressource | Lien |
 |-----------|------|
-| **Volume 1 détaillé** | [Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1) |
-| **Volume 2 détaillé** | [Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2) |
-| **Volume 3 détaillé** | [Manuel Architecture HPC — Volume 3](Manuel-Architecture-HPC-Volume3) |
-| **Volume 4 détaillé** | [Manuel Architecture HPC — Volume 4](Manuel-Architecture-HPC-Volume4) |
-| **Volume 5 détaillé** | [Manuel Architecture HPC — Volume 5](Manuel-Architecture-HPC-Volume5) |
-| **Volume 6 détaillé** | [Manuel Architecture HPC — Volume 6](Manuel-Architecture-HPC-Volume6) |
-| **Volume 7 détaillé** | [Manuel Architecture HPC — Volume 7](Manuel-Architecture-HPC-Volume7) |
-| **Volume 8 détaillé** | [Manuel Architecture HPC — Volume 8](Manuel-Architecture-HPC-Volume8) |
-| **Cours HPC complet** | [Cours HPC Complet](Cours-HPC-Complet) |
-| **Dictionnaire encyclopédique** | [Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC) |
-| **Annexes SRE & Cheatsheets** | [Annexes HPC (A–D)](hpc_annexes) |
-| **Guide Slurm** | [Guide SLURM Complet](Guide-SLURM-Complet) |
-| **Monitoring** | [Monitoring](Monitoring) |
-| **Glossaire & acronymes** | [Glossaire et Acronymes](Glossaire-et-Acronymes) |
-| **Accueil wiki** | [Home](Home) |
+| **Volume 1 détaillé** | [Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1.md) |
+| **Volume 2 détaillé** | [Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2.md) |
+| **Volume 3 détaillé** | [Manuel Architecture HPC — Volume 3](Manuel-Architecture-HPC-Volume3.md) |
+| **Volume 4 détaillé** | [Manuel Architecture HPC — Volume 4](Manuel-Architecture-HPC-Volume4.md) |
+| **Volume 5 détaillé** | [Manuel Architecture HPC — Volume 5](Manuel-Architecture-HPC-Volume5.md) |
+| **Volume 6 détaillé** | [Manuel Architecture HPC — Volume 6](Manuel-Architecture-HPC-Volume6.md) |
+| **Volume 7 détaillé** | [Manuel Architecture HPC — Volume 7](Manuel-Architecture-HPC-Volume7.md) |
+| **Volume 8 détaillé** | [Manuel Architecture HPC — Volume 8](Manuel-Architecture-HPC-Volume8.md) |
+| **Cours HPC complet** | [Cours HPC Complet](Cours-HPC-Complet.md) |
+| **Dictionnaire encyclopédique** | [Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC.md) |
+| **Annexes SRE & Cheatsheets** | [Annexes HPC (A–D)](hpc_annexes.md) |
+| **Guide Slurm** | [Guide SLURM Complet](Guide-SLURM-Complet.md) |
+| **Monitoring** | [Monitoring](Monitoring.md) |
+| **Glossaire & acronymes** | [Glossaire et Acronymes](Glossaire-et-Acronymes.md) |
+| **Accueil wiki** | [Home](Home.md) |
 
 ---
 

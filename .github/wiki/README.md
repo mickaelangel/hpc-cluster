@@ -102,9 +102,9 @@ Les fichiers utilisent le format Markdown standard GitHub :
 Les pages utilisent des liens relatifs entre elles :
 
 ```markdown
-[Installation Rapide](Installation-Rapide)
-[FAQ](FAQ)
-[Dépannage](Depannage)
+[Installation Rapide](Installation-Rapide.md)
+[FAQ](FAQ.md)
+[Dépannage](Depannage.md)
 ```
 
 Ces liens fonctionnent automatiquement dans le Wiki GitHub.

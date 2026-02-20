@@ -95,7 +95,7 @@ Les composants logiques s’articulent ainsi en production :
 
 - [ ] Séparation physique ou **VLAN strict** entre : réseau d’admin, réseau IPMI, réseau haute performance (Data/MPI)
 - [ ] **Quotas stricts** sur les nœuds de login (ex. `/home` limité)
-- [ ] Politique claire : pas de calcul lourd sur les login nodes (utilisation de [Slurm](Guide-SLURM-Complet) pour toute exécution)
+- [ ] Politique claire : pas de calcul lourd sur les login nodes (utilisation de [Slurm](Guide-SLURM-Complet.md) pour toute exécution)
 
 ---
 
@@ -352,11 +352,11 @@ Un administrateur junior modifie **directement** le fichier `/etc/security/limit
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs, annexes
-- **[Cours HPC Complet](Cours-HPC-Complet)** : concepts généraux, parallélisme, stockage, GPU
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : ordonnancement et soumission de jobs
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : définitions (BMC, PXE, Redfish, Lustre, etc.)
-- **[Home](Home)** : page d’accueil du wiki
+- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs, annexes
+- **[Cours HPC Complet](Cours-HPC-Complet.md)** : concepts généraux, parallélisme, stockage, GPU
+- **[Guide SLURM Complet](Guide-SLURM-Complet.md)** : ordonnancement et soumission de jobs
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** : définitions (BMC, PXE, Redfish, Lustre, etc.)
+- **[Home](Home.md)** : page d’accueil du wiki
 
 ---
 

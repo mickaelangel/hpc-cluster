@@ -22,7 +22,7 @@ Un supercalculateur n'a de valeur que s'il est **disponible, surveillé et préd
 ### Objectifs d'apprentissage
 
 - Déployer une architecture de surveillance basée sur des **séries temporelles** (TSDB)
-- Collecter les **métriques spécifiques** de [Slurm](Guide-SLURM-Complet) et de Lustre
+- Collecter les **métriques spécifiques** de [Slurm](Guide-SLURM-Complet.md) et de Lustre
 - **Centraliser** et parser les logs distribués
 
 ---
@@ -274,12 +274,12 @@ Vendredi 17 h. Un admin met à jour **slurm.conf** via Ansible et lance **scontr
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Vol. 1 à 6](Manuel-Architecture-HPC-Volume1)** : fondations à performances
-- **[Monitoring](Monitoring)** : Prometheus, Grafana, dashboards
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : slurmctld, accounting, sinfo
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : SLO, MTTR, TSDB, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Vol. 1 à 6](Manuel-Architecture-HPC-Volume1.md)** : fondations à performances
+- **[Monitoring](Monitoring.md)** : Prometheus, Grafana, dashboards
+- **[Guide SLURM Complet](Guide-SLURM-Complet.md)** : slurmctld, accounting, sinfo
+- **[Glossaire et Acronymes](Glossaire-et-Acronymes.md)** : SLO, MTTR, TSDB, etc.
+- **[Home](Home.md)** : page d'accueil du wiki
 
 ---
 

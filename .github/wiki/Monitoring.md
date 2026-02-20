@@ -357,9 +357,9 @@ node_cpu_seconds_total{instance="compute01", mode="idle", job="node", cluster="h
 
 ## 📚 Ressources
 
-- **📖 [Configuration de Base](Configuration-de-Base)**
-- **💡 [Astuces](Astuces)**
-- **🐛 [Dépannage](Depannage)**
+- **📖 [Configuration de Base](Configuration-de-Base.md)**
+- **💡 [Astuces](Astuces.md)**
+- **🐛 [Dépannage](Depannage.md)**
 
 ---
 
