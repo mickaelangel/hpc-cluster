@@ -235,18 +235,18 @@ sudo chmod -R 755 /var/lib/grafana
 
 ## 🚀 Prochaines Étapes
 
-1. **📖 [Configuration de Base](Configuration-de-Base)** : Configuration minimale
-2. **🔒 [Sécurité](Securite)** : Sécuriser l'installation
-3. **📊 [Monitoring](Monitoring)** : Configurer le monitoring avancé
-4. **👥 [Guide Utilisateur](Guide-Utilisateur)** : Utilisation du cluster
+1. **📖 [Configuration de Base](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configuration-de-Base.md)** : Configuration minimale
+2. **🔒 [Sécurité](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Securite.md)** : Sécuriser l'installation
+3. **📊 [Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** : Configurer le monitoring avancé
+4. **👥 [Guide Utilisateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Utilisateur.md)** : Utilisation du cluster
 
 ---
 
 ## 📚 Ressources
 
 - **📖 [Guide Installation Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/docs/GUIDE_INSTALLATION_COMPLETE.md)**
-- **🐛 [Dépannage](Depannage)** : Solutions aux problèmes
-- **💬 [FAQ](FAQ)** : Questions fréquentes
+- **🐛 [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)** : Solutions aux problèmes
+- **💬 [FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)** : Questions fréquentes
 
 ---
 

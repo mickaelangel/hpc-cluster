@@ -9,7 +9,7 @@
 - **Acronymes** : tri alphabétique, avec expansion et courte définition (tableaux par lettre).
 - **Termes** : notions importantes du domaine HPC, clusters, stockage, réseau, logiciels.
 - **Glossaire technique détaillé (A→Z)** : en bas de page, définitions longues avec exemples et termes liés pour les notions les plus critiques (architecture, Slurm, Lustre, IA, réseaux).
-- **Dictionnaire encyclopédique HPC** : entrées encyclopédiques complètes (définition rigoureuse, internals, bonnes/mauvaises pratiques, commandes, tuning, troubleshooting, références) — voir [Dictionnaire-Encyclopedique-HPC](Dictionnaire-Encyclopedique-HPC).
+- **Dictionnaire encyclopédique HPC** : entrées encyclopédiques complètes (définition rigoureuse, internals, bonnes/mauvaises pratiques, commandes, tuning, troubleshooting, références) — voir [Dictionnaire-Encyclopedique-HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Dictionnaire-Encyclopedique-HPC.md).
 
 ---
 
@@ -593,11 +593,11 @@ Définitions longues avec exemples et termes liés pour les notions les plus cri
 
 ## Liens utiles dans le wiki
 
-- **[Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC)** : 17 entrées (Backfill, BeeGFS, Burst Buffers, Cgroups v2, DLM, Fairshare, Slurm Fairshare, GPUDirect RDMA, GPU Tensor Cores, Hugepages, MPI Collectives, NUMA, NVLink, OOM-Killer, RDMA, RoCE v2, Striping) — format Doctorat/Architecte
-- **[Sommaire du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : 8 volumes (architecture, Slurm, Lustre, toolchains, performances, observabilité, fil rouge)
-- **[Cours-HPC-Complet](Cours-HPC-Complet)** : cours complet HPC (concepts, architecture, MPI, stockage)
-- **[Guide-SLURM-Complet](Guide-SLURM-Complet)** : Slurm en détail (commandes, partitions, QoS)
-- **[Home](Home)** : page d’accueil du wiki
+- **[Dictionnaire encyclopédique HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Dictionnaire-Encyclopedique-HPC.md)** : 17 entrées (Backfill, BeeGFS, Burst Buffers, Cgroups v2, DLM, Fairshare, Slurm Fairshare, GPUDirect RDMA, GPU Tensor Cores, Hugepages, MPI Collectives, NUMA, NVLink, OOM-Killer, RDMA, RoCE v2, Striping) — format Doctorat/Architecte
+- **[Sommaire du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : 8 volumes (architecture, Slurm, Lustre, toolchains, performances, observabilité, fil rouge)
+- **[Cours-HPC-Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md)** : cours complet HPC (concepts, architecture, MPI, stockage)
+- **[Guide-SLURM-Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** : Slurm en détail (commandes, partitions, QoS)
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d’accueil du wiki
 
 ---
 

@@ -467,9 +467,9 @@ sudo journalctl -u grafana -n 10 --no-pager
 
 ## 📚 Ressources
 
-- **📖 [Installation Rapide](Installation-Rapide)**
-- **❓ [FAQ](FAQ)**
-- **💡 [Astuces](Astuces)**
+- **📖 [Installation Rapide](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Installation-Rapide.md)**
+- **❓ [FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)**
+- **💡 [Astuces](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Astuces.md)**
 
 ---
 

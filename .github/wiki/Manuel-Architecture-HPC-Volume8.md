@@ -10,7 +10,7 @@
 
 Ce volume est l'**aboutissement** du manuel : synthèse des connaissances en un **projet de déploiement complet** (le « Fil Rouge ») et exploration des **frontières** du calcul intensif — Exascale, convergence IA-HPC, hybridation Cloud. On y traite les **phases chronologiques** du déploiement (design, bare-metal, stockage, ordonnancement, sécurisation, observabilité, tests de charge), les **critères de Go-Live**, puis les **défis Exascale** (énergie, DLC), la **convergence IA/HPC** et le **Cloud Bursting**. Le [Lab 11](#-lab-11--étude-de-cas-architecture--design) et l'[examen de fin de volume](#-examen-de-fin-de-volume-8-et-de-louvrage) clôturent l'ouvrage.
 
-**Prérequis :** Maîtrise des [Volumes 1 à 7](Manuel-Architecture-HPC-Volume1).
+**Prérequis :** Maîtrise des [Volumes 1 à 7](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md).
 
 ---
 
@@ -42,7 +42,7 @@ Tout commence par le **Co-Design** avec les chercheurs.
 |-------|---------|
 | **Rack & Stack** | Câblage physique. **Cable Plan** strict (éviter le croisement des câbles InfiniBand). |
 | **Réseau OOB** | VLAN isolé pour IPMI/Redfish (management). |
-| **Provisioning** | Nœud Master, [Warewulf](Manuel-Architecture-HPC-Volume1) v4, image OS (ex. Rocky Linux 9) en RAM (tmpfs). |
+| **Provisioning** | Nœud Master, [Warewulf](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md) v4, image OS (ex. Rocky Linux 9) en RAM (tmpfs). |
 | **Fabric IB** | Lancement d'**opensm**, vérification des liens (ibnetdiscover, pas de liens dégradés). |
 
 ---
@@ -64,7 +64,7 @@ Tout commence par le **Co-Design** avec les chercheurs.
 |-------|---------|
 | **Identity** | FreeIPA/LDAP, synchronisation via SSSD sur les nœuds. |
 | **Slurm** | slurmctld, slurmdbd (MariaDB), slurmd ; **cgroups** (cgroup.conf) pour isolation CPU/RAM. |
-| **Toolchains** | [Spack](Manuel-Architecture-HPC-Volume5) : GCC, Intel, OpenMPI, MVAPICH2 ; arbre **Lmod**. |
+| **Toolchains** | [Spack](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume5.md) : GCC, Intel, OpenMPI, MVAPICH2 ; arbre **Lmod**. |
 
 ---
 
@@ -72,7 +72,7 @@ Tout commence par le **Co-Design** avec les chercheurs.
 
 | Étape | Contenu |
 |-------|---------|
-| **Monitoring** | [Prometheus](Manuel-Architecture-HPC-Volume7), Grafana, node_exporter, slurm_exporter, Alertmanager. |
+| **Monitoring** | [Prometheus](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume7.md), Grafana, node_exporter, slurm_exporter, Alertmanager. |
 | **HPL & HPCG** | HPL sur **100 %** des nœuds pendant **24 h** (burn-in thermique). |
 | **Chaos Engineering** | Débrancher une fibre pendant un job MPI ; redémarrer le nœud slurmctld primaire pour valider le **basculement HA**. |
 
@@ -125,7 +125,7 @@ L'IA **remplace ou accélère** les solveurs traditionnels (ex. **PINNs** — Ph
 
 ### 26.3 Le Cloud Bursting (HPC élastique)
 
-Quand la file [Slurm](Guide-SLURM-Complet) locale **déborde**, le Cloud Bursting alloue des **nœuds virtuels** sur un cloud public (AWS, GCP, Azure).
+Quand la file [Slurm](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md) locale **déborde**, le Cloud Bursting alloue des **nœuds virtuels** sur un cloud public (AWS, GCP, Azure).
 
 **Fonctionnement Slurm :**
 - Nœuds Cloud avec état **CLOUD** dans slurm.conf
@@ -232,11 +232,11 @@ Les logs Slurm montrent que des **milliers de petits jobs** (durée **30 s**) on
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes  
-- **[Manuel Architecture HPC — Vol. 1 à 7](Manuel-Architecture-HPC-Volume1)** : fondations à observabilité  
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : partitions, CLOUD, QOS  
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : DLC, Exascale, SRE, etc.  
-- **[Home](Home)** : page d'accueil du wiki  
+- **[Sommaire complet du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes  
+- **[Manuel Architecture HPC — Vol. 1 à 7](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md)** : fondations à observabilité  
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** : partitions, CLOUD, QOS  
+- **[Glossaire et Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : DLC, Exascale, SRE, etc.  
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d'accueil du wiki  
 
 ---
 

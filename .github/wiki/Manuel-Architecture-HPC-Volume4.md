@@ -8,7 +8,7 @@
 
 ## Vue d'ensemble du volume
 
-L'**ordonnanceur** (scheduler) est le **cerveau** du cluster : il arbitre l'accès aux ressources entre les chercheurs, garantit le retour sur investissement du matériel et évite le chaos. Ce volume couvre la **théorie** de l'ordonnancement (FIFO, Backfill, Fairshare), l'**architecture et le déploiement** de [Slurm](Guide-SLURM-Complet) (slurmctld, slurmd, slurmdbd, HA, MUNGE), la **configuration avancée** (cgroups, GRES GPU, topology-aware), puis l'**exploitation et le troubleshooting**. Les [Labs 4 & 5](#-lab-4--5--déploiement-slurm-fairshare-et-cgroups) et l'[examen de fin de volume](#-examen-de-fin-de-volume-4) permettent de valider les acquis.
+L'**ordonnanceur** (scheduler) est le **cerveau** du cluster : il arbitre l'accès aux ressources entre les chercheurs, garantit le retour sur investissement du matériel et évite le chaos. Ce volume couvre la **théorie** de l'ordonnancement (FIFO, Backfill, Fairshare), l'**architecture et le déploiement** de [Slurm](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md) (slurmctld, slurmd, slurmdbd, HA, MUNGE), la **configuration avancée** (cgroups, GRES GPU, topology-aware), puis l'**exploitation et le troubleshooting**. Les [Labs 4 & 5](#-lab-4--5--déploiement-slurm-fairshare-et-cgroups) et l'[examen de fin de volume](#-examen-de-fin-de-volume-4) permettent de valider les acquis.
 
 **Prérequis :**
 - Algorithmique de base, théorie des files d'attente (Ch. 12)
@@ -328,13 +328,13 @@ Vous observez le nœud **node088** en état **drain**, avec la raison **(Reason)
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1)** : fondations, provisioning
-- **[Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2)** : réseaux, InfiniBand, sécurité
-- **[Manuel Architecture HPC — Volume 3](Manuel-Architecture-HPC-Volume3)** : stockage parallèle, Lustre
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : commandes utilisateur, sbatch, srun, partitions
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : Slurm, MUNGE, GRES, cgroups, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Volume 1](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md)** : fondations, provisioning
+- **[Manuel Architecture HPC — Volume 2](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume2.md)** : réseaux, InfiniBand, sécurité
+- **[Manuel Architecture HPC — Volume 3](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume3.md)** : stockage parallèle, Lustre
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** : commandes utilisateur, sbatch, srun, partitions
+- **[Glossaire et Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : Slurm, MUNGE, GRES, cgroups, etc.
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d'accueil du wiki
 
 ---
 

@@ -422,17 +422,17 @@ echo "=== Vérification Terminée ==="
 
 ## 🚀 Prochaines Étapes
 
-1. **🔒 [Sécurité](Securite)** : Sécuriser l'installation
-2. **📊 [Monitoring](Monitoring)** : Configurer le monitoring avancé
-3. **👥 [Guide Utilisateur](Guide-Utilisateur)** : Utilisation du cluster
+1. **🔒 [Sécurité](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Securite.md)** : Sécuriser l'installation
+2. **📊 [Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** : Configurer le monitoring avancé
+3. **👥 [Guide Utilisateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Utilisateur.md)** : Utilisation du cluster
 
 ---
 
 ## 📚 Ressources
 
-- **📖 [Installation Rapide](Installation-Rapide)**
-- **❓ [FAQ](FAQ)**
-- **🐛 [Dépannage](Depannage)**
+- **📖 [Installation Rapide](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Installation-Rapide.md)**
+- **❓ [FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)**
+- **🐛 [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)**
 
 ---
 

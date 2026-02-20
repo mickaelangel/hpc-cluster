@@ -13,7 +13,7 @@ L'infrastructure est stable, l'environnement logiciel est déployé. Ce volume c
 **Prérequis :**
 - Caches L1/L2/L3, RAM, TLB, gestion des pages (Ch. 19)
 - Compilation C/Fortran avec symboles de débogage `-g` (Ch. 20)
-- MPI, [Slurm](Guide-SLURM-Complet), [Lustre](Glossaire-et-Acronymes#l) (Ch. 21)
+- MPI, [Slurm](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md), [Lustre](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md#l) (Ch. 21)
 
 ---
 
@@ -278,11 +278,11 @@ Vous validez l'**acceptation** d'un cluster **100 nœuds** (AMD EPYC, 128 cœurs
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Vol. 1 à 5](Manuel-Architecture-HPC-Volume1)** : fondations, réseaux, stockage, Slurm, toolchains
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : partitions, topology, task/affinity
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : NUMA, TLB, HPL, HPCG, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Vol. 1 à 5](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md)** : fondations, réseaux, stockage, Slurm, toolchains
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** : partitions, topology, task/affinity
+- **[Glossaire et Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : NUMA, TLB, HPL, HPCG, etc.
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d'accueil du wiki
 
 ---
 

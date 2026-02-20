@@ -467,9 +467,9 @@ curl http://localhost:3000/debug/pprof/profile?seconds=30 > grafana-profile.out
 
 ## 📚 Ressources
 
-- **📖 [Configuration de Base](Configuration-de-Base)**
-- **🐛 [Dépannage](Depannage)**
-- **❓ [FAQ](FAQ)**
+- **📖 [Configuration de Base](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configuration-de-Base.md)**
+- **🐛 [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)**
+- **❓ [FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)**
 
 ---
 

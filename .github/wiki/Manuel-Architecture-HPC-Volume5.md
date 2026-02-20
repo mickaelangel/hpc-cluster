@@ -154,7 +154,7 @@ OpenMPI et MPICH ne gèrent plus directement InfiniBand ; ils délèguent à **U
 
 - Appréhender le **modèle d'exécution** matériel des GPU
 - Comprendre **NCCL** et **GPUDirect RDMA**
-- Configurer le **couplage CPU-GPU** dans [Slurm](Guide-SLURM-Complet)
+- Configurer le **couplage CPU-GPU** dans [Slurm](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)
 
 ---
 
@@ -296,11 +296,11 @@ Une équipe entraîne un modèle sur **4 nœuds × 4 GPU A100** (NVLink interne,
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Vol. 1 à 4](Manuel-Architecture-HPC-Volume1)** : fondations, réseaux, stockage, Slurm
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** : partitions, GRES, sbatch, srun
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : MPI, RDMA, NUMA, NCCL, UCX, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Vol. 1 à 4](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md)** : fondations, réseaux, stockage, Slurm
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** : partitions, GRES, sbatch, srun
+- **[Glossaire et Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : MPI, RDMA, NUMA, NCCL, UCX, etc.
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d'accueil du wiki
 
 ---
 

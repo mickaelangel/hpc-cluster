@@ -12,7 +12,7 @@ Le système de fichiers parallèle est l'un des composants les **plus critiques,
 
 **Prérequis :**
 - Systèmes de fichiers locaux (ext4, XFS) et réseaux (NFS) — Ch. 8
-- Réseaux HPC (InfiniBand, RDMA) — [Volume 2](Manuel-Architecture-HPC-Volume2) — Ch. 9–10
+- Réseaux HPC (InfiniBand, RDMA) — [Volume 2](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume2.md) — Ch. 9–10
 - Administration Linux avancée (block devices, LVM, multipathing) — Ch. 10
 
 ---
@@ -348,12 +348,12 @@ Vous avez un cluster Lustre. Le **lien réseau du MDS** « bagotte » (déconnex
 
 ## Liens utiles
 
-- **[Sommaire complet du Manuel HPC](Manuel-HPC-Sommaire-Complet)** : plan des 8 volumes, chapitres, labs
-- **[Manuel Architecture HPC — Volume 1](Manuel-Architecture-HPC-Volume1)** : fondations, provisioning
-- **[Manuel Architecture HPC — Volume 2](Manuel-Architecture-HPC-Volume2)** : réseaux, InfiniBand, sécurité
-- **[Cours HPC Complet](Cours-HPC-Complet)** : concepts, stockage, parallélisme
-- **[Glossaire et Acronymes](Glossaire-et-Acronymes)** : Lustre, MDS, OST, LNet, HSM, etc.
-- **[Home](Home)** : page d'accueil du wiki
+- **[Sommaire complet du Manuel HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : plan des 8 volumes, chapitres, labs
+- **[Manuel Architecture HPC — Volume 1](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume1.md)** : fondations, provisioning
+- **[Manuel Architecture HPC — Volume 2](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Manuel-Architecture-HPC-Volume2.md)** : réseaux, InfiniBand, sécurité
+- **[Cours HPC Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md)** : concepts, stockage, parallélisme
+- **[Glossaire et Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : Lustre, MDS, OST, LNet, HSM, etc.
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** : page d'accueil du wiki
 
 ---
 

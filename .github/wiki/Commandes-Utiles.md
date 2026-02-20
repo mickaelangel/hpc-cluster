@@ -486,9 +486,9 @@ tar czf - /path | gzip > archive.tar.gz
 
 ## 📚 Ressources
 
-- **📖 [Installation Rapide](Installation-Rapide)**
-- **💡 [Astuces](Astuces)**
-- **🐛 [Dépannage](Depannage)**
+- **📖 [Installation Rapide](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Installation-Rapide.md)**
+- **💡 [Astuces](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Astuces.md)**
+- **🐛 [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)**
 
 ---
 
