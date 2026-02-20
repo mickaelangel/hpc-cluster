@@ -54,10 +54,10 @@ Le guide détaillé couvre : **GROMACS**, **OpenFOAM**, **Quantum ESPRESSO**, **
 
 ## Voir aussi
 
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** — Partitions, QoS, sbatch, bonnes pratiques
-- **[Premiers Pas](Premiers-Pas)** — Connexion et premier job
-- **[Commandes Utiles](Commandes-Utiles)** — Référence rapide
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** — Partitions, QoS, sbatch, bonnes pratiques
+- **[Premiers Pas](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Premiers-Pas.md)** — Connexion et premier job
+- **[Commandes Utiles](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Commandes-Utiles.md)** — Référence rapide
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

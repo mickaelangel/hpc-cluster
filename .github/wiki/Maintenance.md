@@ -65,11 +65,11 @@ systemctl status grafana-server --no-pager
 
 ## Voir aussi
 
-- **[Guide Administrateur](Guide-Administrateur)** — Administration complète
-- **[Sécurité](Securite)** — Sécurité avancée
-- **[Dépannage](Depannage)** — Solutions aux problèmes courants
-- **[Home](Home)** — Accueil du wiki
+- **[Guide Administrateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Administrateur.md)** — Administration complète
+- **[Sécurité](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Securite.md)** — Sécurité avancée
+- **[Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)** — Solutions aux problèmes courants
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

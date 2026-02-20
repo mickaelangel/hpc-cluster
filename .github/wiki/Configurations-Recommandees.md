@@ -26,7 +26,7 @@ Quelques **configurations recommandées** selon le scénario : job léger, calcu
 ## Bonnes pratiques
 
 - **Walltime** : demander une durée réaliste pour éviter les annulations et libérer les ressources plus tôt si le job finit en avance.
-- **Ressources** : demander CPU/GPU/mémoire en cohérence avec l’application (voir [Guide SLURM Complet](Guide-SLURM-Complet)).
+- **Ressources** : demander CPU/GPU/mémoire en cohérence avec l’application (voir [Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)).
 - **Stockage** : utiliser le **scratch** pour les I/O temporaires, le **home** pour les scripts et petits fichiers, l’espace **projet** pour les données partagées.
 
 ---
@@ -41,11 +41,11 @@ Quelques **configurations recommandées** selon le scénario : job léger, calcu
 
 ## Voir aussi
 
-- **[Cas d'Usage](Cas-d-Usage)** — Exemples d'utilisation
-- **[Retours d'Expérience](Retours-d-Experience)** — Partage d'expériences
-- **[Guide SLURM Complet](Guide-SLURM-Complet)** — Partitions, QoS, options sbatch
-- **[Home](Home)** — Accueil du wiki
+- **[Cas d'Usage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cas-d-Usage.md)** — Exemples d'utilisation
+- **[Retours d'Expérience](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Retours-d-Experience.md)** — Partage d'expériences
+- **[Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md)** — Partitions, QoS, options sbatch
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

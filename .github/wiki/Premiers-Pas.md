@@ -59,16 +59,16 @@ Consulter le résultat : `cat slurm-<jobid>.out` (ou le fichier indiqué dans le
 
 | Besoin | Page |
 |--------|------|
-| Comprendre Slurm (partitions, QoS, sbatch) | [Guide SLURM Complet](Guide-SLURM-Complet) |
-| Lancer des jobs (batch, exemples) | [Lancement de Jobs](Lancement-de-Jobs) |
-| Utilisation quotidienne du cluster | [Guide Utilisateur](Guide-Utilisateur) |
-| Commandes utiles au quotidien | [Commandes Utiles](Commandes-Utiles) |
-| Problèmes courants | [Dépannage](Depannage) |
-| Concepts HPC (cours) | [Cours HPC Complet](Cours-HPC-Complet) |
-| Installation / configuration du cluster | [Installation Rapide](Installation-Rapide), [Configuration de Base](Configuration-de-Base) |
+| Comprendre Slurm (partitions, QoS, sbatch) | [Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md) |
+| Lancer des jobs (batch, exemples) | [Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md) |
+| Utilisation quotidienne du cluster | [Guide Utilisateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Utilisateur.md) |
+| Commandes utiles au quotidien | [Commandes Utiles](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Commandes-Utiles.md) |
+| Problèmes courants | [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md) |
+| Concepts HPC (cours) | [Cours HPC Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md) |
+| Installation / configuration du cluster | [Installation Rapide](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Installation-Rapide.md), [Configuration de Base](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configuration-de-Base.md) |
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)
 
 **Bonne découverte du cluster.**

@@ -36,7 +36,7 @@ Toujours passer par le scheduler (pas d’exécution longue sur les nœuds de co
 sbatch mon_script_gromacs.sh
 ```
 
-Voir **[Lancement de Jobs](Lancement-de-Jobs)** pour les exemples détaillés par application.
+Voir **[Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md)** pour les exemples détaillés par application.
 
 ---
 
@@ -49,10 +49,10 @@ Voir **[Lancement de Jobs](Lancement-de-Jobs)** pour les exemples détaillés pa
 
 ## Voir aussi
 
-- **[Lancement de Jobs](Lancement-de-Jobs)** — Soumission Slurm, exemples GROMACS, OpenFOAM, etc.
-- **[Guide Utilisateur](Guide-Utilisateur)** — Utilisation quotidienne du cluster
-- **[FAQ](FAQ)** — Questions fréquentes
+- **[Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md)** — Soumission Slurm, exemples GROMACS, OpenFOAM, etc.
+- **[Guide Utilisateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Utilisateur.md)** — Utilisation quotidienne du cluster
+- **[FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)** — Questions fréquentes
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

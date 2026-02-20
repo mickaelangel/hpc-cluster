@@ -357,9 +357,9 @@ node_cpu_seconds_total{instance="compute01", mode="idle", job="node", cluster="h
 
 ## 📚 Ressources
 
-- **📖 [Configuration de Base](Configuration-de-Base)**
-- **💡 [Astuces](Astuces)**
-- **🐛 [Dépannage](Depannage)**
+- **📖 [Configuration de Base](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configuration-de-Base.md)**
+- **💡 [Astuces](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Astuces.md)**
+- **🐛 [Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)**
 
 ---
 

@@ -266,16 +266,16 @@ module list
 | `sinfo` | État nœuds/partitions |
 | `sacct` | Historique des jobs |
 
-Pour plus de commandes système (Prometheus, Grafana, Slurm, Docker, etc.) : [Commandes-Utiles](Commandes-Utiles).
+Pour plus de commandes système (Prometheus, Grafana, Slurm, Docker, etc.) : [Commandes-Utiles](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Commandes-Utiles.md).
 
 ---
 
 ## 9. Aller plus loin
 
-- **[Cours-HPC-Complet](Cours-HPC-Complet)** : architecture HPC, MPI, stockage, GPU
-- **[Glossaire-et-Acronymes](Glossaire-et-Acronymes)** : acronymes et définitions (SLURM, PBS, MPI, etc.)
-- **[Depannage](Depannage)** : problèmes courants et solutions
-- **[FAQ](FAQ)** : questions fréquentes sur le cluster
+- **[Cours-HPC-Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md)** : architecture HPC, MPI, stockage, GPU
+- **[Glossaire-et-Acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : acronymes et définitions (SLURM, PBS, MPI, etc.)
+- **[Depannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)** : problèmes courants et solutions
+- **[FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)** : questions fréquentes sur le cluster
 
 ---
 

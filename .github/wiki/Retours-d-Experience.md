@@ -34,17 +34,17 @@ Cette page est dédiée aux **retours d'expérience** : bonnes pratiques, piège
 
 - **Guide communauté** : [docs/GUIDE_COMMUNAUTE.md](https://github.com/mickaelangel/hpc-cluster/blob/main/docs/GUIDE_COMMUNAUTE.md)
 - **Contribuer** : voir le guide de contribution du dépôt (CONTRIBUTING ou README)
-- **Astuces** : [Astuces](Astuces) — trucs et optimisations
-- **FAQ** : [FAQ](FAQ) — questions fréquentes
+- **Astuces** : [Astuces](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Astuces.md) — trucs et optimisations
+- **FAQ** : [FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md) — questions fréquentes
 
 ---
 
 ## Voir aussi
 
-- **[Cas d'Usage](Cas-d-Usage)** — Exemples d'utilisation
-- **[Configurations Recommandées](Configurations-Recommandees)** — Configurations par scénario
-- **[Home](Home)** — Accueil du wiki
+- **[Cas d'Usage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cas-d-Usage.md)** — Exemples d'utilisation
+- **[Configurations Recommandées](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configurations-Recommandees.md)** — Configurations par scénario
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

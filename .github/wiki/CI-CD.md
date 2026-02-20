@@ -65,10 +65,10 @@ deploy:
 
 ## Voir aussi
 
-- **[Infrastructure as Code](Infrastructure-as-Code)** — Terraform, Ansible
-- **[Monitoring](Monitoring)** — Observabilité des déploiements
-- **[Home](Home)** — Accueil du wiki
+- **[Infrastructure as Code](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Infrastructure-as-Code.md)** — Terraform, Ansible
+- **[Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** — Observabilité des déploiements
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

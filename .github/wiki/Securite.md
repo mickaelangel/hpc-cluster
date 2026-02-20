@@ -51,11 +51,11 @@ iptables -L -n -v
 
 ## Voir aussi
 
-- **[Guide Administrateur](Guide-Administrateur)** — Administration complète
-- **[Maintenance](Maintenance)** — Opérations et procédures
-- **[Monitoring](Monitoring)** — Observabilité et dashboards sécurité
-- **[Home](Home)** — Accueil du wiki
+- **[Guide Administrateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Administrateur.md)** — Administration complète
+- **[Maintenance](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Maintenance.md)** — Opérations et procédures
+- **[Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** — Observabilité et dashboards sécurité
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

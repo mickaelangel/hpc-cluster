@@ -71,11 +71,11 @@ Exemple d’usage : déploiement Slurm, configuration FreeIPA, déploiement des 
 
 ## Voir aussi
 
-- **[CI/CD](CI-CD)** — Pipelines et automatisation
-- **[Monitoring](Monitoring)** — Observabilité
-- **[Guide Administrateur](Guide-Administrateur)** — Administration du cluster
-- **[Home](Home)** — Accueil du wiki
+- **[CI/CD](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/CI-CD.md)** — Pipelines et automatisation
+- **[Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** — Observabilité
+- **[Guide Administrateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Administrateur.md)** — Administration du cluster
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

@@ -14,11 +14,11 @@ Cette page regroupe des **cas d'usage** typiques : simulation, calcul parallèle
 
 | Domaine | Exemple | Ressources |
 |--------|---------|-------------|
-| **Simulation** | GROMACS, OpenFOAM, LAMMPS, NAMD | [Lancement de Jobs](Lancement-de-Jobs), [Applications Scientifiques](Applications-Scientifiques) |
-| **Calcul parallèle** | MPI, OpenMP, jobs multi-nœuds | [Guide SLURM Complet](Guide-SLURM-Complet) |
-| **Big Data / ML** | Spark, TensorFlow, PyTorch sur le cluster | [Applications Scientifiques](Applications-Scientifiques), docs Machine Learning / Big Data |
-| **Visualisation** | ParaView, VisIt (rendu ou post-traitement) | [Lancement de Jobs](Lancement-de-Jobs) |
-| **Dev / tests** | Compilation, tests unitaires, petits jobs | [Premiers Pas](Premiers-Pas), [Guide Utilisateur](Guide-Utilisateur) |
+| **Simulation** | GROMACS, OpenFOAM, LAMMPS, NAMD | [Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md), [Applications Scientifiques](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Applications-Scientifiques.md) |
+| **Calcul parallèle** | MPI, OpenMP, jobs multi-nœuds | [Guide SLURM Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-SLURM-Complet.md) |
+| **Big Data / ML** | Spark, TensorFlow, PyTorch sur le cluster | [Applications Scientifiques](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Applications-Scientifiques.md), docs Machine Learning / Big Data |
+| **Visualisation** | ParaView, VisIt (rendu ou post-traitement) | [Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md) |
+| **Dev / tests** | Compilation, tests unitaires, petits jobs | [Premiers Pas](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Premiers-Pas.md), [Guide Utilisateur](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Guide-Utilisateur.md) |
 | **Haute disponibilité** | Bascule frontaux, services critiques | [Guide HA](https://github.com/mickaelangel/hpc-cluster/blob/main/docs/GUIDE_HAUTE_DISPONIBILITE.md) |
 | **Disaster recovery** | Scénarios sinistre, restauration | [Disaster Recovery](https://github.com/mickaelangel/hpc-cluster/blob/main/docs/GUIDE_DISASTER_RECOVERY.md) |
 
@@ -44,10 +44,10 @@ Cette page regroupe des **cas d'usage** typiques : simulation, calcul parallèle
 
 ## Voir aussi
 
-- **[Configurations Recommandées](Configurations-Recommandees)** — Configurations par scénario
-- **[Retours d'Expérience](Retours-d-Experience)** — Partage d'expériences
-- **[Home](Home)** — Accueil du wiki
+- **[Configurations Recommandées](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configurations-Recommandees.md)** — Configurations par scénario
+- **[Retours d'Expérience](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Retours-d-Experience.md)** — Partage d'expériences
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

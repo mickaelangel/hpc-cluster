@@ -61,11 +61,11 @@ beegfs-ctl --listquota --uid=1001 /mnt/beegfs
 
 ## Voir aussi
 
-- **[Maintenance](Maintenance)** — Opérations et dépannage
-- **[Sécurité](Securite)** — Sécurité avancée
-- **[Monitoring](Monitoring)** — Observabilité
-- **[Home](Home)** — Accueil du wiki
+- **[Maintenance](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Maintenance.md)** — Opérations et dépannage
+- **[Sécurité](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Securite.md)** — Sécurité avancée
+- **[Monitoring](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Monitoring.md)** — Observabilité
+- **[Home](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)** — Accueil du wiki
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)

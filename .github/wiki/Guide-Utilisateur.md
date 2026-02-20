@@ -28,7 +28,7 @@ module avail   # modules disponibles
 - **Job interactif** : `srun --partition=normal --time=00:30:00 --pty bash`
 - **Job batch** : rédiger un script avec `#SBATCH` puis `sbatch mon_script.sh`
 
-Voir **[Premiers Pas](Premiers-Pas)** et **[Lancement de Jobs](Lancement-de-Jobs)** pour les détails.
+Voir **[Premiers Pas](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Premiers-Pas.md)** et **[Lancement de Jobs](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Lancement-de-Jobs.md)** pour les détails.
 
 ---
 
@@ -45,8 +45,8 @@ Voir **[Premiers Pas](Premiers-Pas)** et **[Lancement de Jobs](Lancement-de-Jobs
 ## 📚 Documentation complète
 
 - **Guide détaillé** (connexion, auth, jobs, bonnes pratiques) : [docs/GUIDE_UTILISATEUR.md](https://github.com/mickaelangel/hpc-cluster/blob/main/docs/GUIDE_UTILISATEUR.md)
-- **[FAQ](FAQ)** · **[Dépannage](Depannage)** · **[Commandes Utiles](Commandes-Utiles)**
+- **[FAQ](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/FAQ.md)** · **[Dépannage](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Depannage.md)** · **[Commandes Utiles](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Commandes-Utiles.md)**
 
 ---
 
-[← Accueil](Home)
+[← Accueil](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Home.md)
