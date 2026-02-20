@@ -6,12 +6,13 @@
 
 ### Pages Principales
 
-- **[FAQ](FAQ)** : Questions fréquentes
-- **[Installation Rapide](Installation-Rapide)** : Guide d'installation condensé
-- **[Configuration de Base](Configuration-de-Base)** : Configuration minimale
-- **[Dépannage Rapide](Depannage-Rapide)** : Solutions aux problèmes courants
-- **[Astuces](Astuces)** : Trucs et astuces
-- **[Cas d'Usage](Cas-d-Usage)** : Exemples d'utilisation
+- **[FAQ](.github/wiki/FAQ.md)** : Questions fréquentes
+- **[Installation Rapide](.github/wiki/Installation-Rapide.md)** : Guide d'installation condensé
+- **[Configuration de Base](.github/wiki/Configuration-de-Base.md)** : Configuration minimale
+- **[Dépannage](.github/wiki/Depannage.md)** : Solutions aux problèmes courants
+- **[Astuces](.github/wiki/Astuces.md)** : Trucs et astuces
+- **[Cas d'Usage](.github/wiki/Cas-d-Usage.md)** : Exemples d'utilisation
+- **[Accueil wiki complet](.github/wiki/Home.md)** : Sommaire formation HPC, cours, manuels, glossaire
 
 ## 🔗 Liens Utiles
 
