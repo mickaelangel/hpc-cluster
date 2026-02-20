@@ -16,7 +16,7 @@
 - [Prérequis](#-prérequis)
 - [Installation Rapide](#-installation-rapide)
 - [Déploiement Production](#-déploiement-production)
-- [Documentation](#-documentation)
+- [Documentation](#-documentation) (Wiki, Sommaire, Cours, Dictionnaire)
 - [Contribuer](#-contribuer)
 - [Sécurité](#-sécurité)
 - [Support](#-support)
@@ -128,11 +128,7 @@ Ce projet fournit une **infrastructure HPC complète et professionnelle** pour l
 
 ### Système
 
-<<<<<<< Updated upstream
-- **OS** :  openSUSE Leap 15.6
-=======
-- **OS** : openSUSE 15 (équivalent à SUSE 15 SP7)
->>>>>>> Stashed changes
+- **OS** : openSUSE Leap 15.6
 - **RAM** : Minimum 16GB (32GB+ recommandé)
 - **Disque** : Minimum 50GB (100GB+ recommandé)
 - **CPU** : 4+ cores (8+ recommandé)
@@ -213,7 +209,17 @@ docker-compose -f docker/docker-compose.prod.yml up -d
 
 ## 📚 Documentation
 
-### Documentation Complète
+### Wiki, formation et référence (niveau Master / Doctorat)
+
+- **📘 [Wiki — Accueil](.github/wiki/Home.md)** : Documentation collaborative du cluster (vue d’ensemble, navigation)
+- **📑 [Sommaire du Manuel HPC](.github/wiki/Manuel-HPC-Sommaire-Complet.md)** : Index des 8 volumes (~550–650 pages), chapitres, labs et études de cas
+- **📖 [Cours HPC Complet](.github/wiki/Cours-HPC-Complet.md)** : Formation exhaustive (concepts, architecture, parallélisme, stockage, GPU, conteneurs, sécurité, monitoring)
+- **📕 [Dictionnaire encyclopédique HPC](.github/wiki/Dictionnaire-Encyclopedique-HPC.md)** : Définitions rigoureuses, internals, bonnes pratiques (niveau Doctorat/Architecte)
+- **🔤 [Glossaire et acronymes](.github/wiki/Glossaire-et-Acronymes.md)** : SLURM, MPI, Lustre, cluster, allocation, fair-share, etc.
+
+*Sur GitHub : [Onglet Wiki](https://github.com/mickaelangel/hpc-cluster/wiki) (si activé).*
+
+### Documentation technique complète
 
 - **📖 [Index Complet](docs/INDEX_DOCUMENTATION_COMPLETE.md)** : Navigation dans tous les guides
 - **🚀 [Guide de Démarrage](docs/GUIDE_COMPLET_DEMARRAGE.md)** : Pour commencer
