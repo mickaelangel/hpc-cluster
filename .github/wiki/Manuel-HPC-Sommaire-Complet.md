@@ -2,7 +2,7 @@
 
 **Sommaire général de l'ouvrage**
 
-> **Estimation globale** : ~550 à 650 pages (hors Dictionnaire encyclopédique et Glossaire).  
+> **Estimation globale** : ~620 à 720 pages (9 volumes, hors Dictionnaire encyclopédique et Glossaire).  
 > **Niveau** : DevOps Senior / Architecte HPC — **Public** : Master, Doctorat, ingénieurs système et recherche.
 
 ---
@@ -117,6 +117,20 @@
 
 ---
 
+### VOLUME 9 : Data Science & Machine Learning sur cluster HPC  
+**~70 pages**
+
+| Chapitre | Titre | Contenu principal |
+|----------|--------|-------------------|
+| **Ch. 27** | Workloads Data/ML — data locality, I/O et formats | Formats (Parquet, Zarr, HDF5, WebDataset), sharding, cache NVMe, checkpoints. |
+| **Ch. 28** | Entraînement distribué sur Slurm (DDP, NCCL) | PyTorch DDP multi-nœuds, template sbatch, debug NCCL, scaling study. |
+| **Ch. 29** | Orchestration à l'échelle | Job arrays, Submitit, Optuna, Ray/Dask/Spark sur Slurm, anti-patterns. |
+| **Ch. 30** | Reproductibilité, MLOps on-prem, perf-to-solution | Env + données + code, tracking (MLflow), profiling, métriques métier. |
+
+➡️ **Cours détaillé** : [Manuel Architecture HPC — Volume 9](Manuel-Architecture-HPC-Volume9)
+
+---
+
 ## 🧪 Liste des labs (travaux pratiques)
 
 | Lab | Volume | Sujet |
@@ -132,6 +146,8 @@
 | **Lab 9** | Vol. 6 | Benchmarking I/O avec IOR sur le point de montage Lustre (tuning taille de transfert). |
 | **Lab 10** | Vol. 7 | Déploiement de l'exportateur Prometheus pour Slurm et dashboard Grafana de base. |
 | **Lab 11** | Vol. 8 | Étude de cas « Architecture & Design » (exercice sur table : budget, WRF, 200 kW). |
+| **Lab 12** | Vol. 9 | PyTorch DDP multi-nœuds via Slurm + Apptainer, debugging NCCL, scaling. |
+| **Lab 13** | Vol. 9 | Recherche d'hyperparamètres (Submitit + Optuna), agrégation de résultats. |
 
 ---
 
@@ -182,6 +198,7 @@
 | **Volume 6 détaillé** | [Manuel Architecture HPC — Volume 6](Manuel-Architecture-HPC-Volume6) |
 | **Volume 7 détaillé** | [Manuel Architecture HPC — Volume 7](Manuel-Architecture-HPC-Volume7) |
 | **Volume 8 détaillé** | [Manuel Architecture HPC — Volume 8](Manuel-Architecture-HPC-Volume8) |
+| **Volume 9 détaillé** | [Manuel Architecture HPC — Volume 9](Manuel-Architecture-HPC-Volume9) (Data Science & ML) |
 | **Cours HPC complet** | [Cours HPC Complet](Cours-HPC-Complet) |
 | **Dictionnaire encyclopédique** | [Dictionnaire encyclopédique HPC](Dictionnaire-Encyclopedique-HPC) |
 | **Annexes SRE & Cheatsheets** | [Annexes HPC (A–D)](hpc_annexes) |
