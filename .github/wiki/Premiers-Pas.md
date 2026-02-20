@@ -59,12 +59,16 @@ Consulter le résultat : `cat slurm-<jobid>.out` (ou le fichier indiqué dans le
 
 | Besoin | Page |
 |--------|------|
-| Comprendre Slurm (partitions, QoS, sbatch) | [Guide SLURM Complet](Guide-SLURM-Complet.md) |
-| Commandes utiles au quotidien | [Commandes Utiles](Commandes-Utiles.md) |
-| Problèmes courants | [Dépannage](Depannage.md) |
-| Concepts HPC (cours) | [Cours HPC Complet](Cours-HPC-Complet.md) |
-| Installation / configuration du cluster | [Installation Rapide](Installation-Rapide.md), [Configuration de Base](Configuration-de-Base.md) |
+| Comprendre Slurm (partitions, QoS, sbatch) | [Guide SLURM Complet](Guide-SLURM-Complet) |
+| Lancer des jobs (batch, exemples) | [Lancement de Jobs](Lancement-de-Jobs) |
+| Utilisation quotidienne du cluster | [Guide Utilisateur](Guide-Utilisateur) |
+| Commandes utiles au quotidien | [Commandes Utiles](Commandes-Utiles) |
+| Problèmes courants | [Dépannage](Depannage) |
+| Concepts HPC (cours) | [Cours HPC Complet](Cours-HPC-Complet) |
+| Installation / configuration du cluster | [Installation Rapide](Installation-Rapide), [Configuration de Base](Configuration-de-Base) |
 
 ---
+
+[← Accueil](Home)
 
 **Bonne découverte du cluster.**

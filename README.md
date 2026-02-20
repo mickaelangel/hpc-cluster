@@ -218,6 +218,7 @@ Liens directs vers les fichiers du wiki (dossier `.github/wiki/` dans le dépôt
 - **📖 [Cours HPC Complet](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Cours-HPC-Complet.md)** : Formation exhaustive (concepts, architecture, parallélisme, stockage, GPU, conteneurs, sécurité, monitoring)
 - **📕 [Dictionnaire encyclopédique HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Dictionnaire-Encyclopedique-HPC.md)** : Définitions rigoureuses, internals, bonnes pratiques (niveau Doctorat/Architecte)
 - **🔤 [Glossaire et acronymes](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Glossaire-et-Acronymes.md)** : SLURM, MPI, Lustre, cluster, allocation, fair-share, etc.
+- **📎 [Annexes SRE & Cheatsheets HPC](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/hpc_annexes.md)** : Annexe A Slurm (scontrol, sacct, sdiag) ; B Lustre (lfs, lctl, OST) ; C perf, numactl, htop, iostat ; D Post-Mortem Blameless (RCA).
 
 *Tous les fichiers du wiki : [.github/wiki/](https://github.com/mickaelangel/hpc-cluster/tree/main/.github/wiki) · [Onglet Wiki du projet](https://github.com/mickaelangel/hpc-cluster/wiki) (si activé).*
 

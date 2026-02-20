@@ -13,6 +13,7 @@
 - **[Astuces](.github/wiki/Astuces.md)** : Trucs et astuces
 - **[Cas d'Usage](.github/wiki/Cas-d-Usage.md)** : Exemples d'utilisation
 - **[Accueil wiki complet](.github/wiki/Home.md)** : Sommaire formation HPC, cours, manuels, glossaire
+- **[Annexes SRE & Cheatsheets HPC](.github/wiki/hpc_annexes.md)** : Slurm, Lustre, perf/numactl, Post-Mortem Blameless (RCA)
 
 ## 🔗 Liens Utiles
 
