@@ -4,6 +4,15 @@
 
 ---
 
+## Sommaire
+
+- [Diagnostic système](#-diagnostic-système)
+- [Problèmes courants](#-problèmes-courants) (services, métriques, Grafana, performances, ports)
+- [Problèmes de sécurité](#-problèmes-de-sécurité)
+- **Contexte** : En déploiement **Docker**, remplacer `systemctl` par `docker logs <conteneur>` et `docker exec` ; voir aussi [Troubleshooting](Troubleshooting) (10 cas réels avec commandes Docker).
+
+---
+
 ## 🔍 Diagnostic Système
 
 ### Vérification Rapide

@@ -39,9 +39,13 @@ Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise
 
 ### 🚀 Pour Démarrer
 
-- **[Installation Rapide](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Installation-Rapide.md)** : Installation en 5 minutes
-- **[Configuration de Base](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Configuration-de-Base.md)** : Configuration minimale fonctionnelle
-- **[Premiers Pas](https://github.com/mickaelangel/hpc-cluster/blob/main/.github/wiki/Premiers-Pas.md)** : Guide pour commencer
+- **[Quickstart DEMO (30 min)](Quickstart-DEMO)** : Lancer le cluster en mode démo (Docker)
+- **[Installation Rapide](Installation-Rapide)** : Installation en 5 minutes (Docker ou scripts)
+- **[Configuration de Base](Configuration-de-Base)** : Configuration minimale fonctionnelle
+- **[Premiers Pas](Premiers-Pas)** : Guide pour commencer
+- **[Checklist PROD](Checklist-PROD)** : Hardening, secrets, sauvegardes, upgrade/rollback
+- **[Status / Scope](Status-Scope)** : Tableau ✅/🟡/🔜/❌ — ce qui est implémenté dans le repo
+- **[Troubleshooting (10 cas)](Troubleshooting)** : Cas réels + commandes + correctifs
 
 ### 📚 Documentation par Rôle
 
@@ -122,19 +126,22 @@ Ce Wiki contient la documentation collaborative pour le **Cluster HPC Enterprise
 
 ## 🚀 Quick Start
 
-### Installation en 3 Commandes
+### Installation (démo Docker, ~30 min)
 
 ```bash
 git clone https://github.com/mickaelangel/hpc-cluster.git
 cd hpc-cluster
-sudo ./install-all.sh
+cp .env.example .env   # optionnel pour personnaliser les secrets démo
+make up-demo           # ou: docker compose -f docker/docker-compose-opensource.yml up -d
 ```
+
+Pour installation complète (scripts bare-metal) : `sudo ./install-all.sh` (voir [Installation Rapide](Installation-Rapide)).
 
 ### Accès aux Services
 
-- **Grafana** : http://localhost:3000 (admin/admin123 - ⚠️ À changer)
+- **Grafana** : http://localhost:3000 (utilisateur `admin` ; mot de passe : variable `GF_SECURITY_ADMIN_PASSWORD` dans `.env` ou valeur par défaut démo — voir [Quickstart DEMO](Quickstart-DEMO))
 - **Prometheus** : http://localhost:9090
-- **InfluxDB** : http://localhost:8086
+- **InfluxDB** : http://localhost:8086 (identifiants via variables d’environnement, voir `.env.example`)
 - **JupyterHub** : http://localhost:8000
 
 ---

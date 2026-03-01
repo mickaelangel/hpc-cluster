@@ -4,6 +4,17 @@
 
 ---
 
+## Contexte déploiement
+
+Ce dépôt propose **deux types** de déploiement :
+
+- **Docker (recommandé pour démo)** : `docker compose` avec `docker-compose-opensource.yml`. Les services (Prometheus, Grafana, InfluxDB, etc.) tournent dans des conteneurs. Vérification avec `docker ps`, `make health` — **pas** `systemctl`.
+- **Bare-metal / scripts** : `install-all.sh` et scripts sous `scripts/` installent les services sur l’OS hôte (systemd). Dans ce cas, utiliser `systemctl status prometheus`, etc.
+
+Les sections ci-dessous mélangent les deux ; adaptez les commandes selon votre choix (voir [Quickstart DEMO](Quickstart-DEMO) pour le mode Docker uniquement).
+
+---
+
 ## ⚡ Prérequis
 
 ### Système d'Exploitation
@@ -57,13 +68,19 @@ sudo ./install-all.sh
 
 ### Étape 3 : Vérifier l'Installation
 
-```bash
-# Vérifier les services
-sudo systemctl status prometheus
-sudo systemctl status grafana
-sudo systemctl status influxdb
+**Si vous avez utilisé Docker** (`make up-demo` ou `docker compose ... up -d`) :
 
-# Vérifier les ports
+```bash
+docker ps
+make health   # si Makefile disponible
+curl -s http://localhost:9090/-/healthy   # Prometheus
+curl -s http://localhost:3000/api/health  # Grafana
+```
+
+**Si vous avez utilisé les scripts bare-metal** (`install-all.sh`) :
+
+```bash
+sudo systemctl status prometheus grafana influxdb
 sudo netstat -tlnp | grep -E '3000|9090|8086'
 ```
 
