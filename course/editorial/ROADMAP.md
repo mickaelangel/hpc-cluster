@@ -11,7 +11,8 @@
 | **J1** | Cadre éditorial (SOURCE_INDEX, STYLE_GUIDE, CROSS_REFERENCE_MAP, GLOSSARY, BIBLIOGRAPHY, ROADMAP) | Fait |
 | **J2** | V01 « Fondations Linux pour HPC » — structure + 6–8 chapitres + 2 labs + exercices + corrigés | ✅ Fait |
 | **J2b** | V02–V40 : squelettes (book.md par volume, métadonnées + TDM prévue) | ✅ Fait |
-| **J3** | V02 … V05 (Licence) — même format, dépendances V01 | Lots successifs |
+| **J2c** | V02–V40 : squelettes complets (structure livre + chapitres/labs, convention 400–800 pp, titres HPC+observabilité+SRE) | ✅ Fait |
+| **J3** | Rédiger chapitre par chapitre (V02 puis V03…) selon CIBLE_400_800_PAGES | Lots successifs |
 | **J4** | V06 … V14 (Licence) — compléter le socle Licence | Lots successifs |
 | **J5** | V15 … V24 (Master) — Slurm avancé, stockage, conteneurs, observabilité, IaC | Par volume |
 | **J6** | V25 … V30 (Master) — HA, backup, capacity, sécurité, CI/CD, projet Master | Par volume |
