@@ -1,3 +1,8 @@
+# Fichiers Git internes (ne doivent jamais être versionnés)
+FETCH_HEAD
+HEAD
+ORIG_HEAD
+
 # Clone local du wiki GitHub (sync script)
 hpc-cluster.wiki/
 
@@ -26,6 +31,8 @@ docker-offline-rpms/*.rpm
 # Volumes Docker (si montés localement)
 data/
 volumes/
+# Exception : répertoire des volumes de cours (course/volumes/)
+!course/volumes/
 prometheus_data/
 grafana_data/
 influxdb_data/
