@@ -151,6 +151,20 @@ Pour un déploiement « clé en main », utiliser **openSUSE Leap 15.6** sur l�
 
 ## 🚀 Installation Rapide
 
+### Mode démo (LAB) vs production (PROD)
+
+| | **Démo (LAB)** | **Production (PROD)** |
+|---|----------------|----------------------|
+| **Objectif** | Test, formation, POC | Exploitation durcie |
+| **Secrets** | Valeurs par défaut documentées (`.env.example`) | Obligatoires dans `.env` (jamais commiter `.env`) |
+| **SSH** | Root + mot de passe autorisé dans les conteneurs (ex. `root` / `hpc-demo-2024`) | Désactiver root SSH, utiliser clés SSH |
+| **Compose** | `docker compose -f docker/docker-compose-opensource.yml up -d` | `docker compose -f docker/docker-compose-opensource.yml -f docker/docker-compose.prod.yml up -d` après avoir défini les variables dans `.env` |
+| **Validation** | Optionnel | Lancer `scripts/check-env-prod.sh` avec `HPC_MODE=prod` |
+
+**Quickstart démo** : copier `.env.example` en `.env` (optionnel en démo), puis lancer l’option 1 ou 2 ci‑dessous, ou `make up-demo` depuis la racine. Identifiants par défaut : Grafana `admin` / `demo-hpc-2024`, SSH frontal `root` / `hpc-demo-2024` (voir Dockerfiles). `make health` vérifie Prometheus, Grafana et InfluxDB.
+
+**Prod hardening checklist** : voir [Checklist Pré-Production](#-déploiement-production) + définir tous les secrets dans `.env`, exécuter `scripts/check-env-prod.sh` avec `HPC_MODE=prod`, désactiver root SSH et PasswordAuthentication sur les frontaux en prod.
+
 ### Option 1 : Installation Automatique (Recommandé)
 
 ```bash
@@ -210,10 +224,30 @@ sudo ./scripts/deployment/export-hors-ligne-complet.sh
 ### Configuration Production
 
 ```bash
-# Utiliser la configuration production
-docker-compose -f docker/docker-compose.prod.yml up -d
+# 1. Définir les secrets (copier .env.example vers .env, remplacer les valeurs)
+cp .env.example .env
+# Éditer .env avec des mots de passe forts
+
+# 2. Vérifier les variables (mode prod)
+HPC_MODE=prod . scripts/check-env-prod.sh
+
+# 3. Lancer avec les deux fichiers compose (depuis la racine du projet)
+docker compose -f docker/docker-compose-opensource.yml -f docker/docker-compose.prod.yml up -d
 
 # Voir docs/GUIDE_DEPLOIEMENT_PRODUCTION.md
+```
+
+**Note** : `docker-compose.prod.yml` ajoute healthchecks, logging et (en Swarm uniquement) des limites de ressources. Voir le commentaire en tête du fichier.
+
+### Vérification Slurm (noms de nœuds)
+
+Les nœuds de calcul dans `configs/slurm/slurm.conf` sont nommés `compute-01` … `compute-06` pour correspondre aux hostnames des conteneurs Docker. Après démarrage du cluster et configuration de Slurm sur les frontaux :
+
+```bash
+# Depuis un frontal (ex. docker exec -it hpc-frontal-01 bash)
+scontrol show nodes    # doit lister frontal-01, frontal-02, compute-01..06
+sinfo                  # partitions normal / gpu
+squeue                 # file des jobs
 ```
 
 ## 📚 Documentation

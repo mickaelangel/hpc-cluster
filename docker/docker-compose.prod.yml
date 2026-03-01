@@ -5,16 +5,21 @@ version: '3.8'
 # openSUSE 15.6 - Déploiement
 # ============================================================================
 #
+# ⚠️  ATTENTION — deploy.resources (limits/reservations) :
+#     Ces blocs sont pris en compte UNIQUEMENT avec Docker Swarm.
+#     En "docker compose" standalone, les limites CPU/RAM ne sont PAS appliquées.
+#     Pour des limites en mode compose seul, utiliser les options au niveau
+#     des services (mem_limit, cpus) si nécessaire — voir doc Docker.
+#
 # DIFFÉRENCES AVEC docker-compose-opensource.yml :
-# - Ressources limitées et garanties
+# - Ressources limitées et garanties (effectives en Swarm uniquement)
 # - Healthchecks renforcés
 # - Logging structuré
 # - Restart policies strictes
-# - Sécurité renforcée
-# - Monitoring avancé
 #
 # USAGE:
-#   docker-compose -f docker-compose-opensource.yml -f docker-compose.prod.yml up -d
+#   docker compose -f docker-compose-opensource.yml -f docker-compose.prod.yml up -d
+#   En prod : définir tous les secrets dans .env (pas de valeurs démo).
 # ============================================================================
 
 services:

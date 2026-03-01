@@ -188,7 +188,7 @@ if [ $SUCCESS -eq $TOTAL ]; then
     echo ""
     echo -e "${CYAN}Services disponibles:${NC}"
     echo -e "  - Prometheus: http://localhost:9090"
-    echo -e "  - Grafana: http://localhost:3000 (admin / demo-hpc-2024)"
+    echo -e "  - Grafana: http://localhost:3000 (admin / voir .env ou défaut demo-hpc-2024)"
     echo -e "  - Frontaux: SSH sur ports 2222, 2223"
     echo ""
     echo -e "${CYAN}Documentation:${NC}"

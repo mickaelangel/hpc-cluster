@@ -12,6 +12,8 @@
 
 Ce guide décrit l'installation complète du cluster HPC sur **openSUSE Leap 15.6** en mode **offline (air-gapped)**.
 
+**Mode LAB (démo) vs PROD** : En démo, les identifiants par défaut sont documentés (voir `.env.example` et README). En production, définir tous les secrets dans un fichier `.env` (non versionné) et exécuter `scripts/check-env-prod.sh` avec `HPC_MODE=prod` avant de lancer le compose. Voir le README, section « Mode démo vs production ».
+
 ---
 
 ## 📋 Prérequis
