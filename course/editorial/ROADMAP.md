@@ -1,6 +1,6 @@
 # ROADMAP — Passage à 40 volumes
 
-**Objectif** : Atteindre 40 volumes de 400–800 pages chacun, de façon incrémentale (volume par volume, chapitre par chapitre).
+**Objectif** : Atteindre 40 volumes de **400–800 pages chacun**, de façon incrémentale (volume par volume, chapitre par chapitre). Convention et méthode : [CIBLE_400_800_PAGES.md](CIBLE_400_800_PAGES.md).
 
 ---
 
@@ -9,7 +9,8 @@
 | Jalon | Contenu | Estimation |
 |-------|---------|------------|
 | **J1** | Cadre éditorial (SOURCE_INDEX, STYLE_GUIDE, CROSS_REFERENCE_MAP, GLOSSARY, BIBLIOGRAPHY, ROADMAP) | Fait |
-| **J2** | V01 « Fondations Linux pour HPC » — structure + 6–8 chapitres + 2 labs + exercices + corrigés | En cours |
+| **J2** | V01 « Fondations Linux pour HPC » — structure + 6–8 chapitres + 2 labs + exercices + corrigés | ✅ Fait |
+| **J2b** | V02–V40 : squelettes (book.md par volume, métadonnées + TDM prévue) | ✅ Fait |
 | **J3** | V02 … V05 (Licence) — même format, dépendances V01 | Lots successifs |
 | **J4** | V06 … V14 (Licence) — compléter le socle Licence | Lots successifs |
 | **J5** | V15 … V24 (Master) — Slurm avancé, stockage, conteneurs, observabilité, IaC | Par volume |
@@ -20,10 +21,10 @@
 
 ## Granularité pour 400–800 pages/volume
 
-- **Chapitres** : 15–25 par volume.
-- **Pages équivalent** : ~15–25 pages par chapitre (texte + figures + exercices).
-- **Lots** : 1 chapitre complet à la fois (objectifs, cours, exemples, erreurs fréquentes, validation, exercices, corrigé séparé).
-- **Labs** : 2–3 par volume en Licence ; 3–5 en Master/Doctorat.
+- **Chapitres** : 15–25 par volume (pour viser 400–800 pp).
+- **Pages par chapitre** : ~20–35 pp ; **labs** : 10–30 pp chacun. Voir [CIBLE_400_800_PAGES.md](CIBLE_400_800_PAGES.md).
+- **Règle** : chaque chapitre est rédigé **incrémentalement** à pleine longueur (pas de génération massive) ; un lot = 1 chapitre (ou 1 lab) complet selon le gabarit.
+- **Labs** : 2–10 par volume selon niveau.
 
 ---
 
@@ -42,6 +43,16 @@
 - **Extension** : ajouter chapitres jusqu’à 15–25 pour atteindre 400+ pages (thèmes : sécurité basique, réseau, premiers pas Slurm côté utilisateur, etc.).
 - **V02–V14** : idem, ~2–4 semaines par volume en rythme soutenu (selon disponibilité).
 - **Master/Doctorat** : contenu plus dense ; 1–2 mois par volume réaliste pour version 1.0.
+
+---
+
+## Prochaines étapes V01 (mini-checklist)
+
+- [ ] Étendre chapitres 1–9 à pleine longueur (~20–35 pp chacun) selon [CIBLE_400_800_PAGES.md](CIBLE_400_800_PAGES.md).
+- [ ] Rédiger chapitres 10–15 (contenu complet : théorie, exemples, erreurs, validation, exercices, à retenir, références).
+- [ ] Rédiger chapitres 16–17 (labs 3 et 4 : étapes, validation, troubleshooting).
+- [ ] Rédiger chapitres 18–20 (synthèse, annexes, évaluation) ; ajouter corrigés dans `solutions/`.
+- [ ] Vérifier checklist qualité « chapitre prêt » (CIBLE_400_800_PAGES) pour chaque chapitre rédigé.
 
 ---
 
