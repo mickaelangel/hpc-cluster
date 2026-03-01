@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Export Complet - Cluster HPC
 # Export pour déploiement offline
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

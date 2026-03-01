@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Installe Docker à partir de RPM locaux (sans Internet)
-# SUSE 15 SP4 / openSUSE Leap 15.4
+# openSUSE Leap 15.6
 # Usage: sudo bash scripts/deployment/install-docker-offline.sh
 #        ou depuis l'export: sudo ./install-docker-offline.sh
 # ============================================================================

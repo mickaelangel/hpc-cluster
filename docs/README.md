@@ -6,7 +6,7 @@ Infrastructure de monitoring complète pour cluster HPC simulé via Docker, comp
 - **2 nœuds frontaux** (master/backup)
 - **6 nœuds de calcul** (workers)
 - **Stack monitoring**: Prometheus + Grafana + Telegraf
-- **Environnement**: SUSE Linux Enterprise Server 15 SP7 / openSUSE Leap 15.4
+- **Environnement**: openSUSE Leap 15.6
 
 **Contrainte critique**: Déploiement air-gapped (hors ligne) - Package autonome exportable via clé USB.
 
@@ -71,7 +71,7 @@ Infrastructure de monitoring complète pour cluster HPC simulé via Docker, comp
 
 ### Sur Machine de Build (Online)
 
-- **OS**: openSUSE Leap 15.4 ou SUSE SLES 15 SP7
+- **OS**: openSUSE Leap 15.6
 - **Docker**: 20.10+ (API 1.41+)
 - **Docker Compose**: 1.29+ ou Docker Compose V2
 - **Espace disque**: 15GB minimum (pour images + export)
@@ -80,7 +80,7 @@ Infrastructure de monitoring complète pour cluster HPC simulé via Docker, comp
 
 ### Sur Serveur Cible (Offline)
 
-- **OS**: SUSE SLES 15 SP7 ou openSUSE Leap 15.4
+- **OS**: openSUSE Leap 15.6
 - **Docker**: 20.10+
 - **Docker Compose**: 1.29+ ou Docker Compose V2
 - **Espace disque**: 10GB minimum

@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Collection de Logs - Cluster HPC
 # Collection automatique de tous les logs pour dépannage
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

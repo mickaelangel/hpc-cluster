@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Configuration Spack Binary Cache - Cluster HPC
 # Cache binaire partagé via NFS pour accélérer les installations
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

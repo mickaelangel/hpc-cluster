@@ -22,7 +22,7 @@
 
 **R :** Prérequis minimaux :
 
-- **OS** : openSUSE 15, Ubuntu 22.04+, CentOS/RHEL 8+, Debian 11+
+- **OS** : openSUSE 15.6, Ubuntu 22.04+, CentOS/RHEL 8+, Debian 11+
 - **CPU** : 4 cores minimum (8+ recommandé)
 - **RAM** : 8 GB minimum (16+ GB recommandé)
 - **Disque** : 50 GB minimum (100+ GB SSD recommandé)

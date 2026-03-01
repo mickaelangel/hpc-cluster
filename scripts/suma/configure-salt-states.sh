@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Configuration Salt States - Cluster HPC
 # Configuration Salt States pour SUMA et conformité DISA STIG
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

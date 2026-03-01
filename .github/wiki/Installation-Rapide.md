@@ -8,7 +8,7 @@
 
 ### Système d'Exploitation
 
-- **openSUSE 15** (équivalent SUSE 15 SP7)
+- **openSUSE Leap 15.6**
 - **Ubuntu 22.04 LTS** ou supérieur
 - **CentOS/RHEL 8+** ou **Rocky Linux 8+**
 - **Debian 11+**

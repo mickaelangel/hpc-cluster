@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Export Complet Cluster HPC pour Démo Hors Ligne
-# Export Docker + Configurations + Documentation pour SUSE 15 SP4
+# Export Docker + Configurations + Documentation pour openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail
@@ -49,7 +49,7 @@ IMG_EOF
 
 # Images du stack open-source (docker-compose-opensource.yml) pour démo hors ligne
 IMAGES=(
-    "opensuse/leap:15.4"
+    "opensuse/leap:15.6"
     "prom/prometheus:v2.48.0"
     "grafana/grafana:10.2.0"
     "influxdb:2.7"
@@ -138,16 +138,16 @@ mkdir -p docker-offline-rpms
 cp "$PROJECT_ROOT/scripts/deployment/install-docker-offline.sh" . 2>/dev/null || true
 chmod +x install-docker-offline.sh 2>/dev/null || true
 cat > docker-offline-rpms/README.txt <<'RPMS_EOF'
-RPM Docker pour installation hors ligne (SUSE 15 SP4 / openSUSE Leap 15.4)
+RPM Docker pour installation hors ligne (openSUSE 15.6 / openSUSE Leap 15.6)
 ================================================================================
 
-Sur une machine AVEC INTERNET (SUSE 15 SP4 ou openSUSE Leap 15.4) :
+Sur une machine AVEC INTERNET (openSUSE 15.6 ou openSUSE Leap 15.6) :
   sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
 
 Cela remplit ce dossier avec les .rpm. Copiez tout l'export (ou au minimum
 ce dossier docker-offline-rpms/) sur la clé USB.
 
-Sur le serveur SUSE 15 SP4 HORS LIGNE :
+Sur le serveur openSUSE 15.6 HORS LIGNE :
   sudo ./install-docker-offline.sh
 puis
   sudo ./install-demo.sh
@@ -166,7 +166,7 @@ cat > install-demo.sh <<'INSTALL_EOF'
 #!/bin/bash
 # ============================================================================
 # Installation Cluster HPC - Démo Hors Ligne
-# SUSE 15 SP4
+# openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail
@@ -180,15 +180,15 @@ echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}INSTALLATION CLUSTER HPC - DÉMO${NC}"
 echo -e "${BLUE}========================================${NC}"
 
-# Vérifier SUSE 15 SP4
+# Vérifier openSUSE 15.6
 if [ ! -f /etc/os-release ]; then
     echo "❌ Fichier /etc/os-release non trouvé"
     exit 1
 fi
 
 source /etc/os-release
-if [[ "$ID" != "opensuse-leap" ]] && [[ "$ID" != "sles" ]]; then
-    echo -e "${YELLOW}⚠️  Ce script est conçu pour SUSE 15 SP4${NC}"
+if [[ "$ID" != "opensuse-leap" ]]; then
+    echo -e "${YELLOW}⚠️  Ce script est conçu pour openSUSE 15.6${NC}"
     read -p "Continuer quand même ? (y/N): " CONTINUE
     [[ "$CONTINUE" != "y" ]] && exit 1
 fi
@@ -283,7 +283,7 @@ cat > README-EXPORT.md <<'README_EOF'
 
 **Date d'export**: $(date)  
 **Version**: 2.0  
-**Destination**: SUSE 15 SP4 (Hors Ligne)
+**Destination**: openSUSE 15.6 (Hors Ligne)
 
 ---
 
@@ -298,11 +298,11 @@ cat > README-EXPORT.md <<'README_EOF'
 
 ---
 
-## 🚀 Installation sur SUSE 15 SP4
+## 🚀 Installation sur openSUSE 15.6
 
 ### Prérequis
 
-- SUSE 15 SP4 installé
+- openSUSE 15.6 installé
 - Accès root ou sudo
 - Au moins 50GB d'espace disque
 - Au moins 16GB de RAM
@@ -410,7 +410,7 @@ echo "  - Scripts: scripts/"
 echo "  - Documentation: docs/"
 echo "  - Dashboards: grafana-dashboards/"
 echo ""
-echo -e "${YELLOW}Pour transférer sur le serveur SUSE 15 SP4:${NC}"
+echo -e "${YELLOW}Pour transférer sur le serveur openSUSE 15.6:${NC}"
 echo "  1. Copier ${EXPORT_NAME}.tar.gz sur le serveur"
 echo "  2. Extraire: tar -xzf ${EXPORT_NAME}.tar.gz"
 echo "  3. Installer: cd ${EXPORT_NAME} && sudo ./install-demo.sh"

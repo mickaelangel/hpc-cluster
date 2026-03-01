@@ -16,7 +16,7 @@
       assert:
         that:
           - ansible_os_family == "Suse"
-        fail_msg: "Ce playbook nécessite SUSE Linux"
+        fail_msg: "Ce playbook nécessite openSUSE Leap 15.6"
         
     - name: Mettre à jour le système
       zypper:

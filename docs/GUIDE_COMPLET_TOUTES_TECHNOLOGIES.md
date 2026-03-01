@@ -36,7 +36,7 @@
 **Docker** est une plateforme de conteneurisation qui permet d'empaqueter une application et ses dépendances dans un conteneur isolé, léger et portable.
 
 **Concepts clés** :
-- **Image** : Template d'un conteneur (ex: `openSUSE Leap 15.4`)
+- **Image** : Template d'un conteneur (ex: `openSUSE Leap 15.6`)
 - **Conteneur** : Instance d'une image en cours d'exécution
 - **Dockerfile** : Instructions pour construire une image
 - **Docker Compose** : Orchestration de plusieurs conteneurs
@@ -60,7 +60,7 @@
 - Standard de l'industrie (utilisé partout)
 - Large écosystème (millions d'images disponibles)
 - Facile à apprendre et utiliser
-- Compatible SUSE 15 SP4
+- Compatible openSUSE 15.6
 - Parfait pour simulation/démo de cluster
 
 #### Comment ça fonctionne ?
@@ -72,7 +72,7 @@
 │                                     │
 │  ┌───────────────────────────────┐  │
 │  │  Conteneur frontal-01         │  │
-│  │  ├─► openSUSE Leap 15.4       │  │
+│  │  ├─► openSUSE Leap 15.6       │  │
 │  │  ├─► SlurmCTLD                │  │
 │  │  ├─► LDAP (389DS)             │  │
 │  │  ├─► Kerberos KDC             │  │
@@ -81,7 +81,7 @@
 │                                     │
 │  ┌───────────────────────────────┐  │
 │  │  Conteneur compute-01          │  │
-│  │  ├─► openSUSE Leap 15.4       │  │
+│  │  ├─► openSUSE Leap 15.6       │  │
 │  │  ├─► SlurmD                   │  │
 │  │  ├─► BeeGFS Client            │  │
 │  │  └─► Applications HPC         │  │
@@ -131,28 +131,28 @@ docker system prune -a
 
 ---
 
-### 1.2 openSUSE Leap 15.4
+### 1.2 openSUSE Leap 15.6
 
 #### Qu'est-ce que c'est ?
 
-**openSUSE Leap** est une distribution Linux basée sur SUSE Linux Enterprise Server (SLES), garantissant la compatibilité avec SLES.
+**openSUSE Leap** est une distribution Linux communautaire.
 
 #### Pourquoi l'utiliser ?
 
 **Avantages** :
-- ✅ **Compatible SLES** : Même base que SUSE 15 SP4/SP7
+- ✅ **openSUSE Leap 15.6** : Base unique du projet
 - ✅ **Stable** : Version LTS (Long Term Support)
 - ✅ **Zypper** : Gestionnaire de packages performant
 - ✅ **Enterprise-ready** : Utilisé en production
 - ✅ **Open-source** : Gratuit
 
 **Alternatives considérées** :
-- ❌ **CentOS/RHEL** : Moins compatible avec SUSE
-- ❌ **Ubuntu** : Différent de SUSE (apt vs zypper)
+- ❌ **CentOS/RHEL** : Autre écosystème (yum/dnf)
+- ❌ **Ubuntu** : Différent (apt vs zypper)
 - ❌ **Debian** : Moins enterprise-oriented
 
 **Pourquoi openSUSE Leap a été choisi** :
-- Compatibilité maximale avec SUSE 15 SP4
+- Compatibilité maximale avec openSUSE 15.6
 - Stable et fiable
 - Zypper excellent gestionnaire de packages
 - Parfait pour environnement enterprise

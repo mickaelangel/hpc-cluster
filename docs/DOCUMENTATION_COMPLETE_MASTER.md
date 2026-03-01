@@ -37,7 +37,7 @@ Un **Cluster HPC (High-Performance Computing)** est un ensemble de serveurs inte
 
 ### 1.2 Objectif de ce Projet
 
-**Mission** : Créer un cluster HPC complet, **100% open-source**, portable via Docker, prêt pour déploiement sur **SUSE 15 SP4**, avec toutes les fonctionnalités nécessaires pour un environnement de production.
+**Mission** : Créer un cluster HPC complet, **100% open-source**, portable via Docker, prêt pour déploiement sur **openSUSE 15.6**, avec toutes les fonctionnalités nécessaires pour un environnement de production.
 
 **Contraintes** :
 - ✅ **100% Open-Source** : Aucune licence commerciale
@@ -120,7 +120,7 @@ Un **Cluster HPC (High-Performance Computing)** est un ensemble de serveurs inte
 - Standard de l'industrie
 - Large écosystème
 - Facile à apprendre
-- Compatible SUSE 15 SP4
+- Compatible openSUSE 15.6
 
 #### Comment ça fonctionne ?
 
@@ -128,13 +128,13 @@ Un **Cluster HPC (High-Performance Computing)** est un ensemble de serveurs inte
 Docker Engine
     │
     ├─► Conteneur frontal-01
-    │   ├─► openSUSE Leap 15.4
+    │   ├─► openSUSE Leap 15.6
     │   ├─► SlurmCTLD
     │   ├─► LDAP
     │   └─► Services système
     │
     ├─► Conteneur compute-01
-    │   ├─► openSUSE Leap 15.4
+    │   ├─► openSUSE Leap 15.6
     │   ├─► SlurmD
     │   ├─► BeeGFS Client
     │   └─► Applications HPC

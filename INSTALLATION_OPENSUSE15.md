@@ -1,4 +1,4 @@
-# Installation Cluster HPC sur openSUSE 15
+# Installation Cluster HPC sur openSUSE 15.6
 ## Guide Complet d'Installation Offline avec Docker
 
 **Classification**: Documentation Installation  
@@ -10,7 +10,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-Ce guide décrit l'installation complète du cluster HPC sur **openSUSE 15** (équivalent à SUSE 15 SP7) en mode **offline (air-gapped)**.
+Ce guide décrit l'installation complète du cluster HPC sur **openSUSE Leap 15.6** en mode **offline (air-gapped)**.
 
 ---
 
@@ -18,7 +18,7 @@ Ce guide décrit l'installation complète du cluster HPC sur **openSUSE 15** (é
 
 ### Système Cible
 
-- **OS** : openSUSE 15 (équivalent à SUSE 15 SP7)
+- **OS** : openSUSE Leap 15.6
 - **Docker** : Version 20.10+ (à installer)
 - **Docker Compose** : Version 2.0+ (à installer)
 - **Espace disque** : 50GB+ minimum
@@ -47,7 +47,7 @@ cd ../..
 tar -czf hpc-cluster-opensuse15.tar.gz "cluster hpc/"
 ```
 
-### Étape 2 : Transfert vers Serveur openSUSE 15
+### Étape 2 : Transfert vers Serveur openSUSE 15.6
 
 **Options** :
 - USB/DVD
@@ -60,9 +60,9 @@ scp hpc-cluster-opensuse15.tar.gz user@server:/opt/
 scp hpc-cluster-images.tar user@server:/opt/
 ```
 
-### Étape 3 : Installation Docker sur openSUSE 15
+### Étape 3 : Installation Docker sur openSUSE 15.6
 
-**Sur le serveur openSUSE 15** :
+**Sur le serveur openSUSE 15.6** :
 
 ```bash
 # Installation Docker depuis médias openSUSE
@@ -179,7 +179,7 @@ Toute la documentation est dans `docs/` :
 
 ## 🎉 Résultat
 
-**Le cluster HPC est installé et fonctionnel sur openSUSE 15 !**
+**Le cluster HPC est installé et fonctionnel sur openSUSE 15.6 !**
 
 **Tout est 100% open-source et prêt pour la production !** 🚀
 

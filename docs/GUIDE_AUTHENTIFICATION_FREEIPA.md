@@ -65,7 +65,7 @@ FreeIPA fournit une solution d'authentification unifiée qui combine :
 
 ### Prérequis
 
-- **OS** : SUSE 15 SP7 / CentOS 8+ / RHEL 8+
+- **OS** : openSUSE 15.6 / CentOS 8+ / RHEL 8+
 - **Réseau** : Nom de domaine configuré (cluster.local)
 - **DNS** : Résolution de noms fonctionnelle
 - **Ports** : 80, 443, 389, 636, 88, 464, 53
@@ -100,8 +100,8 @@ docker run -d --name freeipa-server \
 #### Méthode 2 : Installation Native
 
 ```bash
-# Sur SUSE 15 SP7
-zypper addrepo https://download.opensuse.org/repositories/security:/SELinux/SLE_15_SP4/security:SELinux.repo
+# Sur openSUSE 15.6
+zypper addrepo https://download.opensuse.org/repositories/security:/SELinux/openSUSE_Leap_15.6/security:SELinux.repo
 zypper refresh
 zypper install -y freeipa-server freeipa-server-dns
 

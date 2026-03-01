@@ -8,7 +8,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-**Cluster HPC complet, 100% open-source**, avec **28 améliorations** implémentées, prêt pour déploiement sur **SUSE 15 SP4**.
+**Cluster HPC complet, 100% open-source**, avec **28 améliorations** implémentées, prêt pour déploiement sur **openSUSE 15.6**.
 
 ---
 
@@ -88,7 +88,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 - `../README.md` - Vue d'ensemble (README principal consolidé)
 - `docs/GUIDE_COMPLET_DEMARRAGE.md` - Pour débutants
 - `docs/GUIDE_MAINTENANCE_COMPLETE.md` - Maintenance
-- `INSTALLATION_SUSE15SP4.md` - Installation SUSE 15 SP4
+- `INSTALLATION_OPENSUSE15.md` - Installation openSUSE 15.6
 
 ---
 

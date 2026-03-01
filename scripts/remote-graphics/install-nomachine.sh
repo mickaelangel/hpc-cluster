@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation NoMachine - Cluster HPC
 # Remote Graphics Open-Source (Alternative à Exceed TurboX)
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

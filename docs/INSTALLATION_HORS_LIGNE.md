@@ -1,4 +1,4 @@
-# Installation Serveur Hors Ligne - openSUSE 15
+# Installation Serveur Hors Ligne - openSUSE 15.6
 
 ## ⚠️ Sécurité
 
@@ -27,10 +27,10 @@ Si le dossier `docker-offline-rpms/` contient des `.rpm` :
 sudo ./scripts/deployment/install-docker-offline.sh
 ```
 
-Sinon, sur une machine openSUSE 15 avec Internet, exécuter une fois :
+Sinon, sur une machine openSUSE 15.6 avec Internet, exécuter une fois :
 
 ```bash
-sudo bash scripts/deployment/download-docker-rpms-opensuse15.sh
+sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
 ```
 
 Puis copier le dossier `docker-offline-rpms/` dans cet export.

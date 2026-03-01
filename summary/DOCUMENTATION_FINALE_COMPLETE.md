@@ -161,9 +161,9 @@ Ce document est l'**index complet** de toute la documentation du cluster HPC. Il
 
 ## 🚀 Installation
 
-### Installation sur SUSE 15 SP4
+### Installation sur openSUSE 15.6
 
-**Guide Complet** : `INSTALLATION_SUSE15SP4.md`
+**Guide Complet** : `INSTALLATION_OPENSUSE15.md`
 
 **Résumé** :
 ```bash
@@ -236,7 +236,7 @@ sudo ./install-paraview.sh
 
 ```
 cluster hpc/
-├── docker/                          # Docker SUSE 15 SP4
+├── docker/                          # Docker openSUSE 15.6
 │   ├── docker-compose-opensource.yml
 │   ├── frontal/Dockerfile
 │   └── client/Dockerfile
@@ -308,7 +308,7 @@ cluster hpc/
 → Lire `docs/GUIDE_COMPLET_DEMARRAGE.md`
 
 ### Je dois Installer le Cluster
-→ Lire `INSTALLATION_SUSE15SP4.md`
+→ Lire `INSTALLATION_OPENSUSE15.md`
 
 ### Je dois Maintenir le Cluster
 → Lire `docs/GUIDE_MAINTENANCE_COMPLETE.md`
@@ -358,7 +358,7 @@ cluster hpc/
 - ✅ **100% Open-Source** : Aucune licence commerciale
 - ✅ **Complet** : Tous les composants de instruction.txt
 - ✅ **Fonctionnel** : Prêt pour déploiement
-- ✅ **Portable** : Docker, SUSE 15 SP4
+- ✅ **Portable** : Docker, openSUSE 15.6
 - ✅ **Documenté** : 30+ guides complets
 - ✅ **Professionnel** : Prêt pour production
 

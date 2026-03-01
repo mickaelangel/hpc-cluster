@@ -11,7 +11,7 @@
 - ✅ **100% Open-Source** : Tous les composants commerciaux remplacés
 - ✅ **Complet** : Tous les éléments de instruction.txt inclus
 - ✅ **Fonctionnel** : Prêt pour déploiement
-- ✅ **Portable** : Docker, SUSE 15 SP4 compatible
+- ✅ **Portable** : Docker, openSUSE 15.6 compatible
 - ✅ **Documenté** : 30+ guides complets pour tous niveaux
 
 ---
@@ -47,7 +47,7 @@
 
 ```
 cluster hpc/
-├── docker/                          # Docker SUSE 15 SP4
+├── docker/                          # Docker openSUSE 15.6
 │   ├── docker-compose-opensource.yml
 │   ├── frontal/Dockerfile
 │   └── client/Dockerfile
@@ -110,7 +110,7 @@ cluster hpc/
 
 ## 🚀 Installation
 
-### Sur SUSE 15 SP4
+### Sur openSUSE 15.6
 
 ```bash
 # 1. Copier le projet
@@ -226,7 +226,7 @@ sudo ./scripts/security/hardening.sh
 - ✅ **100% Open-Source** : Aucune licence commerciale
 - ✅ **Complet** : Tous les composants de instruction.txt
 - ✅ **Fonctionnel** : Prêt pour déploiement
-- ✅ **Portable** : Docker, SUSE 15 SP4
+- ✅ **Portable** : Docker, openSUSE 15.6
 - ✅ **Documenté** : 30+ guides complets
 - ✅ **Professionnel** : Prêt pour production
 

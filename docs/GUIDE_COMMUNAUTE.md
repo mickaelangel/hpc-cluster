@@ -58,7 +58,7 @@
 **Questions Techniques** :
 - "Comment configurer FreeIPA avec ce cluster ?"
 - "Problème de performance avec Slurm"
-- "Installation sur openSUSE 15 - Questions"
+- "Installation sur openSUSE 15.6 - Questions"
 
 **Partage d'Expériences** :
 - "Retour d'expérience : Déploiement en production"
@@ -187,7 +187,7 @@ command --option
 **Catégorie Q&A** :
 - "Comment démarrer rapidement avec le cluster ?"
 - "Quelle est la différence entre LDAP/Kerberos et FreeIPA ?"
-- "Comment installer sur openSUSE 15 ?"
+- "Comment installer sur openSUSE 15.6 ?"
 
 **Catégorie General** :
 - "Présentation du projet"

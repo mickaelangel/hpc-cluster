@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# Import et Installation Cluster HPC sur SUSE 15 SP4 (Hors Ligne)
+# Import et Installation Cluster HPC sur openSUSE 15.6 (Hors Ligne)
 # ============================================================================
 
 set -euo pipefail
@@ -16,7 +16,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}INSTALLATION CLUSTER HPC${NC}"
-echo -e "${BLUE}SUSE 15 SP4 - Hors Ligne${NC}"
+echo -e "${BLUE}openSUSE 15.6 - Hors Ligne${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
@@ -27,15 +27,15 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Vérifier SUSE 15 SP4
+# Vérifier openSUSE 15.6
 if [ ! -f /etc/os-release ]; then
     echo -e "${RED}❌ Fichier /etc/os-release non trouvé${NC}"
     exit 1
 fi
 
 source /etc/os-release
-if [[ "$ID" != "opensuse-leap" ]] && [[ "$ID" != "sles" ]]; then
-    echo -e "${YELLOW}⚠️  Ce script est conçu pour SUSE 15 SP4${NC}"
+if [[ "$ID" != "opensuse-leap" ]]; then
+    echo -e "${YELLOW}⚠️  Ce script est conçu pour openSUSE Leap 15.6${NC}"
     read -p "Continuer quand même ? (y/N): " CONTINUE
     [[ "$CONTINUE" != "y" ]] && exit 1
 fi
@@ -53,7 +53,7 @@ if command -v docker &> /dev/null; then
     docker --version
 else
     echo "  Installation Docker..."
-    zypper addrepo https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_15.4/Virtualization:containers.repo
+    zypper addrepo https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_15.6/Virtualization:containers.repo
     zypper refresh
     zypper install -y docker docker-compose
     systemctl enable docker

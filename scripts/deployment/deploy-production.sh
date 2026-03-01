@@ -29,15 +29,15 @@ echo ""
 
 echo -e "${CYAN}[1/8] Vérifications pré-déploiement...${NC}"
 
-# Vérifier SUSE 15 SP4
+# Vérifier openSUSE 15.6
 if [ ! -f /etc/os-release ]; then
     echo -e "${RED}❌ Fichier /etc/os-release non trouvé${NC}"
     exit 1
 fi
 
 source /etc/os-release
-if [[ "$ID" != "opensuse-leap" ]] && [[ "$ID" != "sles" ]]; then
-    echo -e "${YELLOW}⚠️  Ce script est conçu pour SUSE 15 SP4${NC}"
+if [[ "$ID" != "opensuse-leap" ]]; then
+    echo -e "${YELLOW}⚠️  Ce script est conçu pour openSUSE Leap 15.6${NC}"
     read -p "Continuer quand même ? (y/N): " CONTINUE
     [[ "$CONTINUE" != "y" ]] && exit 1
 fi

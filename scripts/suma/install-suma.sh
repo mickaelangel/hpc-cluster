@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation SUMA (SUSE Manager) - Cluster HPC
 # Installation et configuration SUMA pour conformité et gestion des patches
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

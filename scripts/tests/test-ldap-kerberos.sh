@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Tests LDAP + Kerberos
 # Tests détaillés d'authentification
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

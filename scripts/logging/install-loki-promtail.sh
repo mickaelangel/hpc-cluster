@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation Loki + Promtail - Cluster HPC
 # Logging centralisé pour logs Slurm/GPFS/applications
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

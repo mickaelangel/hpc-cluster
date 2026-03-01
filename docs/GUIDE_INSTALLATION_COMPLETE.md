@@ -23,7 +23,7 @@
 
 ## 🎯 Vue d'ensemble
 
-Ce guide explique comment installer un cluster HPC complet sur SUSE 15 SP7 avec :
+Ce guide explique comment installer un cluster HPC complet sur openSUSE 15.6 avec :
 - **LDAP (389 Directory Server)** : Authentification centralisée
 - **Kerberos** : Authentification sécurisée
 - **Slurm** : Scheduler de jobs
@@ -40,13 +40,13 @@ Ce guide explique comment installer un cluster HPC complet sur SUSE 15 SP7 avec 
 ### Prérequis Système
 
 **Sur le nœud frontal (frontal-01)** :
-- SUSE 15 SP7 ou openSUSE Leap 15.4
+- openSUSE 15.6 ou openSUSE Leap 15.6
 - 4+ CPU, 16GB+ RAM, 100GB+ disque
 - Accès root
 - Connexion réseau configurée
 
 **Sur les nœuds de calcul** :
-- SUSE 15 SP7 ou openSUSE Leap 15.4
+- openSUSE 15.6 ou openSUSE Leap 15.6
 - 2+ CPU, 8GB+ RAM, 50GB+ disque
 - Accès root
 - Connexion réseau vers frontal-01
@@ -71,9 +71,7 @@ echo "192.168.100.10  frontal-01.cluster.local  frontal-01" >> /etc/hosts
 ### Étape 1: Installation
 
 ```bash
-# Activation des modules SUSE
-SUSEConnect -p PackageHub/15.7/x86_64
-
+# Sur openSUSE 15.6 : dépôts standards (pas de SUSEConnect)
 # Installation
 zypper refresh
 zypper install -y 389-ds 389-ds-base

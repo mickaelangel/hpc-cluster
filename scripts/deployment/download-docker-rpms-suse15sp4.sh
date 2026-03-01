@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
-# Télécharge les RPM Docker + dépendances pour SUSE 15 SP4 / openSUSE Leap 15.4
-# À exécuter sur une machine AVEC INTERNET (même SUSE 15 SP4 ou Leap 15.4)
+# Télécharge les RPM Docker + dépendances pour openSUSE Leap 15.6
+# À exécuter sur une machine AVEC INTERNET (openSUSE Leap 15.6)
 # Produit le dossier docker-offline-rpms/ à copier sur la clé USB
 # Usage: sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
 # ============================================================================
@@ -20,7 +20,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}TÉLÉCHARGEMENT RPM DOCKER - SUSE 15 SP4${NC}"
+echo -e "${BLUE}TÉLÉCHARGEMENT RPM DOCKER - openSUSE Leap 15.6${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 echo "Dossier de sortie: $OUTPUT_DIR"
@@ -35,15 +35,15 @@ source /etc/os-release
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
-# Repos Docker pour openSUSE Leap 15.4 / SUSE
+# Repos Docker pour openSUSE Leap 15.6
 echo -e "${YELLOW}[1/3] Configuration des dépôts...${NC}"
-if [[ "$ID" == "opensuse-leap" ]] || [[ "$ID" == "sles" ]]; then
+if [[ "$ID" == "opensuse-leap" ]]; then
     if [[ "$VERSION_ID" =~ ^15\. ]]; then
         zypper addrepo -f "https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_${VERSION_ID}/Virtualization:containers.repo" 2>/dev/null || true
     fi
     zypper refresh 2>/dev/null || true
 else
-    echo -e "${YELLOW}  OS non SUSE/Leap. Pour RPM compatibles, exécutez sur SUSE 15 SP4 ou Leap 15.4.${NC}"
+    echo -e "${YELLOW}  OS non openSUSE Leap. Pour RPM compatibles, exécutez sur openSUSE Leap 15.6.${NC}"
 fi
 
 # Télécharger Docker + dépendances (sans installer)

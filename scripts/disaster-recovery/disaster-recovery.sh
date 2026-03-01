@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Disaster Recovery - Cluster HPC
 # Procédures de récupération en cas de catastrophe
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

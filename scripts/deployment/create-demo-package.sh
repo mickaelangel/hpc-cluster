@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Création Package Complet pour Démo Professionnelle
-# Cluster HPC - SUSE 15 SP4 Hors Ligne
+# Cluster HPC - openSUSE 15.6 Hors Ligne
 # ============================================================================
 
 set -euo pipefail
@@ -198,7 +198,7 @@ cat > "$LATEST_EXPORT/CHECKLIST_INSTALLATION.md" <<'CHECKLIST_EOF'
 
 ## Avant Installation
 
-- [ ] Serveur SUSE 15 SP4 prêt
+- [ ] Serveur openSUSE 15.6 prêt
 - [ ] Au moins 16GB RAM disponible
 - [ ] Au moins 100GB disque libre
 - [ ] Accès root ou sudo
@@ -258,7 +258,7 @@ echo "  ✅ Guide démo professionnelle"
 echo "  ✅ Script de démo"
 echo "  ✅ Checklist installation"
 echo ""
-echo -e "${YELLOW}Pour transférer sur serveur SUSE 15 SP4:${NC}"
+echo -e "${YELLOW}Pour transférer sur serveur openSUSE 15.6:${NC}"
 echo "  1. Copier l'archive sur le serveur"
 echo "  2. Extraire: tar -xzf hpc-cluster-demo-complete-*.tar.gz"
 echo "  3. Installer: cd hpc-cluster-demo-* && sudo ./install-demo.sh"

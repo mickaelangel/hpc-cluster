@@ -19,7 +19,7 @@
 - GPFS → BeeGFS, Lustre
 - FlexLM → Supprimé
 
-### 2. Configuration Docker SUSE 15 SP4 ✅
+### 2. Configuration Docker openSUSE 15.6 ✅
 - docker-compose-opensource.yml
 - Dockerfiles mis à jour
 - Configuration portable
@@ -136,7 +136,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 ### Documentation
 - **Index complet** : `DOCUMENTATION_COMPLETE_INDEX.md`
 - **Guide déploiement** : `DEPLOIEMENT_FINAL_COMPLET.md`
-- **Installation** : `INSTALLATION_SUSE15SP4.md`
+- **Installation** : `INSTALLATION_OPENSUSE15.md`
 
 ---
 
@@ -153,7 +153,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 - ✅ **Automatisé** : CI/CD, IaC, orchestration
 - ✅ **Intégré** : API Gateway, messaging, service mesh
 - ✅ **Documenté** : 30+ guides + tutoriels
-- ✅ **Portable** : Docker, SUSE 15 SP4
+- ✅ **Portable** : Docker, openSUSE 15.6
 - ✅ **Prêt Production** : Enterprise-ready
 
 **DÉPLOIEMENT TERMINÉ !** 🚀

@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Validation de Conformité - Cluster HPC
 # Validation DISA STIG, CIS Level 2, ANSSI BP-028
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

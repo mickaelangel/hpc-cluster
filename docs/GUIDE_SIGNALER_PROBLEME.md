@@ -20,7 +20,7 @@
 
 ### Informations à Fournir
 
-- **OS** : openSUSE 15, SUSE 15 SP4, etc.
+- **OS** : openSUSE 15.6, etc.
 - **Version Docker** : `docker --version`
 - **Version du projet** : Commit ou tag Git
 - **Logs** : Messages d'erreur complets

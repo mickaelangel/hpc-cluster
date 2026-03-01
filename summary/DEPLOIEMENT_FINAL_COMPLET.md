@@ -143,7 +143,7 @@ sudo ./INSTALLATION_AMELIORATIONS.sh
 ## 📋 Checklist de Déploiement
 
 ### Pré-déploiement
-- [ ] Vérifier prérequis (Docker, SUSE 15 SP4)
+- [ ] Vérifier prérequis (Docker, openSUSE 15.6)
 - [ ] Copier projet sur serveur
 - [ ] Vérifier espace disque (50GB+)
 - [ ] Vérifier accès réseau

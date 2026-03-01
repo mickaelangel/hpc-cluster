@@ -29,7 +29,7 @@
    - Réseau haute performance
 
 2. **Logiciel** :
-   - SUSE 15 SP7 / openSUSE Leap 15.4
+   - openSUSE Leap 15.6
    - Packages GPFS
    - Accès root sur tous les nœuds
 

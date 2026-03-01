@@ -150,8 +150,8 @@ docker run -d --name freeipa-server \
 **Méthode 2 : Installation Native (Production)**
 
 ```bash
-# Sur SUSE 15 SP7
-zypper addrepo https://download.opensuse.org/repositories/security:/SELinux/SLE_15_SP4/security:SELinux.repo
+# Sur openSUSE 15.6
+zypper addrepo https://download.opensuse.org/repositories/security:/SELinux/openSUSE_Leap_15.6/security:SELinux.repo
 zypper refresh
 zypper install -y freeipa-server freeipa-server-dns
 

@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Mise à Jour - Cluster HPC
 # Mise à jour sécurisée des services et packages
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

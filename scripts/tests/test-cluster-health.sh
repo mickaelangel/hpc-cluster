@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Vérification Santé - Cluster HPC
 # Tests complets de tous les services
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -uo pipefail

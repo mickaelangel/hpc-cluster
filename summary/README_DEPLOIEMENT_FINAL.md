@@ -13,7 +13,7 @@ Ce guide décrit le déploiement complet du cluster HPC avec **toutes les améli
 
 ## 📋 Prérequis
 
-- **OS** : SUSE 15 SP4
+- **OS** : openSUSE 15.6
 - **Docker** : 20.10+
 - **Docker Compose** : 2.0+
 - **Espace** : 100GB+ (recommandé)

@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Script d'Installation FreeIPA - Cluster HPC
-# Compatible SUSE 15 SP7 / CentOS 8+ / RHEL 8+
+# Compatible openSUSE 15.6 / CentOS 8+ / RHEL 8+
 # ============================================================================
 
 set -euo pipefail

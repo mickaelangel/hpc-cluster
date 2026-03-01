@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation X2Go - Cluster HPC
 # Remote Graphics Open-Source (Alternative à Exceed TurboX)
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail
@@ -27,7 +27,7 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "\n${YELLOW}[1/3] Installation X2Go Server...${NC}"
 
 # Ajouter repository X2Go
-zypper addrepo https://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_Leap_15.4/X11:RemoteDesktop.repo || true
+zypper addrepo https://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_Leap_15.6/X11:RemoteDesktop.repo || true
 zypper refresh
 
 # Installation

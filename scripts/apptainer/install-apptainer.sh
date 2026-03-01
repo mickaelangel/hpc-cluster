@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation Apptainer - Cluster HPC
 # Conteneurs sécurisés pour Slurm
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

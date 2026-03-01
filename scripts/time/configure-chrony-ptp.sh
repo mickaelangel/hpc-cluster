@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Configuration Chrony + PTP - Cluster HPC
 # Synchronisation temps précise pour benchmarks et logs corrélés
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

@@ -19,12 +19,12 @@
 
 ---
 
-### 2. Configuration Docker pour SUSE 15 SP4
+### 2. Configuration Docker pour openSUSE 15.6
 
 **Fichiers Créés** :
 - ✅ `docker/docker-compose-opensource.yml` - Configuration complète
-- ✅ `docker/frontal/Dockerfile` - Nœuds frontaux (SUSE 15 SP4)
-- ✅ `docker/client/Dockerfile` - Nœuds de calcul (SUSE 15 SP4)
+- ✅ `docker/frontal/Dockerfile` - Nœuds frontaux (openSUSE 15.6)
+- ✅ `docker/client/Dockerfile` - Nœuds de calcul (openSUSE 15.6)
 
 **Résultat** : **Portable et Fonctionnel**
 
@@ -201,7 +201,7 @@
 - ✅ **100% Open-Source** : Aucune licence commerciale
 - ✅ **Complet** : Tous les composants de instruction.txt
 - ✅ **Fonctionnel** : Prêt pour déploiement
-- ✅ **Portable** : Docker, SUSE 15 SP4 compatible
+- ✅ **Portable** : Docker, openSUSE 15.6 compatible
 - ✅ **Documenté** : 30+ guides complets pour tous niveaux
 - ✅ **Professionnel** : Prêt pour production
 
@@ -217,7 +217,7 @@
 - `DOCUMENTATION_FINALE_COMPLETE.md` - Guide complet
 
 **Installation** :
-- `INSTALLATION_SUSE15SP4.md` - Installation SUSE 15 SP4
+- `INSTALLATION_OPENSUSE15.md` - Installation openSUSE 15.6
 
 **Utilisation** :
 - `GUIDE_UTILISATION_COMPLETE.md` - Utilisation complète

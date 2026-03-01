@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation JupyterHub - Cluster HPC
 # Calcul interactif avec intégration Slurm
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

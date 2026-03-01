@@ -1,10 +1,14 @@
 # Clone local du wiki GitHub (sync script)
 hpc-cluster.wiki/
 
-# Répertoires d'export
+# Répertoires d'export (générés localement)
 hpc-export/
 export-demo/
+export-opensuse156/
+export-suse*/
+docker-images-export/
 *.tar.gz
+*.zip
 
 # Images Docker (trop volumineuses pour GitHub)
 docker-images/*.tar.gz
@@ -35,9 +39,11 @@ beegfs_data/
 *.bak
 *.backup
 
-# IDE
+# IDE / Éditeur (ne pas pousser de config Cursor)
 .vscode/
 .idea/
+.cursor/
+.cursorignore
 .cursorrules
 *.swp
 *.swo

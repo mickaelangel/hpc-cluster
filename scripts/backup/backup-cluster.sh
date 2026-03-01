@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Backup Complet - Cluster HPC
 # Backup LDAP, Kerberos, GPFS, Slurm, Configuration
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

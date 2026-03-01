@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation OpenFOAM - Cluster HPC
 # Computational Fluid Dynamics (CFD) - Open Source
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

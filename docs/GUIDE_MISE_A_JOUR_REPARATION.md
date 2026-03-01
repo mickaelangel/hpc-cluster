@@ -82,7 +82,7 @@ sudo ./install-paraview.sh
 
 ### Mise à Jour du Système
 
-**SUSE 15 SP4** :
+**openSUSE 15.6** :
 ```bash
 # Rafraîchir repositories
 zypper refresh

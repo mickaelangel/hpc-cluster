@@ -25,7 +25,7 @@ if [ -f /etc/os-release ]; then
     source /etc/os-release
     if [[ "$ID" =~ opensuse-leap|sles ]] && [ ! -f /etc/zypp/repos.d/network_cluster.repo ]; then
         echo -e "\n${YELLOW}[1/5] Ajout dépôt network:cluster...${NC}"
-        LEAP="${VERSION_ID:-15.4}"
+        LEAP="${VERSION_ID:-15.6}"
         zypper --non-interactive --gpg-auto-import-keys addrepo -f \
             "https://download.opensuse.org/repositories/network:cluster/openSUSE_Leap_${LEAP}/network:cluster.repo" \
             network_cluster 2>/dev/null || true
@@ -43,7 +43,7 @@ zypper --non-interactive install -y slurm 2>/dev/null || {
 
 if ! command -v slurmd &>/dev/null && ! command -v slurmctld &>/dev/null; then
     echo -e "${YELLOW}⚠️  Slurm non installé (dépôt network:cluster requis pour openSUSE)${NC}"
-    echo "Ajout manuel: zypper ar -f https://download.opensuse.org/repositories/network:cluster/openSUSE_Leap_15.4/network:cluster.repo"
+    echo "Ajout manuel: zypper ar -f https://download.opensuse.org/repositories/network:cluster/openSUSE_Leap_15.6/network:cluster.repo"
     exit 0
 fi
 

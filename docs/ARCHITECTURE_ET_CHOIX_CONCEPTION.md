@@ -280,12 +280,12 @@ cluster hpc/
 
 ---
 
-### 5.2 Pourquoi SUSE 15 SP4 ?
+### 5.2 Pourquoi openSUSE 15.6 ?
 
-**Décision** : openSUSE Leap 15.4 (compatible SUSE 15 SP4)
+**Décision** : openSUSE Leap 15.6
 
 **Justification** :
-1. **Compatible SLES** : Même base que SUSE Enterprise
+1. **openSUSE Leap 15.6** : Base unique du projet
 2. **Stable** : Version LTS
 3. **Enterprise** : Utilisé en production
 4. **Zypper** : Excellent gestionnaire de packages
@@ -327,7 +327,7 @@ cluster hpc/
 | Stockage | BeeGFS | GPFS, Lustre, GlusterFS | Open-source, simplicité |
 | Authentification | LDAP+Kerberos | FreeIPA, AD | Simplicité, contrôle |
 | Monitoring | Prometheus | Nagios, Zabbix, Datadog | Standard moderne, open-source |
-| OS | openSUSE 15.4 | CentOS, Ubuntu | Compatibilité SUSE |
+| OS | openSUSE 15.6 | CentOS, Ubuntu |
 | Orchestration | Docker Compose | Kubernetes | Simplicité, suffisant |
 
 ---

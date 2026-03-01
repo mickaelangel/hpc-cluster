@@ -1,5 +1,5 @@
 # 🚀 GUIDE DÉPLOIEMENT HORS LIGNE - Cluster HPC
-## Installation sur SUSE 15 SP4 en Environnement Air-Gapped
+## Installation sur openSUSE 15.6 en Environnement Air-Gapped
 
 **Classification**: Guide Déploiement  
 **Public**: Administrateurs Système  
@@ -13,7 +13,7 @@
 1. [Vue d'Ensemble](#vue-densemble)
 2. [Préparation de l'Export](#préparation-de-lexport)
 3. [Transfert vers le Serveur](#transfert-vers-le-serveur)
-4. [Installation sur SUSE 15 SP4](#installation-sur-suse-15-sp4)
+4. [Installation sur openSUSE 15.6](#installation-sur-opensuse-156)
 5. [Vérification et Tests](#vérification-et-tests)
 6. [Démo Professionnelle](#démo-professionnelle)
 7. [Troubleshooting](#troubleshooting)
@@ -22,7 +22,7 @@
 
 ## 1. Vue d'Ensemble
 
-Ce guide explique comment exporter le cluster HPC depuis un environnement avec Internet et l'installer sur un serveur SUSE 15 SP4 **hors ligne** (air-gapped).
+Ce guide explique comment exporter le cluster HPC depuis un environnement avec Internet et l'installer sur un serveur openSUSE 15.6 **hors ligne** (air-gapped).
 
 ### Architecture
 
@@ -40,7 +40,7 @@ Ce guide explique comment exporter le cluster HPC depuis un environnement avec I
                │ Transfert (USB, réseau local, etc.)
                ▼
 ┌─────────────────────────────────┐
-│  Serveur SUSE 15 SP4            │
+│  Serveur openSUSE 15.6            │
 │  (Hors ligne / Air-gapped)      │
 │                                 │
 │  1. Import images Docker         │
@@ -121,7 +121,7 @@ hpc-cluster-demo-YYYYMMDD-HHMMSS/
 # Sur machine source
 cp export-demo/hpc-cluster-demo-*.tar.gz /media/usb/
 
-# Sur serveur SUSE 15 SP4
+# Sur serveur openSUSE 15.6
 cp /media/usb/hpc-cluster-demo-*.tar.gz /opt/
 cd /opt
 tar -xzf hpc-cluster-demo-*.tar.gz
@@ -132,7 +132,7 @@ tar -xzf hpc-cluster-demo-*.tar.gz
 # Sur machine source
 scp export-demo/hpc-cluster-demo-*.tar.gz user@server-suse:/opt/
 
-# Sur serveur SUSE 15 SP4
+# Sur serveur openSUSE 15.6
 cd /opt
 tar -xzf hpc-cluster-demo-*.tar.gz
 ```
@@ -156,11 +156,11 @@ du -sh hpc-cluster-demo-*
 
 ---
 
-## 4. Installation sur SUSE 15 SP4
+## 4. Installation sur openSUSE 15.6
 
 ### 4.1 Prérequis Serveur
 
-- **OS** : SUSE 15 SP4 (ou openSUSE Leap 15.4)
+- **OS** : openSUSE 15.6 (ou openSUSE Leap 15.6)
 - **RAM** : Minimum 16GB (32GB recommandé)
 - **Disque** : Minimum 100GB libre
 - **CPU** : Minimum 4 cœurs (8+ recommandé)
@@ -170,7 +170,7 @@ du -sh hpc-cluster-demo-*
 
 Si le serveur **n’a pas Docker** et **n’a pas Internet** :
 
-1. **Sur une machine avec Internet** (SUSE 15 SP4 ou openSUSE Leap 15.4), télécharger les RPM Docker :
+1. **Sur une machine avec Internet** (openSUSE 15.6 ou openSUSE Leap 15.6), télécharger les RPM Docker :
    ```bash
    cd "cluster hpc"
    sudo bash scripts/deployment/download-docker-rpms-suse15sp4.sh
@@ -202,7 +202,7 @@ sudo ./install-demo.sh
 ```
 
 **Le script install-demo.sh :**
-1. ✅ Vérifie SUSE 15 SP4
+1. ✅ Vérifie openSUSE 15.6
 2. ✅ Installe Docker (depuis docker-offline-rpms/ si présent, sinon zypper)
 3. ✅ Charge les images Docker
 4. ✅ Installe les dépendances système (zypper si réseau)

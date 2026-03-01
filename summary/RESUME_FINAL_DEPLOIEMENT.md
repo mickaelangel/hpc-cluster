@@ -21,7 +21,7 @@
 
 **Résultat** : **100% Open-Source**
 
-### 2. Configuration Docker SUSE 15 SP4 ✅
+### 2. Configuration Docker openSUSE 15.6 ✅
 - ✅ docker-compose-opensource.yml
 - ✅ Dockerfiles mis à jour
 - ✅ Configuration portable
@@ -155,7 +155,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 - ✅ **Automatisé** : CI/CD, IaC, orchestration
 - ✅ **Intégré** : API Gateway, messaging, service mesh
 - ✅ **Documenté** : 30+ guides + tutoriels interactifs
-- ✅ **Portable** : Docker, SUSE 15 SP4
+- ✅ **Portable** : Docker, openSUSE 15.6
 - ✅ **Prêt Production** : Enterprise-ready
 
 **DÉPLOIEMENT COMPLET ET TERMINÉ !** 🚀

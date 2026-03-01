@@ -2,7 +2,7 @@ version: '3.8'
 
 # ============================================================================
 # Cluster HPC - Configuration Production
-# SUSE 15 SP4 - Déploiement Enterprise
+# openSUSE 15.6 - Déploiement
 # ============================================================================
 #
 # DIFFÉRENCES AVEC docker-compose-opensource.yml :

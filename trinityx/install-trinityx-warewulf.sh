@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Script d'Installation Automatisée - TrinityX + Warewulf
-# Compatible SUSE 15 SP7 / openSUSE Leap 15.4
+# Compatible openSUSE Leap 15.6
 # ============================================================================
 
 set -euo pipefail

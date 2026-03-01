@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Migration LDAP + Kerberos → FreeIPA
 # Migration complète des utilisateurs et configuration
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

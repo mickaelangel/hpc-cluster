@@ -192,7 +192,7 @@ Vérification dans LDAP/FreeIPA
 
 ### Prérequis
 
-- **Système** : SUSE 15 SP4
+- **Système** : openSUSE 15.6
 - **Docker** : Version 20.10+
 - **Docker Compose** : Version 2.0+
 - **Espace disque** : 50GB+ minimum

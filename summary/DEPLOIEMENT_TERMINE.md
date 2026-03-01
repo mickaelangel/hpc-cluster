@@ -115,7 +115,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 ## 📋 Checklist Finale
 
 ### Base ✅
-- [x] Docker configuré SUSE 15 SP4
+- [x] Docker configuré openSUSE 15.6
 - [x] Conteneurs démarrés
 - [x] Applications open-source installées
 - [x] Système de fichiers (BeeGFS)
@@ -170,7 +170,7 @@ sudo ./INSTALLATION_AMELIORATIONS_COMPLETE.sh
 - ✅ **Automatisé** (CI/CD, IaC)
 - ✅ **Intégré** (API, messaging, mesh)
 - ✅ **Documenté** (30+ guides)
-- ✅ **Portable** (Docker, SUSE 15 SP4)
+- ✅ **Portable** (Docker, openSUSE 15.6)
 - ✅ **Prêt Production** (Enterprise-ready)
 
 **DÉPLOIEMENT COMPLET ET TERMINÉ !** 🚀

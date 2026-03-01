@@ -1,10 +1,10 @@
 # Guide d'Installation Complet - TrinityX + Warewulf
-## Cluster HPC SUSE 15 SP7 avec GPFS, MATLAB, OpenM++
+## Cluster HPC openSUSE 15.6 avec GPFS, MATLAB, OpenM++
 
 **Classification**: Documentation Technique - Niveau Sénior  
 **Version**: 1.0  
 **Date**: 2024  
-**Environnement**: SUSE Linux Enterprise Server 15 SP7 / openSUSE Leap 15.4
+**Environnement**: openSUSE Leap 15.6
 
 ---
 
@@ -37,7 +37,7 @@
 
 ### Stack Complet
 
-- **OS**: SUSE 15 SP4 / openSUSE Leap 15.4
+- **OS**: openSUSE Leap 15.6
 - **Provisioning**: Warewulf 4.x (via TrinityX)
 - **Stockage**: BeeGFS 7.3 / Lustre 2.15 (open-source, remplace GPFS)
 - **Scheduler**: Slurm 23.11
@@ -73,7 +73,7 @@
 ### Logiciel
 
 **Sur le Nœud Contrôleur**:
-- SUSE 15 SP7 ou openSUSE Leap 15.4
+- openSUSE Leap 15.6
 - Docker 20.10+ (pour TrinityX)
 - Accès Internet (pour téléchargements initiaux)
 - Packages: `git`, `make`, `gcc`, `python3`, `go` (1.19+)
@@ -109,13 +109,11 @@
 ### Étape 1: Installation des Dépendances
 
 ```bash
-# Sur le nœud contrôleur (SUSE 15 SP7)
+# Sur le nœud contrôleur (openSUSE 15.6)
 sudo zypper refresh
 
-# Activation des modules nécessaires
-sudo SUSEConnect -p PackageHub/15.7/x86_64
-sudo SUSEConnect -p sle-module-containers/15.7/x86_64
-sudo SUSEConnect -p sle-module-hpc/15.7/x86_64
+# Dépôts openSUSE (pas de SUSEConnect sur openSUSE)
+sudo zypper addrepo https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_15.6/Virtualization:containers.repo
 
 # Installation des dépendances de base
 sudo zypper install -y \
@@ -219,11 +217,11 @@ sudo systemctl enable --now dhcpd
 
 ```bash
 # Création de l'image frontale GPFS
-sudo wwctl image create --name sles15-sp7-frontal \
-    --chroot /var/lib/warewulf/chroots/sles15-sp7-frontal
+sudo wwctl image create --name opensuse156-frontal \
+    --chroot /var/lib/warewulf/chroots/opensuse156-frontal
 
 # Installation des packages de base dans le chroot
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo wwctl image exec opensuse156-frontal -- \
     zypper --non-interactive install \
     aaa_base systemd kernel-default kernel-devel \
     gcc make ksh libaio1 libnsl2 \
@@ -232,8 +230,8 @@ sudo wwctl image exec sles15-sp7-frontal -- \
     vim htop
 
 # Installation GPFS (copier les RPMs dans le chroot)
-sudo cp /path/to/gpfs/*.rpm /var/lib/warewulf/chroots/sles15-sp7-frontal/tmp/
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo cp /path/to/gpfs/*.rpm /var/lib/warewulf/chroots/opensuse156-frontal/tmp/
+sudo wwctl image exec opensuse156-frontal -- \
     rpm -ivh /tmp/gpfs.base-*.rpm \
     /tmp/gpfs.gpl-*.rpm \
     /tmp/gpfs.gskit-*.rpm \
@@ -242,28 +240,28 @@ sudo wwctl image exec sles15-sp7-frontal -- \
     /tmp/gpfs.nfs-ganesha-*.rpm
 
 # Compilation du module kernel GPFS
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo wwctl image exec opensuse156-frontal -- \
     /usr/lpp/mmfs/bin/mmbuildgpl
 
 # Création utilisateur gpfs (UID/GID fixes)
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo wwctl image exec opensuse156-frontal -- \
     groupadd -g 3000 gpfs
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo wwctl image exec opensuse156-frontal -- \
     useradd -u 3000 -g gpfs -d /home/gpfs -s /bin/bash gpfs
 
 # Build de l'image
-sudo wwctl image build sles15-sp7-frontal
+sudo wwctl image build opensuse156-frontal
 ```
 
 ### Étape 2: Création de l'Image Client
 
 ```bash
 # Image pour nœuds de calcul
-sudo wwctl image create --name sles15-sp7-compute \
-    --chroot /var/lib/warewulf/chroots/sles15-sp7-compute
+sudo wwctl image create --name opensuse156-compute \
+    --chroot /var/lib/warewulf/chroots/opensuse156-compute
 
 # Installation packages
-sudo wwctl image exec sles15-sp7-compute -- \
+sudo wwctl image exec opensuse156-compute -- \
     zypper --non-interactive install \
     aaa_base systemd kernel-default kernel-devel \
     gcc make ksh libaio1 libnsl2 \
@@ -273,19 +271,19 @@ sudo wwctl image exec sles15-sp7-compute -- \
     numactl hwloc
 
 # Installation GPFS client (packages minimaux)
-sudo cp /path/to/gpfs-client/*.rpm /var/lib/warewulf/chroots/sles15-sp7-compute/tmp/
-sudo wwctl image exec sles15-sp7-compute -- \
+sudo cp /path/to/gpfs-client/*.rpm /var/lib/warewulf/chroots/opensuse156-compute/tmp/
+sudo wwctl image exec opensuse156-compute -- \
     rpm -ivh /tmp/gpfs.base-*.rpm \
     /tmp/gpfs.gpl-*.rpm \
     /tmp/gpfs.gskit-*.rpm \
     /tmp/gpfs.msg.*.rpm
 
 # Compilation module
-sudo wwctl image exec sles15-sp7-compute -- \
+sudo wwctl image exec opensuse156-compute -- \
     /usr/lpp/mmfs/bin/mmbuildgpl
 
 # Build
-sudo wwctl image build sles15-sp7-compute
+sudo wwctl image build opensuse156-compute
 ```
 
 ### Étape 3: Configuration du Cluster GPFS
@@ -344,7 +342,7 @@ df -h /gpfs/gpfsfs1
 
 ```bash
 # Montage de l'image pour installation MATLAB
-sudo wwctl image exec sles15-sp7-compute -- bash
+sudo wwctl image exec opensuse156-compute -- bash
 
 # Dans le chroot, installer MATLAB
 # (Copier l'installateur MATLAB depuis votre média)
@@ -376,14 +374,14 @@ EOF
 exit
 
 # Rebuild de l'image
-sudo wwctl image build sles15-sp7-compute
+sudo wwctl image build opensuse156-compute
 ```
 
 ### Étape 2: Installation OpenM++
 
 ```bash
 # Dans l'image compute
-sudo wwctl image exec sles15-sp7-compute -- bash
+sudo wwctl image exec opensuse156-compute -- bash
 
 # Installation des dépendances
 zypper install -y \
@@ -415,27 +413,27 @@ setenv OPENM_HOME /opt/openm
 EOF
 
 exit
-sudo wwctl image build sles15-sp7-compute
+sudo wwctl image build opensuse156-compute
 ```
 
 ### Étape 3: Configuration Spack (Optionnel)
 
 ```bash
 # Installation Spack dans l'image
-sudo wwctl image exec sles15-sp7-compute -- bash
+sudo wwctl image exec opensuse156-compute -- bash
 
 cd /opt
 git clone https://github.com/spack/spack.git
 cd spack
 . share/spack/setup-env.sh
 
-# Configuration pour SUSE 15 SP7
+# Configuration pour openSUSE 15.6
 spack compiler find
 spack install gcc@13.2.0
 spack install openmpi@4.1.5
 
 exit
-sudo wwctl image build sles15-sp7-compute
+sudo wwctl image build opensuse156-compute
 ```
 
 ---
@@ -450,12 +448,12 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf-1.29.0-1.x86_64.rpm
 
 # Installation dans l'image frontale
 sudo cp telegraf-1.29.0-1.x86_64.rpm \
-    /var/lib/warewulf/chroots/sles15-sp7-frontal/tmp/
-sudo wwctl image exec sles15-sp7-frontal -- \
+    /var/lib/warewulf/chroots/opensuse156-frontal/tmp/
+sudo wwctl image exec opensuse156-frontal -- \
     rpm -ivh /tmp/telegraf-1.29.0-1.x86_64.rpm
 
 # Configuration Telegraf
-sudo wwctl image exec sles15-sp7-frontal -- \
+sudo wwctl image exec opensuse156-frontal -- \
     cat > /etc/telegraf/telegraf.conf <<'EOF'
 [global_tags]
   cluster = "hpc-cluster"
@@ -488,13 +486,13 @@ EOF
 
 # Même procédure pour l'image compute
 sudo cp telegraf-1.29.0-1.x86_64.rpm \
-    /var/lib/warewulf/chroots/sles15-sp7-compute/tmp/
-sudo wwctl image exec sles15-sp7-compute -- \
+    /var/lib/warewulf/chroots/opensuse156-compute/tmp/
+sudo wwctl image exec opensuse156-compute -- \
     rpm -ivh /tmp/telegraf-1.29.0-1.x86_64.rpm
 
 # Rebuild
-sudo wwctl image build sles15-sp7-frontal
-sudo wwctl image build sles15-sp7-compute
+sudo wwctl image build opensuse156-frontal
+sudo wwctl image build opensuse156-compute
 ```
 
 ---
@@ -506,14 +504,14 @@ sudo wwctl image build sles15-sp7-compute
 ```bash
 # Définition des nœuds frontaux
 sudo wwctl node set frontal-01 \
-    --image sles15-sp7-frontal \
+    --image opensuse156-frontal \
     --kernel $(uname -r) \
     --netname eth0 --ipaddr 192.168.1.10 --netmask 255.255.255.0 \
     --netname ib0 --ipaddr 10.10.10.11 --netmask 255.255.255.0 \
     --profile default
 
 sudo wwctl node set frontal-02 \
-    --image sles15-sp7-frontal \
+    --image opensuse156-frontal \
     --kernel $(uname -r) \
     --netname eth0 --ipaddr 192.168.1.11 --netmask 255.255.255.0 \
     --netname ib0 --ipaddr 10.10.10.12 --netmask 255.255.255.0 \
@@ -523,7 +521,7 @@ sudo wwctl node set frontal-02 \
 for i in {01..06}; do
     id=${i#0}  # Enlève le zéro (01 -> 1)
     sudo wwctl node set node-$i \
-        --image sles15-sp7-compute \
+        --image opensuse156-compute \
         --kernel $(uname -r) \
         --netname eth0 --ipaddr 192.168.1.$((20+id)) --netmask 255.255.255.0 \
         --netname ib0 --ipaddr 10.10.10.$((100+id)) --netmask 255.255.255.0 \

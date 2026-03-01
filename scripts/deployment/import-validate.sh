@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Import avec Validation - Cluster HPC
 # Import et validation pour déploiement offline
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

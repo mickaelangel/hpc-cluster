@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Backup Restic - Cluster HPC
 # Backup automatisé vers disque USB ou stockage secondaire (Air-Gapped)
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

@@ -205,7 +205,7 @@ sudo ./test-cluster-health.sh
 
 ## 📝 Notes
 
-- Tous les scripts sont compatibles SUSE 15 SP7
+- Tous les scripts sont compatibles openSUSE 15.6
 - Les scripts nécessitent les privilèges root
 - Les mots de passe par défaut doivent être changés
 - Les backups doivent être testés régulièrement

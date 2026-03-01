@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Synchronisation SUMA Offline - Cluster HPC
 # Synchronisation des patches depuis média amovible (USB/DVD)
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

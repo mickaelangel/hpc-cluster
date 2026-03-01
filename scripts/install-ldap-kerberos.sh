@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # Script d'Installation LDAP + Kerberos - Cluster HPC
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

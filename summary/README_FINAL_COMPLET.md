@@ -1,5 +1,5 @@
 # Cluster HPC - Documentation Complète Finale
-## Projet 100% Open-Source pour SUSE 15 SP4
+## Projet 100% Open-Source pour openSUSE 15.6
 
 **Classification**: Documentation Complète  
 **Public**: Tous les Niveaux  
@@ -10,7 +10,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-Ce projet est un **cluster HPC complet, 100% open-source**, prêt pour déploiement sur **SUSE 15 SP4** via Docker.
+Ce projet est un **cluster HPC complet, 100% open-source**, prêt pour déploiement sur **openSUSE 15.6** via Docker.
 
 ### Caractéristiques
 
@@ -98,7 +98,7 @@ Ce projet est un **cluster HPC complet, 100% open-source**, prêt pour déploiem
 
 ### Prérequis
 
-- **Système** : SUSE 15 SP4
+- **Système** : openSUSE 15.6
 - **Docker** : 20.10+
 - **Docker Compose** : 2.0+
 - **Espace** : 50GB+
@@ -233,7 +233,7 @@ Voir **`DOCUMENTATION_COMPLETE_INDEX.md`** pour l'index complet de toute la docu
 - ✅ **Complet** : Tous les composants de instruction.txt
 - ✅ **Documenté** : 30+ guides complets
 - ✅ **Professionnel** : Prêt pour production
-- ✅ **Portable** : Docker, SUSE 15 SP4
+- ✅ **Portable** : Docker, openSUSE 15.6
 
 **Tout est prêt pour démonstration et production !** 🚀
 

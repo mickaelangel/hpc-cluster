@@ -1,9 +1,8 @@
 # Dockerfile pour nœuds frontaux HPC
-# Base: openSUSE Leap 15.4 (compatible SUSE SLES 15 SP7)
+# Base: openSUSE Leap 15.6
 # Services: systemd, SSH, Node Exporter, Telegraf, SlurmCTLD (optionnel)
 
-# Base: openSUSE Leap 15.4 (compatible SUSE SLES 15 SP4)
-FROM registry.opensuse.org/opensuse/leap:15.4
+FROM registry.opensuse.org/opensuse/leap:15.6
 
 LABEL maintainer="hpc-team"
 LABEL version="1.0"

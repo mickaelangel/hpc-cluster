@@ -1,5 +1,5 @@
 # Guide d'Installation - LDAP + Kerberos Séparés
-## Installation Complète sur SUSE 15 SP7
+## Installation Complète sur openSUSE 15.6
 
 **Classification**: Documentation Technique  
 **Public**: Administrateurs Système / Ingénieurs  
@@ -23,7 +23,7 @@
 
 ## 🎯 Vue d'ensemble
 
-Ce guide explique comment installer et configurer **LDAP (389 Directory Server)** et **Kerberos** séparément sur un cluster HPC SUSE 15 SP7.
+Ce guide explique comment installer et configurer **LDAP (389 Directory Server)** et **Kerberos** séparément sur un cluster HPC openSUSE 15.6.
 
 ### Architecture
 
@@ -54,7 +54,7 @@ Ce guide explique comment installer et configurer **LDAP (389 Directory Server)*
 
 ### Sur le Nœud Frontal (frontal-01)
 
-- **OS** : SUSE 15 SP7 / openSUSE Leap 15.4
+- **OS** : openSUSE 15.6 / openSUSE Leap 15.6
 - **Réseau** : Nom de domaine configuré (cluster.local)
 - **DNS** : Résolution de noms fonctionnelle
 - **Ports** : 389 (LDAP), 636 (LDAPS), 88 (Kerberos), 749 (Kadmin)
@@ -62,7 +62,7 @@ Ce guide explique comment installer et configurer **LDAP (389 Directory Server)*
 
 ### Sur les Nœuds Clients
 
-- **OS** : SUSE 15 SP7 / openSUSE Leap 15.4
+- **OS** : openSUSE 15.6 / openSUSE Leap 15.6
 - **Réseau** : Accès au serveur LDAP et Kerberos
 - **SSSD** : Pour l'intégration
 
@@ -73,9 +73,7 @@ Ce guide explique comment installer et configurer **LDAP (389 Directory Server)*
 ### Étape 1: Installation des Packages
 
 ```bash
-# Activation des modules SUSE
-SUSEConnect -p PackageHub/15.7/x86_64
-
+# Sur openSUSE 15.6 : dépôts standards (pas de SUSEConnect)
 # Installation 389 Directory Server
 zypper refresh
 zypper install -y 389-ds 389-ds-base

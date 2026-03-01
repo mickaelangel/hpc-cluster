@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# Préparation Serveur SUSE 15 SP4 pour Cluster HPC
+# Préparation Serveur openSUSE 15.6 pour Cluster HPC
 # À exécuter AVANT l'import du package
 # ============================================================================
 
@@ -13,7 +13,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}PRÉPARATION SERVEUR SUSE 15 SP4${NC}"
+echo -e "${BLUE}PRÉPARATION SERVEUR openSUSE 15.6${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
@@ -23,7 +23,7 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Vérifier SUSE 15 SP4
+# Vérifier openSUSE 15.6
 if [ ! -f /etc/os-release ]; then
     echo -e "${RED}❌ Fichier /etc/os-release non trouvé${NC}"
     exit 1
@@ -70,7 +70,7 @@ else
     echo "  Installation Docker..."
     
     # Ajouter repository Docker
-    zypper addrepo https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_15.4/Virtualization:containers.repo 2>/dev/null || {
+    zypper addrepo https://download.opensuse.org/repositories/Virtualization:containers/openSUSE_Leap_15.6/Virtualization:containers.repo 2>/dev/null || {
         echo -e "${YELLOW}  ⚠️  Repository non accessible (hors ligne)${NC}"
         echo "  Docker devra être installé manuellement"
     }

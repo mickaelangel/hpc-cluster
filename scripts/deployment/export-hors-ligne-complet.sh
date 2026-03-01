@@ -26,7 +26,7 @@ docker compose -f docker/docker-compose-opensource.yml pull 2>/dev/null || \
 docker-compose -f docker/docker-compose-opensource.yml pull 2>/dev/null || true
 
 # Images utilisées par le compose (pour export même si pas dans le compose build)
-for img in opensuse/leap:15.4 prom/prometheus:v2.48.0 grafana/grafana:10.2.0 influxdb:2.7 grafana/loki:2.9.0 grafana/promtail:2.9.0 jupyterhub/jupyterhub:4.0; do
+for img in opensuse/leap:15.6 prom/prometheus:v2.48.0 grafana/grafana:10.2.0 influxdb:2.7 grafana/loki:2.9.0 grafana/promtail:2.9.0 jupyterhub/jupyterhub:4.0; do
     docker pull "$img" 2>/dev/null || true
 done
 
@@ -38,5 +38,5 @@ bash "$SCRIPT_DIR/export-complete-demo.sh"
 
 echo -e "\n${GREEN}========================================${NC}"
 echo -e "${GREEN}Copiez l'archive export-demo/hpc-cluster-demo-*.tar.gz sur la clé USB${NC}"
-echo -e "${GREEN}Sur le serveur SUSE 15 SP4: tar -xzf ... && cd hpc-cluster-demo-* && sudo ./install-demo.sh${NC}"
+echo -e "${GREEN}Sur le serveur openSUSE 15.6: tar -xzf ... && cd hpc-cluster-demo-* && sudo ./install-demo.sh${NC}"
 echo -e "${GREEN}========================================${NC}"

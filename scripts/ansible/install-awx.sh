@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation Ansible AWX - Cluster HPC
 # Infrastructure as Code pour gestion de configuration
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

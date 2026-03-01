@@ -2,7 +2,7 @@
 # ============================================================================
 # Script d'Installation ParaView - Cluster HPC
 # Visualisation Scientifique - Open Source
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

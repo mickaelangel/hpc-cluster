@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Synchronisation Utilisateurs
 # Synchronisation LDAP ↔ Kerberos ou FreeIPA
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail

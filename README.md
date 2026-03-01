@@ -1,12 +1,12 @@
 # 🚀 Cluster HPC Enterprise - Infrastructure Complète
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![openSUSE](https://img.shields.io/badge/openSUSE-15-green.svg)](https://www.opensuse.org/)
+[![openSUSE](https://img.shields.io/badge/openSUSE-15.6-green.svg)](https://www.opensuse.org/)
 [![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)](https://www.docker.com/)
 [![Open Source](https://img.shields.io/badge/Open%20Source-100%25-brightgreen.svg)](https://opensource.org/)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)](https://github.com/mickaelangel/hpc-cluster)
 
-> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur openSUSE 15**
+> **Infrastructure HPC complète, 100% open-source, prête pour déploiement en production sur openSUSE 15.6**
 
 ## 📋 Table des Matières
 
@@ -126,9 +126,18 @@ Ce projet fournit une **infrastructure HPC complète et professionnelle** pour l
 
 ## 📦 Prérequis
 
+### Plateformes supportées
+
+| Plateforme        | Déploiement complet      | Remarques |
+|-------------------|--------------------------|------------|
+| **openSUSE Leap 15.6** | ✅ Oui (recommandé) | Scripts, Docker, Ansible et docs ciblent openSUSE 15.6. |
+| **Rocky Linux / RHEL / CentOS** | ⚠️ Partiel | Certains composants (ex. FreeIPA) et exemples doc ; le déploiement principal (scripts, images Docker, Ansible) est prévu pour openSUSE. |
+
+Pour un déploiement « clé en main », utiliser **openSUSE Leap 15.6** sur l’hôte.
+
 ### Système
 
-- **OS** : openSUSE Leap 15.6
+- **OS** : openSUSE Leap 15.6 (voir tableau ci‑dessus)
 - **RAM** : Minimum 16GB (32GB+ recommandé)
 - **Disque** : Minimum 50GB (100GB+ recommandé)
 - **CPU** : 4+ cores (8+ recommandé)

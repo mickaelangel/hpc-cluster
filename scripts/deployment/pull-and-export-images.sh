@@ -26,7 +26,7 @@ docker pull influxdb:2.7
 docker pull grafana/loki:2.9.0
 docker pull grafana/promtail:2.9.0
 docker pull jupyterhub/jupyterhub:4.0
-docker pull opensuse/leap:15.4
+docker pull opensuse/leap:15.6
 echo -e "${GREEN}  ✅ Images téléchargées${NC}"
 
 echo -e "\n${YELLOW}[2/2] Export complet...${NC}"

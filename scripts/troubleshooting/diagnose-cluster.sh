@@ -2,7 +2,7 @@
 # ============================================================================
 # Script de Diagnostic Complet - Cluster HPC
 # Diagnostic automatique de tous les composants
-# Compatible SUSE 15 SP7
+# Compatible openSUSE 15.6
 # ============================================================================
 
 set -euo pipefail
